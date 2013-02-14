@@ -1,7 +1,7 @@
 install:
   - yes | sudo apt-add-repository ppa:plowsharepackagers/ppa
   - sudo apt-get update -qq
-  - sudo apt-get install -qq plowshare texlive-publishers pdflatex
+  - sudo apt-get install -qq plowshare texlive-publishers texlive-fonts-recommended
 script:
   - "make"
 after_success: plowup bayfiles report.pdf
