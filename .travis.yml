@@ -1,9 +1,45 @@
+---
 install:
-  - yes | sudo apt-add-repository ppa:plowsharepackagers/ppa
-  - yes | sudo apt-add-repository ppa:texlive-backports/ppa
-  - sudo apt-get update -qq
-  - sudo apt-get install -qq plowshare texlive-publishers texlive-fonts-recommended
-  - wget http://mirrors.ctan.org/macros/latex/contrib/IEEEtran/IEEEtran.cls
+- yes | sudo apt-add-repository ppa:texlive-backports/ppa
+- sudo apt-get update -qq
+- sudo apt-get install -qq latex-xcolor texlive-latex-extra texlive-fonts-recommended
+  texlive-fonts-extra
+- wget http://mirrors.ctan.org/macros/latex/contrib/IEEEtran/IEEEtran.cls
+- wget https://raw.github.com/graingert/Dropbox-Uploader/patch-1/dropbox_uploader.sh
+  -O dropbox_uploader.sh
 script:
-  - "make"
-after_success: plowup bayfiles report.pdf
+- make
+after_success:
+- if [ "$DROPBOX_UPLOADER" ]; then bash dropbox_uploader.sh upload report.pdf; fi
+env:
+  global:
+  - secure: ! 'EVQnP+AzRBo8vMGRakQwa4ngh68unfqb2q0Xb2J8JwVDxkpFv8bSM4jWX3ls
+
+      lOEJdZyP/tYZyXmRXjg9mj+pYnhQr+6OO09XXiAbcEXifJgvYJCw3reKgGPV
+
+      qbf0RYSm3E8ViL9DvHm1UEzAtmambsoqfRg6CICRd9exeXN8Dh8='
+  - secure: ! 'kT7SmgreyviGqswRBIgf91w7rRwhKTYj80FO0j3FaLg40COTpcGLFXUBvtdp
+
+      mDAf6o2n0PwwvVTg3oVIFbfkwtVAF80CfFRaQFmFZBQnyV4iLwLskWLunqUd
+
+      k22JWtN2rNC1t5eMfxpFoTcX5CwsUpUzSJn59tK468ap32BRDok='
+  - secure: ! 'SAP65CFh32JOyHNS64Qy4U9xEOe9ISZ53rBM41ctoxbmOTMlt1v8F51R+qPr
+
+      +Q+MDxzQaLcamBGsyAqhTPU/Jw0g/JBtDYyoy4zN8vtTa99pkNSB4H1MY3eU
+
+      pE0Sofri3VWTr8MY6+r+P4JNNl3UnQPP5J3qgzM4yHGOhuBUzU0='
+  - secure: ! 'ZJ56HqUKlbymk1/It7nW57QpBexkjJsbZYX0EUQyJRK2XC1BGj/SA9puVX3i
+
+      Q0Sm4768XDKug6XREgETy100JC25D5V+BdL2hR2y+3AhrhP3s5rUR2NA0O1r
+
+      dIlDAZDbCgCXaiphWjNAqq974xUT0D/jjJ6ArEE2w55ZhqVrEZo='
+  - secure: ! 'JWdhaYFuO/WlifK7Sdmyg7bCDfj/WMz6oXk/QhuWhOBJ3lzzD2bxN2lGaALG
+
+      19KibD9ncRixyCR+Vr94CQfMwi56KL0B+cBVtACsc3yeXPTZHygQB9kcZcxF
+
+      c2wmIT2yNyxAmM6GFMW8FfcAR2H3xy3ytmYEJfH7yBpA1mU8sJg='
+  - secure: ! 'R7O8W0ApYnlSIvyA5GHDKwALlsWtWl9An+CphVgqhIaheVcpr3xK9T0gkBOx
+
+      Uveb9/NF4bL8iX5QETfav+Rzy3xKpLQj2PKe1+lKnzq6jDLZ9kVmruZOuIbY
+
+      E20qQErmboQkbvPJv61urQqi0oYUz8ybQyMJRgPCXHYx5lszziI='
