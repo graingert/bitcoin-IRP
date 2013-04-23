@@ -43,11 +43,10 @@ Now over ten million bitcoins have been generated with a total value of over 2 b
 
 The key difference between bitcoin and other digital currencies such as e-gold or PayPal is that it does not have a central authority, transactions are irreversible, and transactions can be made pseudo anonymously.  The bitcoin protocol allows multiple different clients to connect, verify and disseminate transactions.  The reference bitcoin client, has received multiple releases and is now known as Bitcoin-Qt.
 
-    The need for bitcoin
-
-    What this paper is about - The research on bitcoin, which has focussed on Anonymity, Economics and proposals for improvements
-
-    The other stuff I haven't written yet :p
+\begin{itemize}
+    \item The need for bitcoin
+    \item What this paper is about - The research on bitcoin, which has focussed on Anonymity, Economics and proposals for improvements
+\end{itemize}
 
 \section{Background}
 The core of any currency is to allow users to participate in transactions that result in the transfer of value between the participants.  If Alice wishes to send some value to Bob, Bob will need to know that Alice has the funds to send that transaction and has not sent that money to anyone else.  This problem is easily solvable in the physical world where the expense to duplicate or create more of a resource can be ensured to be more than the value of the item: for example creating counterfeit paper currency or creating a commodity like gold.  This property of physical goods brings with it another problem: moving the value over a distance, this can be very expensive especially with highly massive, solid commodities like gold.  A digital currency aims to recreate the difficulty in duplication, while taking advantage of the ease of transfer that digital information brings.
@@ -59,8 +58,8 @@ TODO: Systems such as PayPal or Facebook Credits in which only the central autho
 
 \subsection{Unique Token}
 Cite: Medvinsky and Neuman discuss one solution, NetCash with a similar protocol implemented under the name opencoin, uses a unique token held by both the central authority and the owner of the coin. To create currency the user and central authority agree on a unique token in exchange for some currency or resource. When that user wishes to transact value to another, they simply send the token to the other user.  To verify that the transaction is legitimate, other receiving users send the token to the exchange, to be swapped for a new spendable token meaning the original token can no longer be spent. One issue with this protocol is the central authority cannot be independently verified, as such the authority could choose to deny knowledge of a token, or allow multiple users to claim the same token.
-Digital signature chain
 
+\subsection{Digital signature chain}
 An alternative solution proposed operates ``using a chain of digital signatures'' where transaction messages are created using public key cryptography and the chain of digital signatures can be traced back to the original creation of the unit of value. For example Alice cryptographically signs a message “I pay 5 coins to Bob”.  This system presents the same problems as before regarding value distribution and potential double spending i.e. how does Bob know that Alice has the value to start with and how does Bob know that this value hasn't already been spent. In [Cite] proposal the solution is to involve a central authority that hosts a public copy of every transaction sent and is trusted to create and allocate value fairly such as on receipt of a payment in fiat currency, or some resource.
 
 Bob can verify that Alice was given some value from a chain of transactions leading back to the central authority where the value is assumed to be created and can subtract the total value of Alice’s spent transactions to determine if the transaction sent to Bob is valid.  While this system prevents the central authority from forcing a user to spend money, unlike token based digital currencies or central banking, the central authority still holds a significant position of power and thus demands a great deal of trust from the user that the authority is both benign and secure. For example the central authority could cooperate with, or more simply act as, a user attempting to achieve a double payment attack by showing different views to different users. Because the authority is the sole party involved in the minting process that authority can create more units of currency.
@@ -71,20 +70,15 @@ Bob can verify that Alice was given some value from a chain of transactions lead
 
 In both systems where a central authority exists, while it may be reasonable to trust some agent for the purpose of authenticating the ownership of value that authority may act in a way outside of the agents’ control.  The server hosting the system could be compromised either through technical means or through the use of force, as in the case of E-Gold.
 
-    Show different views to different users, resulting in a double spend
-
-    Allocate money unfairly or unexpectedly, with excessive minting or “easing”
-
-    Be shut down by a government
-
-
-    Cryptographic signing
-
-    Transactions as cryptographic signatures
-
-    The double spending problem
-
-    HashCash
+\begin{itemize}
+    \item Show different views to different users, resulting in a double spend
+    \item Allocate money unfairly or unexpectedly, with excessive minting or “easing”
+    \item Be shut down by a government
+    \item Cryptographic signing
+    \item Transactions as cryptographic signatures
+    \item The double spending problem
+    \item HashCash
+\end{itemize}
 
 \subsection{The Bitcoin Protocol}
 Bitcoin extends the digital signature chain [hyperref] based transaction system and replaces the central authority with a distributed, decentralized timestamp consensus that is used to agree on the order that transactions occurred in.  Any user can, on receipt of a transaction, query the time stamp server and determine if that transaction has been invalidated by a prior transaction.
@@ -94,18 +88,14 @@ The time stamp server creates a chain of blocks of transactions, each referring 
 
 Because each block refers to the previous block, “To modify a past block, an attacker would have to redo the proof-of-work of the block and all blocks after it”.  As more blocks are created the more expensive it is for any group to alter the consensus reached by the peer network.  Because the proof of work system is computationally expensive an incentive, other than the increased certainty of any transaction a user has previously received will remain valid, is included.  While all the transactions included in a block must have at least the input value as output value, one transaction can be included with no input and an output dependant on the total number of blocks due to halve every 4 years. Currently this reward is 25 bitcoins. This reward is paid for by the consensual deflation of every participants held bitcoin. This process also serves to solve the distribution problem of digital currencies.
 
-
-    Public keys and addresses.
-
-    How bitcoin aims to solve the double spending problem without a central authority
-
-    Bitcoin clients present public keys to the user as “addresses”, these are the result of the hash of a public key and a checksum. Similar in purpose as the Luhn check on credit cards, this process is used to reduce the likelihood of losing bitcoin to a public key with no paired private key by preventing mistakes when entered into clients by hand.
-
-    Transaction types
-
-    Change address. The change address is always a new address
-
-    TestNet bitcoin
+\begin{itemize}
+    \item Public keys and addresses.
+    \item How bitcoin aims to solve the double spending problem without a central authority
+    \item Bitcoin clients present public keys to the user as “addresses”, these are the result of the hash of a public key and a checksum. Similar in purpose as the Luhn check on credit cards, this process is used to reduce the likelihood of losing bitcoin to a public key with no paired private key by preventing mistakes when entered into clients by hand.
+    \item Transaction types
+    \item Change address. The change address is always a new address
+    \item TestNet bitcoin
+\end{itemize}
 
 \section{Anonymity}
 As part of the Bitcoin protocol, all transactions must be broadcast publicly however, Satoshi maintains that “privacy can still be maintained by breaking the flow of information [...] by keeping public keys anonymous”.  Each Bitcoin address can be considered one pseudonym of many of the owner of the associated private key, because each person can own multiple Bitcoin addresses in a wallet. Satoshi asserts that because of this disconnect between user and address it is difficult to associate a particular transaction with a particular user.
@@ -126,9 +116,10 @@ In the Bitcoin transaction format, if a user cannot fulfil the value of a transa
 
 The Bitcoin community refers to this process as “Taint Analysis” [cite].
 
-        Briefly mentions mixers and “repeatedly sending fractions of their Bitcoins to themselves using multiple (newly generated) public-keys” Although that does not defeat taint analysis as these can be assumed to be owned by the originating wallet until otherwise linked.
-
-        Change addresses, bug that lead to them being in the same position each time. Androulaki et al, note that change addresses are clearly distinguishable by being the only newly generated address in the output of the transaction. However it is recommended to newly generate a Bitcoin address for each receiving transaction.
+\begin{itemize}
+    \item Briefly mentions mixers and “repeatedly sending fractions of their Bitcoins to themselves using multiple (newly generated) public-keys” Although that does not defeat taint analysis as these can be assumed to be owned by the originating wallet until otherwise linked.
+    \item Change addresses, bug that lead to them being in the same position each time. Androulaki et al, note that change addresses are clearly distinguishable by being the only newly generated address in the output of the transaction. However it is recommended to newly generate a Bitcoin address for each receiving transaction.
+\end{itemize}
 
 \subsection{Taint Analysis Disruption}
 \subsubsection{ZeroCoin}
@@ -141,31 +132,25 @@ While in the example described it is clear how the addresses are really linked, 
 
 For a serious attempt to disrupt taint analysis the taint disrupting transaction must have the following properties:  Each output must be to an address that has not been used previously. There must be an even number of bitcoin sent to each output. The transaction must not be traceable to a network address.  The communication during cooperation must not be intercepted. The communication must not be shown to have taken place.  At this point, from a view of the blockchain, the two wallets appear linked, under the multi-transaction heuristic and change address heuristic. From the view of the cooperating peers, however, it is clear the true owner of the output keys as such this process must take place repeatedly between many different peers.
 
+\subsubsection{A design for an automatic taint analysis disruption}
 
-    A design for an automatic taint analysis disruption
-
-        Using the Tor hidden service
-
-        Some sort of central or distributed registration system for peers
-
-        A peer may connect to any other peer, each peer creates a new address, they both determine an equal amount of bitcoin to send. And create a multi-input transaction from both users, split equally into the new addresses.
-
-        Assuming that the ownership of originating addresses was known publicly the ownership of the two new addresses is now 50/50.
-
-        [Diagram]
-
-        Repeat the process
-
+\begin{itemize}
+    \item Using the Tor hidden service
+    \item Some sort of central or distributed registration system for peers
+    \item A peer may connect to any other peer, each peer creates a new address, they both determine an equal amount of bitcoin to send. And create a multi-input transaction from both users, split equally into the new addresses.
+    \item Assuming that the ownership of originating addresses was known publicly the ownership of the two new addresses is now 50/50.
+    \item Diagram
+    \item Repeat the process
+\end{itemize}
 
 \section{Improvements To the Bitcoin system}
 
-    What is a forking change?
-
-    What improvements are possible
-
-    Not strictly fully decentralized, concept of consensus, checkpointing.
-
-    The hash power voting system
+\begin{itemize}
+    \item What is a forking change?
+    \item What improvements are possible
+    \item Not strictly fully decentralized, concept of consensus, checkpointing.
+    \item The hash power voting system
+\end{itemize}
 
 
 % An example of a floating figure using the graphicx package.
