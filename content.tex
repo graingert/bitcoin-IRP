@@ -89,7 +89,7 @@ knowledge of a token, or allow multiple users to claim the same token.
 ``using a chain of digital signatures'' where transaction messages are created
 using public key cryptography and the chain of digital signatures can be traced
 back to the original creation of the unit of value. For example Alice
-cryptographically signs a message “I pay 5 coins to Bob”.  This system presents
+cryptographically signs a message ``I pay 5 coins to Bob''.  This system presents
 the same problems as before regarding value distribution and potential double
 spending i.e. how does Bob know that Alice has the value to start with and how
 does Bob know that this value hasn't already been spent. In [Cite] proposal the
@@ -122,7 +122,7 @@ use of force, as in the case of E-Gold.
 
 \begin{itemize} \item Show different views to different users, resulting in a
 double spend \item Allocate money unfairly or unexpectedly, with excessive
-minting or “easing” \item Be shut down by a government \item Cryptographic
+minting or ``easing'' \item Be shut down by a government \item Cryptographic
 signing \item Transactions as cryptographic signatures \item The double
 spending problem \item HashCash \end{itemize}
 
@@ -138,7 +138,7 @@ to the previous by hash value.  The transactions to be included in the chain
 are discovered when peers broadcast them into a peer discovery network that
 operates in a similar manner to a BitTorrent swarm.  Any user can contribute to
 this chain of blocks, but before another peer will relay it to others, it must
-meet a “proof-of-work” requirement: the SHA256 hash value of each block must
+meet a ``proof-of-work'' requirement: the SHA256 hash value of each block must
 not exceed a value determined by the current ‘difficulty’.  Because the SHA2
 hashing function has been designed such that the value of an amount of data is
 unpredictable and evenly distributed in the range of the function, the only way
@@ -147,9 +147,9 @@ is to repeatedly try different input data values. Transaction block data can be
 altered without changing the transaction semantics because the transaction
 block format includes a ‘nonce’ field for this purpose.
 
-Because each block refers to the previous block, “To modify a past block, an
+Because each block refers to the previous block, ``To modify a past block, an
 attacker would have to redo the proof-of-work of the block and all blocks after
-it”.  As more blocks are created the more expensive it is for any group to
+it''.  As more blocks are created the more expensive it is for any group to
 alter the consensus reached by the peer network.  Because the proof of work
 system is computationally expensive an incentive, other than the increased
 certainty of any transaction a user has previously received will remain valid,
@@ -162,7 +162,7 @@ serves to solve the distribution problem of digital currencies.
 
 \begin{itemize} \item Public keys and addresses.  \item How bitcoin aims to
 solve the double spending problem without a central authority \item Bitcoin
-clients present public keys to the user as “addresses”, these are the result of
+clients present public keys to the user as ``addresses'', these are the result of
 the hash of a public key and a checksum. Similar in purpose as the Luhn check
 on credit cards, this process is used to reduce the likelihood of losing
 bitcoin to a public key with no paired private key by preventing mistakes when
@@ -170,9 +170,9 @@ entered into clients by hand.  \item Transaction types \item Change address.
 The change address is always a new address \item TestNet bitcoin \end{itemize}
 
 \section{Anonymity} As part of the Bitcoin protocol, all transactions must be
-broadcast publicly however, Satoshi maintains that “privacy can still be
+broadcast publicly however, Satoshi maintains that ``privacy can still be
 maintained by breaking the flow of information [...] by keeping public keys
-anonymous”.  Each Bitcoin address can be considered one pseudonym of many of
+anonymous''.  Each Bitcoin address can be considered one pseudonym of many of
 the owner of the associated private key, because each person can own multiple
 Bitcoin addresses in a wallet. Satoshi asserts that because of this disconnect
 between user and address it is difficult to associate a particular transaction
@@ -189,10 +189,10 @@ protocol other inferences can be made, with the aim to determine the identity
 of the user behind the wallet, and thus any transactions made.
 
 Harrigan and Reid aim to de-anonymize a user using two phases.  First to
-contract the publicly available, as published in the blockchain, “transaction
-network” to a “user network” by determining groups of addresses that appear to
+contract the publicly available, as published in the blockchain, ``transaction
+network'' to a ``user network” by determining groups of addresses that appear to
 behave as part of a single wallet.  The second phase is to  link that group
-using publicly available “Off-Network Information” linking addresses to keys,
+using publicly available ``Off-Network Information'' linking addresses to keys,
 eg by crawling the web for forum posts with including both user-names and
 addresses.
 
@@ -208,10 +208,10 @@ the transaction with all of the participating private keys.
 
 [diagram of multi input transactions grouping wallets]
 
-The Bitcoin community refers to this process as “Taint Analysis” [cite].
+The Bitcoin community refers to this process as ``Taint Analysis'' [cite].
 
-\begin{itemize} \item Briefly mentions mixers and “repeatedly sending fractions
-of their Bitcoins to themselves using multiple (newly generated) public-keys”
+\begin{itemize} \item Briefly mentions mixers and ``repeatedly sending fractions
+of their Bitcoins to themselves using multiple (newly generated) public-keys''
 Although that does not defeat taint analysis as these can be assumed to be
 owned by the originating wallet until otherwise linked.  \item Change
 addresses, bug that lead to them being in the same position each time.
@@ -225,20 +225,20 @@ propose a solution to the de-anonymization proposed in taint analysis, by
 defining new transaction types that take advantage of zero knowledge proofs.
 \subsubsection{Multi-Input Transaction}
 
-In his forum post, “I taint rich!”, Bitcoin developer Gregory (gmaxwell)
-Maxwell describes a process to disrupt “brain-dead automated (taint) analysis”.
+In his forum post, ``I taint rich!'', Bitcoin developer Gregory (gmaxwell)
+Maxwell describes a process to disrupt ``brain-dead automated (taint) analysis''.
 Because the conditions of a set of previous outputs can be fulfilled partially,
 multiple users can cooperate to create a single transaction that causes their
 public keys to appear linked in a single wallet to taint analysis, without
 revealing their private keys to the group.  As such Satoshi’s claim, and key
-assumption in Harrigan and Reid’s paper, that “Some linking is still
+assumption in Harrigan and Reid’s paper, that ``Some linking is still
 unavoidable with multi-input transactions, which necessarily reveal that their
-inputs were owned by the same user” is wrong.
+inputs were owned by the same user'' is wrong.
 
 While in the example described it is clear how the addresses are really linked,
 due to the cooperation being performed on a public forum, the same address used
 on the input and output and the fact that that address is the vanity address,
-“1gmaxw”. The complexity of this process means it is not well used.
+``1gmaxw''. The complexity of this process means it is not well used.
 
 For a serious attempt to disrupt taint analysis the taint disrupting
 transaction must have the following properties:  Each output must be to an
