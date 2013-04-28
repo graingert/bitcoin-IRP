@@ -200,18 +200,24 @@ eg by crawling the web for forum posts with including both user-names and
 addresses.
 
 Multi-input transactions are used to distinguish the behavior of a group of keys
-from any other in the transaction network.
+from any other in the transaction network.  Andoulaki et al add to this a further
+heuristic of ``Shadow Addresses'' to associate newly created addresses with
+users\cite{eval-priv}.
 
+\subsubsection{Multi-input Transactions}
 In the Bitcoin transaction format, if a user cannot fulfil the value of a
 transaction by spending a single previous output, the client will combine
-multiple previous outputs where the user has the ability to fulfill their spend
-conditions.  When combined the Bitcoin client must fulfill the spend conditions
-of all of the outputs, usually the conditions result in the requirement to sign
-the transaction with all of the participating private keys.
+multiple inputs, or previous outputs, where the user has the ability to fulfill
+their spend conditions.  When combined the Bitcoin client must fulfill the spend
+conditions of all of the outputs, usually the conditions result in the requirement to sign
+the transaction with all of the participating private keys.  ``It is therefore
+straightforward to conclude that if these BTCs are (spendable) by different addresses,
+then the input addresses belong to the same user''\cite{eval-priv}.
 
 [diagram of multi input transactions grouping wallets]
 
-The Bitcoin community refers to this process as ``Taint Analysis'' [cite].
+\subsubsection{``Shadow'' Addresses}
+
 
 \begin{itemize} \item Briefly mentions mixers and ``repeatedly sending fractions
         of their Bitcoins to themselves using multiple (newly generated)
@@ -223,7 +229,9 @@ assumed to be owned by the originating wallet until otherwise linked.  \item
     the transaction.  However it is recommended to newly generate a Bitcoin
     address for each receiving transaction.  \end{itemize}
 
-\subsection{Taint Analysis Disruption} \subsubsection{ZeroCoin} Miers et al.
+\subsection{Taint Analysis Disruption}
+
+\subsubsection{ZeroCoin} Miers et al.
 propose a solution to the de-anonymization proposed in taint analysis, by
 defining new transaction types that take advantage of zero knowledge
 proofs\cite{zerocoin}.  \subsubsection{Multi-Input Transaction}
