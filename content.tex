@@ -131,8 +131,9 @@ use of force, as in the case of E-Gold.
 distributed, decentralized timestamp consensus that is used to agree on the
 order that transactions occurred in.  Any user can, on receipt of a transaction,
 query the time stamp server and determine if that transaction has been
-invalidated by a prior transaction.  Distributed Transaction Validation
+invalidated by a prior transaction.
 
+\subsection{Distributed Transaction Validation}
 The time stamp server creates a chain of blocks of transactions, each referring
 to the previous by hash value.  The transactions to be included in the chain are
 discovered when peers broadcast them into a peer discovery network that operates
