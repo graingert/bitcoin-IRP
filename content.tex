@@ -128,7 +128,7 @@ use of force, as in the case of E-Gold.
 
 \subsection{The Bitcoin Protocol} Bitcoin extends the digital signature chain
 [hyperref] based transaction system and replaces the central authority with a
-distributed, decentralized timestamp consensus that is used to agree on the
+distributed, decentralized time stamp consensus that is used to agree on the
 order that transactions occurred in.  Any user can, on receipt of a transaction,
 query the time stamp server and determine if that transaction has been
 invalidated by a prior transaction.
@@ -144,9 +144,10 @@ exceed a value determined by the current ‘difficulty’.  Because the SHA2 has
 function has been designed such that the value of an amount of data is
 unpredictable and evenly distributed in the range of the function, the only way
 for a participant to create data with a hash value below the difficulty limit is
-to repeatedly try different input data values. Transaction block data can be
-altered without changing the transaction semantics because the transaction block
-format includes a ‘nonce’ field for this purpose.
+to repeatedly try different input data
+values\footnote{\url{http://blog.ezyang.com/2011/06/the-cryptography-of-bitcoin/}}.
+Transaction block data can be altered without changing the transaction semantics
+because the block format includes a ‘nonce’ field for this purpose.
 
 Because each block refers to the previous block, ``To modify a past block, an
 attacker would have to redo the proof-of-work of the block and all blocks after
