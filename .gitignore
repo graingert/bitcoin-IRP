@@ -50,3 +50,7 @@ report.run*
 #vim
 *.swp
 *.swo
+
+#extras
+price.tex
+
