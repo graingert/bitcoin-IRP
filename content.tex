@@ -140,14 +140,14 @@ discovered when peers broadcast them into a peer discovery network that operates
 in a similar manner to a BitTorrent swarm.  Any user can contribute to this
 chain of blocks, but before another peer will relay it to others, it must meet a
 ``proof-of-work'' requirement: the SHA256 hash value of each block must not
-exceed a value determined by the current ‘difficulty'.  Because the SHA2 hashing
+exceed a value determined by the current `difficulty'.  Because the SHA2 hashing
 function has been designed such that the value of an amount of data is
 unpredictable and evenly distributed in the range of the function, the only way
 for a participant to create data with a hash value below the difficulty limit is
 to repeatedly try different input data
 values\footnote{\url{http://blog.ezyang.com/2011/06/the-cryptography-of-bitcoin/}}.
 Transaction block data can be altered without changing the transaction semantics
-because the block format includes a ‘nonce' field for this purpose.
+because the block format includes a `nonce' field for this purpose.
 
 Because each block refers to the previous block, ``To modify a past block, an
 attacker would have to redo the proof-of-work of the block and all blocks after
@@ -193,7 +193,7 @@ behind the wallet, and thus any transactions made.
 
 Harrigan and Reid aim to de-anonymize a user using two phases.  First to
 contract the publicly available, as published in the blockchain, ``transaction
-network'' to a ``user network” by determining groups of addresses that appear to
+network'' to a ``user network'' by determining groups of addresses that appear to
 behave as part of a single wallet.  The second phase is to  link that group
 using publicly available ``Off-Network Information'' linking addresses to keys,
 eg by crawling the web for forum posts with including both user-names and
