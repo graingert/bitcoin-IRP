@@ -89,13 +89,25 @@ a token, or allow multiple users to claim the same token.
 ``using a chain of digital signatures'' where transaction messages are created
 using public key cryptography and the chain of digital signatures can be traced
 back to the original creation of the unit of value. For example Alice
-cryptographically signs a message ``I pay 5 coins to Bob''.  This system
+cryptographically signs a message ``I pay 5 coins to Bob'', see Figure~\ref{fig:chain-spend}.
+This system
 presents the same problems as before regarding value distribution and potential
 double spending i.e. how does Bob know that Alice has the value to start with
 and how does Bob know that this value hasn't already been spent. In [Cite]
 proposal the solution is to involve a central authority that hosts a public copy
 of every transaction sent and is trusted to create and allocate value fairly
 such as on receipt of a payment in fiat currency, or some resource.
+
+\begin{figure}[htb]
+    \centering
+    \includegraphics[width=0.9\columnwidth ]{img/Bitcoin_Transaction_Visual}
+    \caption{A chain of digital signatures representing value transfer.
+    (source \protect\cite{satoshi})}
+    \label{fig:chain-spend}
+\end{figure}
+
+[diagram of double spend]
+
 
 Bob can verify that Alice was given some value from a chain of transactions
 leading back to the central authority where the value is assumed to be created
@@ -109,10 +121,6 @@ cooperate with, or more simply act as, a user attempting to achieve a double
 payment attack by showing different views to different users. Because the
 authority is the sole party involved in the minting process that authority can
 create more units of currency.
-
-[diagram of a chain of value movement]
-
-[diagram of double spend]
 
 In both systems where a central authority exists, while it may be reasonable to
 trust some agent for the purpose of authenticating the ownership of value that
