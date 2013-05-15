@@ -1,0 +1,738 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="412.694"
+   height="418.30673"
+   id="svg2"
+   version="1.1"
+   inkscape:version="0.48.4 r9939"
+   sodipodi:docname="Bitcoin_DoubleSpend_Visual.svg">
+  <defs
+     id="defs4">
+    <marker
+       inkscape:stockid="Arrow1Mend"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="Arrow1Mend"
+       style="overflow:visible">
+      <path
+         id="path3965"
+         d="M 0,0 5,-5 -12.5,0 5,5 0,0 z"
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt"
+         transform="matrix(-0.4,0,0,-0.4,-4,0)"
+         inkscape:connector-curvature="0" />
+    </marker>
+    <path
+       style="fill:none;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:1, 2;stroke-dashoffset:0;marker-end:url(#Arrow1Mend)"
+       d="m 96.428572,65.571428 0,37.684882 66.711068,29.7995"
+       id="path4402-9"
+       inkscape:connector-curvature="0"
+       transform="translate(50.928596,136.00505)" />
+    <marker
+       inkscape:stockid="Arrow1Mend"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="Arrow1Mend-3"
+       style="overflow:visible">
+      <path
+         inkscape:connector-curvature="0"
+         id="path3965-8"
+         d="M 0,0 5,-5 -12.5,0 5,5 0,0 z"
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt"
+         transform="matrix(-0.4,0,0,-0.4,-4,0)" />
+    </marker>
+    <marker
+       inkscape:stockid="Arrow1Mend"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="Arrow1Mend-0"
+       style="overflow:visible">
+      <path
+         inkscape:connector-curvature="0"
+         id="path3965-7"
+         d="M 0,0 5,-5 -12.5,0 5,5 0,0 z"
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt"
+         transform="matrix(-0.4,0,0,-0.4,-4,0)" />
+    </marker>
+    <marker
+       inkscape:stockid="Arrow1Mend"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="Arrow1Mend-5"
+       style="overflow:visible">
+      <path
+         inkscape:connector-curvature="0"
+         id="path3965-4"
+         d="M 0,0 5,-5 -12.5,0 5,5 0,0 z"
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt"
+         transform="matrix(-0.4,0,0,-0.4,-4,0)" />
+    </marker>
+    <path
+       style="fill:none;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:1, 2;stroke-dashoffset:0;marker-end:url(#Arrow1Mend-5)"
+       d="M 216.67772,103.25631 352.03816,45.42508"
+       id="path5011-9"
+       inkscape:connector-curvature="0"
+       transform="translate(-69.071404,136.00505)" />
+  </defs>
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="0.98994949"
+     inkscape:cx="295.55757"
+     inkscape:cy="121.53588"
+     inkscape:document-units="px"
+     inkscape:current-layer="g4560"
+     showgrid="false"
+     fit-margin-top="0"
+     fit-margin-left="0"
+     fit-margin-right="0"
+     fit-margin-bottom="0"
+     inkscape:window-width="1280"
+     inkscape:window-height="776"
+     inkscape:window-x="0"
+     inkscape:window-y="24"
+     inkscape:window-maximized="1" />
+  <metadata
+     id="metadata7">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(-57.991594,-65.362191)">
+    <g
+       id="g5653">
+      <rect
+         y="151.57648"
+         x="80.928596"
+         height="146.42857"
+         width="82"
+         id="rect3085"
+         style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
+      <rect
+         y="172.28069"
+         x="87.347092"
+         height="30.020145"
+         width="67.163002"
+         id="rect3855"
+         style="fill:none;stroke:#000000;stroke-width:0.97985494;stroke-opacity:1" />
+      <rect
+         transform="translate(50.928596,136.00505)"
+         y="87.714287"
+         x="51.42857"
+         height="16.428572"
+         width="30.714285"
+         id="rect3857"
+         style="fill:none;stroke:#000000;stroke-opacity:1" />
+      <rect
+         transform="translate(50.928596,136.00505)"
+         y="124.85714"
+         x="45"
+         height="31.428572"
+         width="52.142857"
+         id="rect3859"
+         style="fill:none;stroke:#000000;stroke-opacity:1" />
+      <text
+         sodipodi:linespacing="125%"
+         id="text3861"
+         y="164.43362"
+         x="89.35717"
+         style="font-size:10px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+         xml:space="preserve"><tspan
+           style="font-size:8px"
+           y="164.43362"
+           x="89.35717"
+           id="tspan3863"
+           sodipodi:role="line">Transaction</tspan></text>
+      <path
+         sodipodi:nodetypes="cc"
+         transform="translate(50.928596,136.00505)"
+         inkscape:connector-curvature="0"
+         id="path4396"
+         d="m 66.428571,103.42857 0,20"
+         style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-end:url(#Arrow1Mend)" />
+      <path
+         sodipodi:nodetypes="cc"
+         transform="translate(50.928596,136.00505)"
+         inkscape:connector-curvature="0"
+         id="path4400"
+         d="m 73.571429,66.285714 0,19.285286"
+         style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-end:url(#Arrow1Mend)" />
+      <path
+         transform="translate(50.928596,136.00505)"
+         inkscape:connector-curvature="0"
+         id="path4402"
+         d="m 96.428572,65.571428 0,37.684882 66.711068,29.7995"
+         style="fill:none;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:1, 2;stroke-dashoffset:0;marker-end:url(#Arrow1Mend)" />
+      <text
+         sodipodi:linespacing="125%"
+         id="text4404"
+         style="font-size:8px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+         xml:space="preserve"><textPath
+           startOffset="57.999998%"
+           id="textPath4408"
+           xlink:href="#path4402"><tspan
+   id="tspan4406">Verify</tspan></textPath></text>
+      <path
+         transform="translate(50.928596,136.00505)"
+         inkscape:connector-curvature="0"
+         id="path4777"
+         d="m 103.54064,191.64466 59.09392,-43.94163"
+         style="fill:none;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:1, 2;stroke-dashoffset:0;marker-end:url(#Arrow1Mend)" />
+      <rect
+         transform="translate(50.928596,136.00505)"
+         y="184.57359"
+         x="36.36549"
+         height="30.304577"
+         width="67.175148"
+         id="rect4961"
+         style="fill:none;stroke:#000000;stroke-width:1;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0" />
+      <text
+         sodipodi:linespacing="125%"
+         id="text4404-3"
+         style="font-size:8px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+         xml:space="preserve"><textPath
+           startOffset="37%"
+           id="textPath5537"
+           xlink:href="#path4777">Sign</textPath></text>
+      <path
+         sodipodi:nodetypes="ccc"
+         inkscape:connector-curvature="0"
+         id="path3950-8"
+         d="m 58.491594,209.55883 52.704866,0 0,12.14243"
+         style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-end:url(#Arrow1Mend)" />
+      <text
+         xml:space="preserve"
+         style="font-size:8px;font-style:normal;font-weight:normal;text-align:center;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+         x="119.45369"
+         y="184.45168"
+         id="text4003"
+         sodipodi:linespacing="125%"><tspan
+           sodipodi:role="line"
+           id="tspan4005"
+           x="119.45369"
+           y="184.45168">Owner 1's</tspan><tspan
+           sodipodi:role="line"
+           x="119.45369"
+           y="194.45168"
+           id="tspan4007">Public key</tspan></text>
+      <text
+         xml:space="preserve"
+         style="font-size:8px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+         x="107.92802"
+         y="234.8914"
+         id="text4009"
+         sodipodi:linespacing="125%"><tspan
+           sodipodi:role="line"
+           id="tspan4011"
+           x="107.92802"
+           y="234.8914">Hash</tspan></text>
+      <text
+         xml:space="preserve"
+         style="font-size:8px;font-style:normal;font-weight:normal;text-align:center;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+         x="121.57506"
+         y="273.19922"
+         id="text4013"
+         sodipodi:linespacing="125%"><tspan
+           sodipodi:role="line"
+           id="tspan4015"
+           x="121.57506"
+           y="273.19922">Owner 0's</tspan><tspan
+           sodipodi:role="line"
+           x="121.57506"
+           y="283.19922"
+           id="tspan4017">Signature</tspan></text>
+      <text
+         xml:space="preserve"
+         style="font-size:8px;font-style:normal;font-weight:normal;text-align:center;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+         x="118.79436"
+         y="332.48492"
+         id="text4019"
+         sodipodi:linespacing="125%"><tspan
+           sodipodi:role="line"
+           id="tspan4021"
+           x="118.79436"
+           y="332.48492">Owner 1's</tspan><tspan
+           sodipodi:role="line"
+           x="118.79436"
+           y="342.48492"
+           id="tspan4023">Private Key</tspan></text>
+    </g>
+    <g
+       id="g4253"
+       transform="translate(120,0)">
+      <rect
+         style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+         id="rect4255"
+         width="82"
+         height="146.42857"
+         x="80.928596"
+         y="151.57648" />
+      <rect
+         style="fill:none;stroke:#000000;stroke-width:0.97985494;stroke-opacity:1"
+         id="rect4257"
+         width="67.163002"
+         height="30.020145"
+         x="87.347092"
+         y="172.28069" />
+      <rect
+         style="fill:none;stroke:#000000;stroke-opacity:1"
+         id="rect4259"
+         width="30.714285"
+         height="16.428572"
+         x="51.42857"
+         y="87.714287"
+         transform="translate(50.928596,136.00505)" />
+      <rect
+         style="fill:none;stroke:#000000;stroke-opacity:1"
+         id="rect4261"
+         width="52.142857"
+         height="31.428572"
+         x="45"
+         y="124.85714"
+         transform="translate(50.928596,136.00505)" />
+      <text
+         xml:space="preserve"
+         style="font-size:10px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+         x="89.35717"
+         y="164.43362"
+         id="text4263"
+         sodipodi:linespacing="125%"><tspan
+           sodipodi:role="line"
+           id="tspan4265"
+           x="89.35717"
+           y="164.43362"
+           style="font-size:8px">Transaction</tspan></text>
+      <path
+         style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-end:url(#Arrow1Mend)"
+         d="m 66.428571,103.42857 0,20"
+         id="path4267"
+         inkscape:connector-curvature="0"
+         transform="translate(50.928596,136.00505)"
+         sodipodi:nodetypes="cc" />
+      <path
+         style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-end:url(#Arrow1Mend)"
+         d="m 73.571429,66.285714 0,19.285286"
+         id="path4269"
+         inkscape:connector-curvature="0"
+         transform="translate(50.928596,136.00505)"
+         sodipodi:nodetypes="cc" />
+      <path
+         style="fill:none;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:1, 2;stroke-dashoffset:0;marker-end:url(#Arrow1Mend)"
+         d="m 96.428572,65.571428 0,37.684882 135.996778,161.22807"
+         id="path4271"
+         inkscape:connector-curvature="0"
+         transform="translate(50.928596,136.00505)"
+         sodipodi:nodetypes="ccc" />
+      <text
+         xml:space="preserve"
+         style="font-size:8px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+         id="text4273"
+         sodipodi:linespacing="125%"><textPath
+           xlink:href="#path5011"
+           id="textPath5202"
+           startOffset="20%"><tspan
+   id="tspan4277">Verify</tspan></textPath></text>
+      <path
+         style="fill:none;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:1, 2;stroke-dashoffset:0;marker-end:url(#Arrow1Mend)"
+         d="M 103.54064,191.64466 231.58108,53.579151"
+         id="path4279"
+         inkscape:connector-curvature="0"
+         transform="translate(50.928596,136.00505)"
+         sodipodi:nodetypes="cc" />
+      <rect
+         style="fill:none;stroke:#000000;stroke-width:1;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0"
+         id="rect4281"
+         width="67.175148"
+         height="30.304577"
+         x="36.36549"
+         y="184.57359"
+         transform="translate(50.928596,136.00505)" />
+      <text
+         xml:space="preserve"
+         style="font-size:8px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+         id="text4283"
+         sodipodi:linespacing="125%"><textPath
+           xlink:href="#path4279"
+           id="textPath4986"
+           startOffset="40.000001%">Sign</textPath></text>
+      <path
+         style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-end:url(#Arrow1Mend)"
+         d="m 43.848737,209.55883 67.347723,0 0,12.14243"
+         id="path4287"
+         inkscape:connector-curvature="0"
+         sodipodi:nodetypes="ccc" />
+      <text
+         sodipodi:linespacing="125%"
+         id="text4289"
+         y="184.45168"
+         x="119.45369"
+         style="font-size:8px;font-style:normal;font-weight:normal;text-align:center;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+         xml:space="preserve"><tspan
+           y="184.45168"
+           x="119.45369"
+           id="tspan4291"
+           sodipodi:role="line">Owner 2's</tspan><tspan
+           id="tspan4293"
+           y="194.45168"
+           x="119.45369"
+           sodipodi:role="line">Public key</tspan></text>
+      <text
+         sodipodi:linespacing="125%"
+         id="text4295"
+         y="234.8914"
+         x="107.92802"
+         style="font-size:8px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+         xml:space="preserve"><tspan
+           y="234.8914"
+           x="107.92802"
+           id="tspan4297"
+           sodipodi:role="line">Hash</tspan></text>
+      <text
+         sodipodi:linespacing="125%"
+         id="text4299"
+         y="273.19922"
+         x="121.57506"
+         style="font-size:8px;font-style:normal;font-weight:normal;text-align:center;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+         xml:space="preserve"><tspan
+           y="273.19922"
+           x="121.57506"
+           id="tspan4301"
+           sodipodi:role="line">Owner 1's</tspan><tspan
+           id="tspan4303"
+           y="283.19922"
+           x="121.57506"
+           sodipodi:role="line">Signature</tspan></text>
+      <text
+         sodipodi:linespacing="125%"
+         id="text4305"
+         y="332.48492"
+         x="118.79436"
+         style="font-size:8px;font-style:normal;font-weight:normal;text-align:center;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+         xml:space="preserve"><tspan
+           y="332.48492"
+           x="118.79436"
+           id="tspan4307"
+           sodipodi:role="line">Owner 2's</tspan><tspan
+           id="tspan4309"
+           y="342.48492"
+           x="118.79436"
+           sodipodi:role="line">Private Key</tspan></text>
+      <path
+         sodipodi:nodetypes="cc"
+         inkscape:connector-curvature="0"
+         id="path5005"
+         d="m 154.46924,343.64971 128.04044,63.965"
+         style="fill:none;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:1, 2;stroke-dashoffset:0;marker-end:url(#Arrow1Mend)" />
+      <text
+         sodipodi:linespacing="125%"
+         id="text5007"
+         style="font-size:8px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+         xml:space="preserve"><textPath
+           xlink:href="#path5005"
+           id="textPath5260"
+           startOffset="40.000001%">Sign</textPath></text>
+      <path
+         style="fill:none;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:1, 2;stroke-dashoffset:0;marker-end:url(#Arrow1Mend-5)"
+         d="M 216.67772,103.25631 352.03816,45.42508"
+         id="path5011"
+         inkscape:connector-curvature="0"
+         transform="translate(-69.071404,136.00505)" />
+      <text
+         xml:space="preserve"
+         style="font-size:8px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+         id="text4273-6"
+         sodipodi:linespacing="125%"><textPath
+           xlink:href="#path4271"
+           id="textPath5257"
+           startOffset="50%"><tspan
+   id="tspan4277-2">Verify</tspan></textPath></text>
+    </g>
+    <g
+       transform="translate(307.257,-85.714286)"
+       id="g4311">
+      <rect
+         y="151.57648"
+         x="80.928596"
+         height="146.42857"
+         width="82"
+         id="rect4313"
+         style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
+      <rect
+         y="172.28069"
+         x="87.347092"
+         height="30.020145"
+         width="67.163002"
+         id="rect4315"
+         style="fill:none;stroke:#000000;stroke-width:0.97985494;stroke-opacity:1" />
+      <rect
+         transform="translate(50.928596,136.00505)"
+         y="87.714287"
+         x="51.42857"
+         height="16.428572"
+         width="30.714285"
+         id="rect4317"
+         style="fill:none;stroke:#000000;stroke-opacity:1" />
+      <rect
+         transform="translate(50.928596,136.00505)"
+         y="124.85714"
+         x="45"
+         height="31.428572"
+         width="52.142857"
+         id="rect4319"
+         style="fill:none;stroke:#000000;stroke-opacity:1" />
+      <text
+         sodipodi:linespacing="125%"
+         id="text4321"
+         y="164.43362"
+         x="89.35717"
+         style="font-size:10px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+         xml:space="preserve"><tspan
+           style="font-size:8px"
+           y="164.43362"
+           x="89.35717"
+           id="tspan4323"
+           sodipodi:role="line">Transaction</tspan></text>
+      <path
+         sodipodi:nodetypes="cc"
+         transform="translate(50.928596,136.00505)"
+         inkscape:connector-curvature="0"
+         id="path4325"
+         d="m 66.428571,103.42857 0,20"
+         style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-end:url(#Arrow1Mend)" />
+      <path
+         sodipodi:nodetypes="cc"
+         transform="translate(50.928596,136.00505)"
+         inkscape:connector-curvature="0"
+         id="path4327"
+         d="m 73.571429,66.285714 0,19.285286"
+         style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-end:url(#Arrow1Mend)" />
+      <rect
+         transform="translate(50.928596,136.00505)"
+         y="184.57359"
+         x="36.36549"
+         height="30.304577"
+         width="67.175148"
+         id="rect4339"
+         style="fill:none;stroke:#000000;stroke-width:1;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0" />
+      <text
+         xml:space="preserve"
+         style="font-size:8px;font-style:normal;font-weight:normal;text-align:center;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+         x="119.45369"
+         y="184.45168"
+         id="text4347"
+         sodipodi:linespacing="125%"><tspan
+           sodipodi:role="line"
+           id="tspan4349"
+           x="119.45369"
+           y="184.45168">Owner 3's</tspan><tspan
+           sodipodi:role="line"
+           x="119.45369"
+           y="194.45168"
+           id="tspan4351">Public key</tspan></text>
+      <text
+         xml:space="preserve"
+         style="font-size:8px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+         x="107.92802"
+         y="234.8914"
+         id="text4353"
+         sodipodi:linespacing="125%"><tspan
+           sodipodi:role="line"
+           id="tspan4355"
+           x="107.92802"
+           y="234.8914">Hash</tspan></text>
+      <text
+         xml:space="preserve"
+         style="font-size:8px;font-style:normal;font-weight:normal;text-align:center;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+         x="121.57506"
+         y="273.19922"
+         id="text4357"
+         sodipodi:linespacing="125%"><tspan
+           sodipodi:role="line"
+           id="tspan4359"
+           x="121.57506"
+           y="273.19922">Owner 2's</tspan><tspan
+           sodipodi:role="line"
+           x="121.57506"
+           y="283.19922"
+           id="tspan4361">Signature</tspan></text>
+      <text
+         xml:space="preserve"
+         style="font-size:8px;font-style:normal;font-weight:normal;text-align:center;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+         x="118.79436"
+         y="332.48492"
+         id="text4363"
+         sodipodi:linespacing="125%"><tspan
+           sodipodi:role="line"
+           id="tspan4365"
+           x="118.79436"
+           y="332.48492">Owner 3's</tspan><tspan
+           sodipodi:role="line"
+           x="118.79436"
+           y="342.48492"
+           id="tspan4367">Private Key</tspan></text>
+    </g>
+    <g
+       id="g4560"
+       transform="translate(307.257,132.28571)">
+      <rect
+         style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+         id="rect4562"
+         width="82"
+         height="146.42857"
+         x="80.928596"
+         y="151.57648" />
+      <rect
+         style="fill:none;stroke:#000000;stroke-width:0.97985494;stroke-opacity:1"
+         id="rect4564"
+         width="67.163002"
+         height="30.020145"
+         x="87.347092"
+         y="172.28069" />
+      <rect
+         style="fill:none;stroke:#000000;stroke-opacity:1"
+         id="rect4566"
+         width="30.714285"
+         height="16.428572"
+         x="51.42857"
+         y="87.714287"
+         transform="translate(50.928596,136.00505)" />
+      <rect
+         style="fill:none;stroke:#000000;stroke-opacity:1"
+         id="rect4568"
+         width="52.142857"
+         height="31.428572"
+         x="45"
+         y="124.85714"
+         transform="translate(50.928596,136.00505)" />
+      <text
+         xml:space="preserve"
+         style="font-size:10px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+         x="89.35717"
+         y="164.43362"
+         id="text4570"
+         sodipodi:linespacing="125%"><tspan
+           sodipodi:role="line"
+           id="tspan4572"
+           x="89.35717"
+           y="164.43362"
+           style="font-size:8px">Transaction</tspan></text>
+      <path
+         style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-end:url(#Arrow1Mend)"
+         d="m 66.428571,103.42857 0,20"
+         id="path4574"
+         inkscape:connector-curvature="0"
+         transform="translate(50.928596,136.00505)"
+         sodipodi:nodetypes="cc" />
+      <path
+         style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-end:url(#Arrow1Mend)"
+         d="m 73.571429,66.285714 0,19.285286"
+         id="path4576"
+         inkscape:connector-curvature="0"
+         transform="translate(50.928596,136.00505)"
+         sodipodi:nodetypes="cc" />
+      <rect
+         style="fill:none;stroke:#000000;stroke-width:1;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0"
+         id="rect4578"
+         width="67.175148"
+         height="30.304577"
+         x="36.36549"
+         y="184.57359"
+         transform="translate(50.928596,136.00505)" />
+      <text
+         sodipodi:linespacing="125%"
+         id="text4582"
+         y="184.45168"
+         x="119.45369"
+         style="font-size:8px;font-style:normal;font-weight:normal;text-align:center;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+         xml:space="preserve"><tspan
+           y="184.45168"
+           x="119.45369"
+           id="tspan4584"
+           sodipodi:role="line">Owner 4's</tspan><tspan
+           id="tspan4586"
+           y="194.45168"
+           x="119.45369"
+           sodipodi:role="line">Public key</tspan></text>
+      <text
+         sodipodi:linespacing="125%"
+         id="text4588"
+         y="234.8914"
+         x="107.92802"
+         style="font-size:8px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+         xml:space="preserve"><tspan
+           y="234.8914"
+           x="107.92802"
+           id="tspan4590"
+           sodipodi:role="line">Hash</tspan></text>
+      <text
+         sodipodi:linespacing="125%"
+         id="text4592"
+         y="273.19922"
+         x="121.57506"
+         style="font-size:8px;font-style:normal;font-weight:normal;text-align:center;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+         xml:space="preserve"><tspan
+           y="273.19922"
+           x="121.57506"
+           id="tspan4594"
+           sodipodi:role="line">Owner 2's</tspan><tspan
+           id="tspan4596"
+           y="283.19922"
+           x="121.57506"
+           sodipodi:role="line">Signature</tspan></text>
+      <text
+         sodipodi:linespacing="125%"
+         id="text4598"
+         y="332.48492"
+         x="118.79436"
+         style="font-size:8px;font-style:normal;font-weight:normal;text-align:center;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+         xml:space="preserve"><tspan
+           y="332.48492"
+           x="118.79436"
+           id="tspan4600"
+           sodipodi:role="line">Owner 4's</tspan><tspan
+           id="tspan4602"
+           y="342.48492"
+           x="118.79436"
+           sodipodi:role="line">Private Key</tspan></text>
+      <path
+         style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-end:url(#Arrow1Mend-5)"
+         d="m 231.32493,142.14719 61.61931,0 0,86.36804 65.65991,0"
+         id="path4606"
+         inkscape:connector-curvature="0"
+         transform="translate(-256.3284,3.71934)" />
+      <path
+         style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-end:url(#Arrow1Mend-5)"
+         d="m 231.32493,73.961889 63.13454,0 0,-64.6497625 64.64976,0"
+         id="path4796"
+         inkscape:connector-curvature="0"
+         transform="translate(-256.3284,3.71934)" />
+    </g>
+  </g>
+</svg>
