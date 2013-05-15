@@ -109,7 +109,7 @@ such as on receipt of a payment in fiat currency, or some resource.
 \begin{figure}[htb]
     \centering
     \includegraphics[width=0.9\columnwidth ]{img/Bitcoin_DoubleSpend_Visual}
-    \caption{A chain of digital signatures representing value transfer with a double spend.
+    \caption{A chain of digital signatures representing value transfer with a double spend: Without some consensus system ``User 2'' is not prevented from sending the same value to both ``Owner 3'' and ``Owner 4''.
     (based on work from \protect\cite{satoshi})}
     \label{fig:chain-double-spend}
 \end{figure}
@@ -218,7 +218,7 @@ heuristic of ``Shadow Addresses'' to associate newly created addresses with
 users\cite{eval-priv}.
 
 \subsubsection{Multi-input Transactions}
-In the Bitcoin transaction format, if a user cannot fulfil the value of a
+In the Bitcoin transaction format, if a user cannot fulfill the value of a
 transaction by spending a single previous output, the client will combine
 multiple inputs, or previous outputs, where the user has the ability to fulfill
 their spend conditions.  When combined the Bitcoin client must fulfill the spend
