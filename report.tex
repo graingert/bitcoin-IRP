@@ -161,7 +161,10 @@
 % IEEEtran.cls V1.7 and later.
 
 
-
+\usepackage[style=ieee]{biblatex}
+\addbibresource{i-d.bib}
+\addbibresource{report.bib}
+\addbibresource{rfc.bib}
 
 
 % *** GRAPHICS RELATED PACKAGES ***
@@ -684,8 +687,7 @@ E-mail: tag1g09@ecs.soton.ac.uk
 % <OR> manually copy in the resultant .bbl file
 % set second argument of \begin to the number of references
 % (used to reserve space for the reference number labels box)
-\bibliographystyle{IEEEtran}
-\bibliography{report,rfc,i-d}{}
+\printbibliography
 
 % biography section
 % 
