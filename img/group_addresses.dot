@@ -1,0 +1,11 @@
+digraph g{
+  k_a1 -> T_1 [label=4];
+  k_a2 -> T_1 [label=5];
+  k_a3 -> T_1 [label=1];
+  T_1 -> k_a4 [label=0.5];
+  T_1 -> k_sr [label=9.5];
+  k_b1 -> T_2 [label=1];
+  k_b2 -> T_2 [label=1];
+  T_2 -> k_b3 [label=0.5];
+  T_2 -> k_sr [label=1.5];
+}
