@@ -72,8 +72,8 @@ currency.
 \subsection{Central Banking} TODO: Systems such as PayPal or Facebook Credits in
 which only the central authority of the currency can create transactions.
 
-\subsection{Unique Token} Medvinsky and Neuman\cite{netcash} discuss one solution,
-NetCash with a similar protocol implemented under the name opencoin, uses a
+\subsection{Unique Token} \textcite{netcash} discuss one solution,
+NetCash, this protocol uses a
 unique token held by both the central authority and the owner of the coin. To
 create currency the user and central authority agree on a unique token in
 exchange for some currency or resource. When that user wishes to transact value
@@ -83,6 +83,9 @@ to be swapped for a new spendable token meaning the original token can no longer
 be spent. One issue with this protocol is the central authority cannot be
 independently verified, as such the authority could choose to deny knowledge of
 a token, or allow multiple users to claim the same token.
+
+\subsection{Blind-signed Chaum Tokens}
+Proposed by \textcite{chaum}, the Chaum Token protocol, uses blind signatures: messages signed by a central authority in exchange for a fee of some currency or other resource. This messages can be converted into a token unrelated to the message except for the fact that the signing server can verify that the token has indeed been signed previously, this has the advantage that the central authority cannot discover the original owner of a signed message when cashed by a payee.  This protocol, however, maintains the very same issues as NetCash: the central authority can deny knowledge of a token, or arbitrarily mint new tokens without a fee.
 
 \subsection{B-Money Digital signature chain}\label{digital-sig}
 An alternative solution, B-Money proposed by ~\textcite{b-money}. Uses a chain of digital signatures where transaction messages are created using public key cryptography and the chain of digital signatures can be traced back to the original creation of the unit of value.
