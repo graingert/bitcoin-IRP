@@ -13,6 +13,7 @@ script:
 - make
 after_success:
 - if [ "$DROPBOX_UPLOADER" ]; then bash dropbox_uploader.sh upload report.pdf; fi
+- if [ "$DROPBOX_UPLOADER" ]; then bash dropbox_uploader.sh share report.pdf; fi
 env:
   global:
   - secure: ! 'PHoLH1usOZfs8cy3DKnPuz+HFcyXr1KQYPflJS/E2RXMYFxdrgPAHxiblusJ
