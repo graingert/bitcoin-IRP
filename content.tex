@@ -85,17 +85,14 @@ be spent. One issue with this protocol is the central authority cannot be
 independently verified, as such the authority could choose to deny knowledge of
 a token, or allow multiple users to claim the same token.
 
-\subsection{Digital signature chain} An alternative solution proposed operates
-``using a chain of digital signatures'' where transaction messages are created
-using public key cryptography and the chain of digital signatures can be traced
-back to the original creation of the unit of value. For example Alice
-cryptographically signs a message ``I pay 5 coins to Bob'', see Figure~\ref{fig:chain-spend}.
-This system
-presents the same problems as before regarding value distribution and potential
-double spending i.e. how does Bob know that Alice has the value to start with
-and how does Bob know that this value hasn't already been spent, see Figure~\ref{fig:chain-double-spend} for an example double spend. In B-Money~\cite{b-money} the solution is to involve multiple trusted authorities that host a public copy
-of every transaction sent and is trusted to create and allocate value fairly
-such as on receipt of a payment in fiat currency, or some resource.
+\subsection{B-Money Digital signature chain}\label{digital-sig}
+An alternative solution, B-Money proposed by ~\textcite{b-money}. Uses a chain of digital signatures where transaction messages are created using public key cryptography and the chain of digital signatures can be traced back to the original creation of the unit of value.
+
+``If Alice (owner of pseudonym $K_A$) wishes to transfer X units of money to Bob (owner of pseudonym $K_B$), she broadcasts the message ``I give X units of money to $K_B$'' signed by $K_A$'' for example see Figure~\ref{fig:chain-spend}.
+
+This system presents the same problems as before regarding value distribution and potential double spending i.e. how does Bob know that Alice has the value to start with and how does Bob know that this value hasn't already been spent, see Figure~\ref{fig:chain-double-spend} for an example double spend. \texcite{b-money} proposes two solutions to this problem: using a theoretical ``synchronous and unjammable anonymous broadcast channel''
+
+In b-money~\cite{b-money} the solution is to involve multiple trusted authorities that host a public copy of every transaction sent.
 
 \begin{figure}[htb]
     \centering
@@ -116,17 +113,14 @@ such as on receipt of a payment in fiat currency, or some resource.
 Bob can verify that Alice was given some value from a chain of transactions
 leading back to the central authority where the value is assumed to be created
 and can subtract the total value of Alice's spent transactions to determine if
-the transaction sent to Bob is valid.  While this system prevents the central
+the transaction sent to Bob is valid.  While this system prevents any central
 authority from forcing a user to spend money, unlike token based digital
-currencies or central banking, the central authority still holds a significant
-position of power and thus demands a great deal of trust from the user that the
+currencies or central banking, the central authorities still requires some degree of trust from the user that the
 authority is both benign and secure. For example the central authority could
 cooperate with, or more simply act as, a user attempting to achieve a double
-payment attack by showing different views to different users. Because the
-authority is the sole party involved in the minting process that authority can
-create more units of currency.
+payment attack by showing different views to different users.
 
-In both systems where a central authority exists, while it may be reasonable to
+In both systems where some trusted central authority exists, while it may be reasonable to
 trust some agent for the purpose of authenticating the ownership of value that
 authority may act in a way outside of the agents' control.  The server hosting
 the system could be compromised either through technical means or through the
@@ -138,12 +132,12 @@ use of force, as in the case of E-Gold.
         Cryptographic signing \item Transactions as cryptographic signatures
         \item The double spending problem \item HashCash \end{itemize}
 
-\subsection{The Bitcoin Protocol} Bitcoin extends the digital signature chain
-[hyperref] based transaction system and replaces the central authority with a
-distributed, decentralized time stamp consensus that is used to agree on the
+\subsection{The Bitcoin Protocol}
+In Bitcoin \textcite{satoshi} makes very few changes to the original b-money\cite{b-money} specification.  The vast majority of the Bitcoin protocol is identical to b-money except for one novel proposal: to create a transaction ordering consensus by augmenting the group of central authorities with a
+distributed, decentralized time stamp server that is used to agree on the
 order that transactions occurred in.  Any user can, on receipt of a transaction,
 query the time stamp server and determine if that transaction has been
-invalidated by a prior transaction.
+invalidated by a prior transaction. This key difference is likely the reason that Bitcoin took crypto-currencies from mathematical curiosity to a usable system for store and transfer of value.
 
 \subsection{Distributed Transaction Validation}
 The time stamp server creates a chain of blocks of transactions, each referring
@@ -157,7 +151,8 @@ function has been designed such that the value of an amount of data is
 unpredictable and evenly distributed in the range of the function, the only way
 for a participant to create data with a hash value below the difficulty limit is
 to repeatedly try different input data
-values\footnote{\url{http://blog.ezyang.com/2011/06/the-cryptography-of-bitcoin/}}.
+values\footnote{\url{http://blog.ezyang.com/2011/06/the-cryptography-of-bitcoin/}}: ``The average work required is exponential in the number
+of zero bits required and can be verified by executing a single hash''~\cite{satoshi}.
 Transaction block data can be altered without changing the transaction semantics
 because the block format includes a `nonce' field for this purpose.
 
@@ -187,7 +182,7 @@ always a new address \item TestNet bitcoin \end{itemize}
 \section{Anonymity} As part of the Bitcoin protocol, all transactions must be
 broadcast publicly however, Satoshi maintains that ``privacy can still be
 maintained by breaking the flow of information [...] by keeping public keys
-anonymous''.  Each Bitcoin address can be considered one pseudonym of many of
+anonymous''\cite{satoshi}.  Each Bitcoin address can be considered one pseudonym of many of
 the owner of the associated private key, because each person can own multiple
 Bitcoin addresses in a wallet. Satoshi asserts that because of this disconnect
 between user and address it is difficult to associate a particular transaction
