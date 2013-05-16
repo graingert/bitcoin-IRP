@@ -35,8 +35,7 @@
 At 6:15 pm on the 3rd of January, 2009 UTC Satoshi Nakamoto (a pseudonym)
 created and announced block of data known as the Genesis Block of the Bitcoin
 block chain\cite{satoshi}. With this block, the first 50 units of the
-decentralised peer to peer currency Bitcoin were created.  This currency was
-described by Satoshi in his 2008 paper
+decentralised peer to peer currency Bitcoin were created.
 
 Now over ten million bitcoins have been generated, and are currently trading at
 \input{price}.
@@ -90,7 +89,7 @@ An alternative solution, B-Money proposed by ~\textcite{b-money}. Uses a chain o
 
 ``If Alice (owner of pseudonym $K_A$) wishes to transfer X units of money to Bob (owner of pseudonym $K_B$), she broadcasts the message ``I give X units of money to $K_B$'' signed by $K_A$'' for example see Figure~\ref{fig:chain-spend}.
 
-This system presents the same problems as before regarding value distribution and potential double spending i.e. how does Bob know that Alice has the value to start with and how does Bob know that this value hasn't already been spent, see Figure~\ref{fig:chain-double-spend} for an example double spend. \texcite{b-money} proposes two solutions to this problem: using a theoretical ``synchronous and unjammable anonymous broadcast channel''
+This system presents the same problems as before regarding value distribution and potential double spending i.e. how does Bob know that Alice has the value to start with and how does Bob know that this value hasn't already been spent, see Figure~\ref{fig:chain-double-spend} for an example double spend. \textcite{b-money} proposes two solutions to this problem: using a theoretical ``synchronous and unjammable anonymous broadcast channel''
 
 In b-money~\cite{b-money} the solution is to involve multiple trusted authorities that host a public copy of every transaction sent.
 
@@ -180,25 +179,25 @@ hand.  \item Transaction types \item Change address.  The change address is
 always a new address \item TestNet bitcoin \end{itemize}
 
 \section{Anonymity} As part of the Bitcoin protocol, all transactions must be
-broadcast publicly however, Satoshi maintains that ``privacy can still be
+broadcast publicly however, \textcite{satoshi} maintains that ``privacy can still be
 maintained by breaking the flow of information [...] by keeping public keys
-anonymous''\cite{satoshi}.  Each Bitcoin address can be considered one pseudonym of many of
+anonymous''.  Each Bitcoin address can be considered one pseudonym of many of
 the owner of the associated private key, because each person can own multiple
-Bitcoin addresses in a wallet. Satoshi asserts that because of this disconnect
+Bitcoin addresses in a wallet. \textcite{satoshi} asserts that because of this disconnect
 between user and address it is difficult to associate a particular transaction
 with a particular user.
 
-\subsection{Taint Analysis} Harrigan and Reid, considers the feasibility of
+\subsection{Taint Analysis} \textcite{reid-anon}, considers the feasibility of
 maintaining this pseudonymity in practise, by investigating the multiple input
-semantics of the Bitcoin transaction format\cite{reid-anon}. 
+semantics of the Bitcoin transaction format. 
 
-Harrigan and Reid argue that any key taking part in this process was in a single
+\textcite{reid-anon} argue that any key taking part in this process was in a single
 wallet, and thus owned by a single user. Therefore by combining the knowledge of
 how keys are grouped into wallets with knowledge from outside the protocol other
 inferences can be made, with the aim to determine the identity of the user
 behind the wallet, and thus any transactions made.
 
-Harrigan and Reid aim to de-anonymize a user using two phases.  First to
+\textcite{reid-anon} aim to de-anonymize a user using two phases.  First to
 contract the publicly available, as published in the blockchain, ``transaction
 network'' to a ``user network'' by determining groups of addresses that appear to
 behave as part of a single wallet.  The second phase is to  link that group
@@ -207,9 +206,9 @@ eg by crawling the web for forum posts with including both user-names and
 addresses.
 
 Multi-input transactions are used to distinguish the behavior of a group of keys
-from any other in the transaction network.  Andoulaki et al add to this a further
+from any other in the transaction network.  \textcite{eval-priv} add to this a further
 heuristic of ``Shadow Addresses'' to associate newly created addresses with
-users\cite{eval-priv}.
+users.
 
 \subsubsection{Multi-input Transactions}
 In the Bitcoin transaction format, if a user cannot fulfill the value of a
@@ -248,10 +247,10 @@ Maxwell describes a process to disrupt ``brain-dead automated (taint)
 analysis''.  Because the conditions of a set of previous outputs can be
 fulfilled partially, multiple users can cooperate to create a single transaction
 that causes their public keys to appear linked in a single wallet to taint
-analysis, without revealing their private keys to the group.  As such Satoshi's
-claim, and key assumption in Harrigan and Reid's paper, that ``Some linking is
+analysis, without revealing their private keys to the group.  As such the claim made by \textcite{satoshi}
+claim, and key assumption made by \textcite{reid-anon}, that ``Some linking is
 still unavoidable with multi-input transactions, which necessarily reveal that
-their inputs were owned by the same user'' is wrong\cite{satoshi}.
+their inputs were owned by the same user'' is wrong.
 
 While in the example described it is clear how the addresses are really linked,
 due to the cooperation being performed on a public forum, the same address used
