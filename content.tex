@@ -32,16 +32,14 @@
 % caps to complete the first word.
 %\IEEEPARstart{T}{his}
 
-At 6:15 pm on the 3rd of January, 2009 UTC Satoshi Nakamoto (a pseudonym)
+At 6:15 pm on the 3rd of January, 2009 UTC Satoshi Nakamoto (likely a pseudonym)
 created and announced block of data known as the Genesis Block of the Bitcoin
 block chain\cite{satoshi}. With this block, the first 50 units of the
-decentralised peer to peer currency Bitcoin were created.
+decentralised peer to peer currency Bitcoin were created.  Now over ten million
+bitcoins have been generated, and are currently trading at \input{price}.
 
-Now over ten million bitcoins have been generated, and are currently trading at
-\input{price}.
-
-The key difference between bitcoin and other digital currencies such as e-gold
-or PayPal is that it does not have a central authority, transactions are
+The key difference between bitcoin and other digital currencies such as PayPal or Amazon Coins
+is that it does not have a central authority, transactions are
 irreversible, and transactions can be made pseudo anonymously.  The bitcoin
 protocol allows multiple different clients to connect, verify and disseminate
 transactions.  The reference bitcoin client, has received multiple releases and
@@ -134,7 +132,7 @@ use of force, as in the case of E-Gold.
         Cryptographic signing \item Transactions as cryptographic signatures
         \item The double spending problem \item HashCash \end{itemize}
 
-\subsection{The Bitcoin Protocol}
+\section{The Bitcoin Protocol}
 In Bitcoin \textcite{satoshi} makes very few changes to the original b-money\cite{b-money} specification.  The vast majority of the Bitcoin protocol is identical to b-money except for one novel proposal: to create a transaction ordering consensus by augmenting the group of central authorities with a
 distributed, decentralized time stamp server that is used to agree on the
 order that transactions occurred in.  Any user can, on receipt of a transaction,

@@ -19,4 +19,4 @@ if __name__ == "__main__":
             price=price,
             direction=direction
         ), end="", file=f)
-        print(r"\footnote{\url{http://bitcoincharts.com/markets/mtgoxUSD.html}}", end="", file=f)
+        print(r"\footnote{\url{http://bitcoincharts.com/markets/mtgoxUSD.html}}%", file=f)
