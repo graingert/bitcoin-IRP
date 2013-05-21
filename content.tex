@@ -240,12 +240,22 @@ assumed to be owned by the originating wallet until otherwise linked.  \item
     address for each receiving transaction.  \end{itemize}
 
 \subsection{Taint Analysis Disruption}
+TODO: expand below sections:
+\textcite{reid-anon} suggest repeatedly sending coins to new addresses.
+While this would gain anonymity under the reasoning of the paper, a new
+heuristic for addresses that have not yet been spent to inherit the status
+of the addresses that sent to it.
+
+\subsubsection{Fully Trusted Mixing}
+\textcite{eval-privacy} note that it is possible to use a mixing service
+to fully disrupt their analysis.
 
 \subsubsection{ZeroCoin} Miers et al.
 propose a solution to the de-anonymization proposed in taint analysis, by
 defining new transaction types that take advantage of zero knowledge
 proofs\cite{zerocoin}.  \subsubsection{Multi-Input Transaction}
 
+\subsubsection{In-Protocol Mixing}
 In his forum post, ``I taint rich!'', Bitcoin developer Gregory (gmaxwell)
 Maxwell describes a process to disrupt ``brain-dead automated (taint)
 analysis''.  Because the conditions of a set of previous outputs can be
@@ -271,8 +281,6 @@ the two wallets appear linked, under the multi-transaction heuristic and change
 address heuristic. From the view of the cooperating peers, however, it is clear
 the true owner of the output keys as such this process must take place
 repeatedly between many different peers.
-
-\subsubsection{A design for an automatic taint analysis disruption}
 
 \begin{itemize} \item Using the Tor hidden service \item Some sort of central or
         distributed registration system for peers \item A peer may connect to
