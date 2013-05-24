@@ -33,17 +33,20 @@
 %\IEEEPARstart{T}{his}
 
 At 6:15 pm on the 3rd of January, 2009 UTC Satoshi Nakamoto (likely a pseudonym)
-created and announced block of data known as the Genesis Block of the Bitcoin
+created and announced a block of data known as the 'Genesis Block' of the Bitcoin
 block chain\cite{satoshi}. With this block, the first 50 units of the
 decentralised peer to peer currency Bitcoin were created.  Now over ten million
 bitcoins have been generated, and are currently trading at \input{price}.
+%Include citation of where and when trading information was taken
 
-The key difference between bitcoin and other digital currencies such as PayPal or Amazon Coins
-is that it does not have a central authority, transactions are
-irreversible, and transactions can be made pseudo anonymously.  The bitcoin
+The key differences between bitcoin and other digital currencies such as PayPal or Amazon Coins
+are: that Bitcoin does not have a central authority; that transactions are
+irreversible and can be made pseudo anonymously.  The bitcoin
 protocol allows multiple different clients to connect, verify and disseminate
 transactions.  The reference bitcoin client, has received multiple releases\footnote{\url{http://bitcoin.org/en/version-history##0.5.0}} and
 is now known as Bitcoin-Qt\cite{bitcoin-qt}.
+%Changed the content to improve readability
+%Is the sentence 'the bitcoin protocol allows..' a continutation of the list of differences between the services or something else?
 
 \begin{itemize} \item The need for bitcoin \item What this paper is about - The
     research on bitcoin, which has focussed on Anonymity, Economics and
@@ -61,11 +64,23 @@ problem: moving the value over a distance, this can be very expensive especially
 with highly massive, solid commodities like gold.  A digital currency aims to
 recreate the difficulty in duplication, while taking advantage of the ease of
 transfer that digital information brings.
+%'the participants. If Alice wishes....'
+%       You need a signpost to indicate the change in topic from definition to issues with transaction
+%       A solution to this would be to say 'This transfer involves trust between the two parties - if Alice...'
+%'and has not sent that money to anyone else' 
+%       and has not (promised) this money to..
+%'This problem is easily solvable'
+%       I still don't think this is relevant, I think what you need to say is that you physically exchange currency etc
+%'moving the value over a distance'
+%       Security is a consideration e.g. highway men! :P
 
 Some solutions to these problems have already been discussed in the scientific
 literature: all systems assume a trusted central authority as part of the
 protocol. Usually to maintain a record of transactions performed and to mint
 currency.
+%'to these problems'
+%       You need to signpost which problems have been discussed as this is a new paragraph
+
 
 \subsection{Central Banking} TODO: Systems such as PayPal or Facebook Credits in
 which only the central authority of the currency can create transactions.
