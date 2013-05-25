@@ -82,8 +82,35 @@ currency.  Those solutions are discussed in the following subsections of this re
 %       You need to signpost which problems have been discussed as this is a new paragraph
 % (TOM: See my addition)
 
-\subsection{Central Banking} TODO: Systems such as PayPal or Facebook Credits in
-which only the central authority of the currency can create transactions.
+\subsection{Central Banking}
+Services such as the UK ``Faster Payments Service''~\cite{guadian-fps}, or
+the ``Single Euro Payments Area'' (SEPA) payments initiative~\cite{SEPA}
+operate as a transfer protocol between users of trusted entities
+such as banks and other financial institutions.
+
+Systems such as PayPal\footnote{\url{https://www.paypal.com/uk/webapps/mpp/transfer-money-online}},
+Dwolla\footnote{\url{https://www.dwolla.com/individuals}}
+and Liberty Reserve\footnote{\url{http://web.archive.org/web/20130430103158/http://www.libertyreserve.com/}}
+operate on-top of existing currencies and in exchange for
+money sent using SEPA or bank transfer allow accounts to be credited
+with the equivalent value.  When a user requests a value transfer
+one account is debited while another is credited~\cite{paypal}.
+
+These systems are effectively
+fully centralized, digital systems of exchange, in which only the
+central authority or authorities control the means of production of the
+currency or are able to create transactions (an individual cannot create
+transactions, they must rely on a trusted entity to make the transaction
+on their behalf).
+
+While fully centralized systems have a simple design and implementation
+some key disadvantages for the users are apparent:
+the trusted entities have a legal responsibility to handle
+``charge-backs'' or reverse transactions, the cost for this escrow
+service is placed on the customer as a transfer fee or to the merchant as
+a fine. The second major disadvantage of these systems is that they are
+liable to be closed down due to legal pressure~\cite{lr-shutdown}, or individual
+users' accounts can be frozen~\cite{mtgox-dwolla}.
 
 \subsection{Unique Token} \textcite{netcash} discuss one solution,
 NetCash, this protocol uses a
