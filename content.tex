@@ -113,7 +113,7 @@ the trusted entities have a legal responsibility to handle
 service is placed on the customer as a transfer fee or to the merchant as
 a fine. The second major disadvantage of these systems is that they are
 liable to be closed down due to legal pressure~\cite{lr-shutdown}, or individual
-users' accounts can be frozen~\cite{mtgox-dwolla}.
+users' accounts can be frozen~\cite{mtgox-dwolla,vlad:mtgox-dwolla}.
 
 \subsection{Unique Token} \textcite{netcash} discuss one solution,
 NetCash, this protocol uses a
@@ -225,7 +225,7 @@ hand.  \item Transaction types \item Change address.  The change address is
 always a new address \item TestNet bitcoin \end{itemize}
 
 \subsection{The Bitcoin block-chain is not strictly a consensus protocol}
-TODO: Why this is
+\textcite{bitcoin-impossible} notes that, strictly, the Bitcoin proof of work block-chain is not a consensus scheme. In distributed consensus protocols, consensus is arrived at when some sufficient number of members of the group agree. This is impossible to achieve in a distributed system where this group is not known: agents are constantly joining and leaving the group in a way that prevents Sybil attacks. By declaring the Bitcoin group consensus definition as ``all the computing power in existence'' consensus is only achieved once more than half of the compute power in existence is used in the proof of work system. Therefore the Bitcoin system is only Sybil \emph{resistant}.
 
 \section{Related Work}
 TODO: Related work, not covered in this report: Mentions of legal and economics papers.
