@@ -41,6 +41,7 @@ bitcoins have been generated.
 \textcite{euro-currency-schemes} describe three different currency schemes: ``Closed currency schemes'', ``Currency schemes with unidirectional
 flow'' and ``Currency schemes with bidirectional flow''. Bitcoin is classified as the third type - because with currency exchange systems it is possible to convert bitcoin to fiat currency for example: they are currently trading at \input{price}.
 
+
 Bitcoin is distinct from other bidirectional digital currency schemes such as central banking
 and financial institutions or money transfer systems such as PayPal\cite{paypal}
 ``it is neither created nor administered by a single authority such as a central bank''\cite{why-interesting}, transactions are also irreversible and transactions can be made pseudo-anonymously.  The bitcoin
@@ -55,7 +56,6 @@ is now known as Bitcoin-Qt\cite{bitcoin-qt}.
     proposals for improvements \end{itemize}
 
 \section{Background}
-
 The core of any currency is to allow users to participate
 in transactions that result in the transfer of value between the participants.
 If Alice wishes to send some value to Bob, Bob will need to know that Alice has
@@ -70,26 +70,21 @@ with highly massive, solid commodities like gold. While paper currencies solve
 these problems somewhat, a digital currency aims to
 recreate the difficulty in duplication, while taking advantage of the ease of
 transfer that digital information brings.
-%'the participants. If Alice wishes....'
-%       You need a signpost to indicate the change in topic from definition to issues with transaction
-%       A solution to this would be to say 'This transfer involves trust between the two parties - if Alice...'
-%'and has not sent that money to anyone else' 
-%       and has not (promised) <- (TOM: a promise to pay is the payment) this money to..
+
 
 Solutions to these problems have already been discussed in the scientific
 literature: all systems assume some sort of trusted central authority or authorities
 as part of the operation of the
 protocol. Usually to maintain a record of transactions performed and to mint
 currency.  Those solutions are discussed in the following subsections of this report.
-%'to these problems'
-%       You need to signpost which problems have been discussed as this is a new paragraph
-% (TOM: See my addition)
+
 
 \subsection{Central Banking}
 Services such as the UK ``Faster Payments Service''~\cite{guardian-fps}, or
 the ``Single Euro Payments Area'' (SEPA) payments initiative~\cite{SEPA}
 operate as a transfer protocol between users of trusted entities
 such as banks and other financial institutions.
+
 
 Systems such as PayPal\footnote{\url{https://www.paypal.com/uk/webapps/mpp/transfer-money-online}},
 Dwolla\footnote{\url{https://www.dwolla.com/individuals}}
@@ -99,12 +94,14 @@ money sent using SEPA or bank transfer allow accounts to be credited
 with the equivalent value.  When a user requests a value transfer
 one account is debited while another is credited~\cite{paypal}.
 
+
 These systems are effectively
 fully centralized, digital systems of exchange, in which only the
 central authority or authorities control the means of production of the
 currency or are able to create transactions (an individual cannot create
 transactions, they must rely on a trusted entity to make the transaction
 on their behalf).
+
 
 While fully centralized systems have a simple design and implementation
 some key disadvantages for the users are apparent:
@@ -114,6 +111,7 @@ service is placed on the customer as a transfer fee or to the merchant as
 a fine. The second major disadvantage of these systems is that they are
 liable to be closed down due to legal pressure~\cite{lr-shutdown}, or individual
 users' accounts can be frozen~\cite{mtgox-dwolla,vlad:mtgox-dwolla}.
+
 
 \subsection{Unique Token} \textcite{netcash} discuss one solution,
 NetCash, this protocol uses a
@@ -127,21 +125,25 @@ be spent. One issue with this protocol is the central authority cannot be
 independently verified, as such the authority could choose to deny knowledge of
 a token, or allow multiple users to claim the same token.
 
+
 \subsection{Blind-signed Chaum Tokens}
 Proposed by \textcite{chaum}, the Chaum Token protocol, uses blind signatures: messages signed by a central authority in exchange for a fee of some currency or other resource. This messages can be converted into a token unrelated to the message except for the fact that the signing server can verify that the token has indeed been signed previously, this has the advantage that the central authority cannot discover the original owner of a signed message when cashed by a payee.  This protocol, however, maintains the very same issues as NetCash: the central authority can deny knowledge of a token, or arbitrarily mint new tokens without a fee.
+
 
 \subsection{B-Money digital signature chain}\label{digital-sig}
 An alternative solution, B-Money proposed by ~\textcite{b-money}. Uses a chain of digital signatures where transaction messages are created using public key cryptography and the chain of digital signatures can be traced back to the original creation of the unit of value.
 
 ``If Alice (owner of pseudonym $K_A$) wishes to transfer X units of money to Bob (owner of pseudonym $K_B$), she broadcasts the message ``I give X units of money to $K_B$'' signed by $K_A$'' for example see Figure~\ref{fig:chain-spend}.
 
+
 This system presents the same problems as before regarding value distribution and potential double spending i.e. how does Bob know that Alice has the value to start with and how does Bob know that this value hasn't already been spent, see Figure~\ref{fig:chain-double-spend} for an example double spend. \textcite{b-money} proposes two solutions to this problem: using a theoretical ``synchronous and unjammable anonymous broadcast channel''
+
 
 In b-money~\cite{b-money} the solution is to involve multiple trusted authorities that host a public copy of every transaction sent.
 
 \begin{figure}[htb]
     \centering
-    \includegraphics[width=0.9\columnwidth ]{img/Bitcoin_Transaction_Visual}
+    \includegraphics[width=\columnwidth]{img/Bitcoin_Transaction_Visual}
     \caption{A chain of digital signatures representing value transfer.
     (source \protect\cite{satoshi})}
     \label{fig:chain-spend}
@@ -149,11 +151,12 @@ In b-money~\cite{b-money} the solution is to involve multiple trusted authoritie
 
 \begin{figure}[htb]
     \centering
-    \includegraphics[width=0.9\columnwidth ]{img/Bitcoin_DoubleSpend_Visual}
+    \includegraphics[width=\columnwidth]{img/Bitcoin_DoubleSpend_Visual}
     \caption{A chain of digital signatures representing value transfer with a double spend: Without some consensus system ``User 2'' is not prevented from sending the same value to both ``Owner 3'' and ``Owner 4''.
     (based on work from \protect\cite{satoshi})}
     \label{fig:chain-double-spend}
 \end{figure}
+
 
 Bob can verify that Alice was given some value from a chain of transactions
 leading back to the central authority where the value is assumed to be created
@@ -164,6 +167,7 @@ currencies or central banking, the central authorities still requires some degre
 authority is both benign and secure. For example the central authority could
 cooperate with, or more simply act as, a user attempting to achieve a double
 payment attack by showing different views to different users.
+
 
 In systems where some trusted central authority exists, while it may be reasonable to
 trust some agent for the purpose of authenticating the ownership of value, that
@@ -201,6 +205,7 @@ of zero bits required and can be verified by executing a single hash''~\cite{sat
 Transaction block data can be altered without changing the transaction semantics
 because the block format includes a `nonce' field for this purpose.
 
+
 Because each block refers to the previous block, ``To modify a past block, an
 attacker would have to redo the proof-of-work of the block and all blocks after
 it''.  As more blocks are created the more expensive it is for any group to
@@ -224,11 +229,14 @@ serves to solve the distribution problem of digital currencies.
 hand.  \item Transaction types \item Change address.  The change address is
 always a new address \item TestNet bitcoin \end{itemize}
 
+
 \subsection{The Bitcoin block-chain is not strictly a consensus protocol}
 \textcite{bitcoin-impossible} notes that, strictly, the Bitcoin proof of work block-chain is not a consensus scheme. In distributed consensus protocols, consensus is arrived at when some sufficient number of members of the group agree. This is impossible to achieve in a distributed system where this group is not known: agents are constantly joining and leaving the group in a way that prevents Sybil attacks. By declaring the Bitcoin group consensus definition as ``all the computing power in existence'' consensus is only achieved once more than half of the compute power in existence is used in the proof of work system. Therefore the Bitcoin system is only Sybil \emph{resistant}.
 
+
 \section{Related Work}
 TODO: Related work, not covered in this report: Mentions of legal and economics papers eg. red-balloons \cite{red-balloons}.
+
 
 \section{Anonymity} As part of the Bitcoin protocol, all transactions must be
 broadcast publicly however, \textcite{satoshi} maintains that ``privacy can still be
@@ -239,15 +247,18 @@ Bitcoin addresses in a wallet. \textcite{satoshi} asserts that because of this d
 between user and address it is difficult to associate a particular transaction
 with a particular user.
 
+
 \subsection{Taint Analysis} \textcite{reid-anon}, considers the feasibility of
 maintaining this pseudonymity in practise, by investigating the multiple input
 semantics of the Bitcoin transaction format. 
+
 
 \textcite{reid-anon} argue that any key taking part in this process was in a single
 wallet, and thus owned by a single user. Therefore by combining the knowledge of
 how keys are grouped into wallets with knowledge from outside the protocol other
 inferences can be made, with the aim to determine the identity of the user
 behind the wallet, and thus any transactions made.
+
 
 \textcite{reid-anon} aim to de-anonymize a user using two phases.  First to
 contract the publicly available, as published in the blockchain, ``transaction
@@ -256,6 +267,7 @@ behave as part of a single wallet.  The second phase is to  link that group
 using publicly available ``Off-Network Information'' linking addresses to keys,
 eg by crawling the web for forum posts with including both user-names and
 addresses.
+
 
 Multi-input transactions are used to distinguish the behavior of a group of keys
 from any other in the transaction network.  \textcite{eval-priv} add to this a further
@@ -287,6 +299,7 @@ assumed to be owned by the originating wallet until otherwise linked.  \item
     the transaction.  However it is recommended to newly generate a Bitcoin
     address for each receiving transaction.  \end{itemize}
 
+
 \subsection{Taint Analysis Disruption}
 TODO: expand below sections:
 \textcite{reid-anon} suggest repeatedly sending coins to new addresses.
@@ -294,14 +307,17 @@ While this would gain anonymity under the reasoning of the paper, a new
 heuristic for addresses that have not yet been spent to inherit the status
 of the addresses that sent to it.
 
+
 \subsubsection{Fully Trusted Mixing}
 \textcite{eval-priv} note that it is possible to use a mixing service
 to fully disrupt their analysis.
+
 
 \subsubsection{ZeroCoin} Miers et al.
 propose a solution to the de-anonymization proposed in taint analysis, by
 defining new transaction types that take advantage of zero knowledge
 proofs\cite{zerocoin}.  \subsubsection{Multi-Input Transaction}
+
 
 \subsubsection{In-Protocol Mixing}
 In his forum post, ``I taint rich!'', Bitcoin developer Gregory (gmaxwell)
@@ -314,10 +330,12 @@ claim, and key assumption made by \textcite{reid-anon}, that ``Some linking is
 still unavoidable with multi-input transactions, which necessarily reveal that
 their inputs were owned by the same user'' is wrong.
 
+
 While in the example described it is clear how the addresses are really linked,
 due to the cooperation being performed on a public forum, the same address used
 on the input and output and the fact that that address is the vanity address,
 ``1gmaxw''. The complexity of this process means it is not well used.
+
 
 For a serious attempt to disrupt taint analysis the taint disrupting transaction
 must have the following properties:  Each output must be to an address that has
@@ -339,8 +357,10 @@ repeatedly between many different peers.
 the ownership of the two new addresses is now 50/50.  \item Diagram \item Repeat
 the process \end{itemize}
 
+
 \section{Conclusion}
 While it is clear that the de-anonymization techniques will be no-longer be applicable once the anonymization techniques discussed in this report become widely used by users of the Bitcoin system, it is not obvious that they will be applicable even to existing network data. Any adversary well versed in the protocol would have been able to avoid de-anonymization even before the Bitcoin client\cite{bitcoin-qt} added support for multi-input and output transactions and the dangers of address re-use were widely publicized because these techniques were already available when interacting with the network directly with command line tools.
+
 
 \section{Future Work}
 This report discusses only a proposal for a novel anonymization system, an obvious avenue for further work would be to design, create and test a concrete implementation. Other avenues for further work would to be to investigate design changes and improvements to the existing Bitcoin system: would using multi-cast for transaction distribution enhance the protocol; create tools to allow easy data-mining of block-chain data using ideas from the Linked Open Data or Semantic Web communities.
