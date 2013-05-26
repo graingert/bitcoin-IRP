@@ -56,73 +56,26 @@ is now known as Bitcoin-Qt\cite{bitcoin-qt}.
     proposals for improvements \end{itemize}
 
 \section{Background}
-The core of any currency is to allow users to participate
-in transactions that result in the transfer of value between the participants.
-If Alice wishes to send some value to Bob, Bob will need to know that Alice has
-the funds to send that transaction and has not sent that money to anyone else.
-This problem is easily solvable using a physical transferable good where the expense to
-duplicate or create more of a resource can be ensured to be more than the value
-of the item: for example creating counterfeit paper currency or creating a
-commodity like gold.  This property of physical goods brings with it another
-problem: moving the value over a distance, this can be very expensive both with
-the physically cost of moving the good and securing it, especially
-with highly massive, solid commodities like gold. While paper currencies solve
-these problems somewhat, a digital currency aims to
-recreate the difficulty in duplication, while taking advantage of the ease of
-transfer that digital information brings.
+The core of any currency is to allow users to participate in transactions that result in the transfer of value between the participants. If Alice wishes to send some value to Bob, Bob will need to know that Alice has the funds to send that transaction and has not sent that money to anyone else. This problem is easily solvable using a physical transferable good where the expense to duplicate or create more of a resource can be ensured to be more than the value of the item: for example creating counterfeit paper currency or creating a commodity like gold.  This property of physical goods brings with it another problem: moving the value over a distance, this can be very expensive both with the physically cost of moving the good and securing it, especially with highly massive, solid commodities like gold. While paper currencies solve these problems somewhat, a digital currency aims to recreate the difficulty in duplication, while taking advantage of the ease of transfer that digital information brings.
 
 
-Solutions to these problems have already been discussed in the scientific
-literature: all systems assume some sort of trusted central authority or authorities
-as part of the operation of the
-protocol. Usually to maintain a record of transactions performed and to mint
-currency.  Those solutions are discussed in the following subsections of this report.
+Solutions to these problems have already been discussed in the scientific literature: all systems assume some sort of trusted central authority or authorities as part of the operation of the protocol. Usually to maintain a record of transactions performed and to mint currency.  Those solutions are discussed in the following subsections of this report.
 
 
 \subsection{Central Banking}
-Services such as the UK ``Faster Payments Service''~\cite{guardian-fps}, or
-the ``Single Euro Payments Area'' (SEPA) payments initiative~\cite{SEPA}
-operate as a transfer protocol between users of trusted entities
-such as banks and other financial institutions.
+Services such as the UK ``Faster Payments Service''~\cite{guardian-fps}, or the ``Single Euro Payments Area'' (SEPA) payments initiative~\cite{SEPA} operate as a transfer protocol between users of trusted entities such as banks and other financial institutions.
 
 
-Systems such as PayPal\footnote{\url{https://www.paypal.com/uk/webapps/mpp/transfer-money-online}},
-Dwolla\footnote{\url{https://www.dwolla.com/individuals}}
-and Liberty Reserve\footnote{\url{http://web.archive.org/web/20130430103158/http://www.libertyreserve.com/}}
-operate on-top of existing currencies and in exchange for
-money sent using SEPA or bank transfer allow accounts to be credited
-with the equivalent value.  When a user requests a value transfer
-one account is debited while another is credited~\cite{paypal}.
+Systems such as PayPal\footnote{\url{https://www.paypal.com/uk/webapps/mpp/transfer-money-online}}, Dwolla\footnote{\url{https://www.dwolla.com/individuals}} and Liberty Reserve\footnote{\url{http://web.archive.org/web/20130430103158/http://www.libertyreserve.com/}} operate on-top of existing currencies and in exchange for money sent using SEPA or bank transfer allow accounts to be credited with the equivalent value.  When a user requests a value transfer one account is debited while another is credited~\cite{paypal}.
 
 
-These systems are effectively
-fully centralized, digital systems of exchange, in which only the
-central authority or authorities control the means of production of the
-currency or are able to create transactions (an individual cannot create
-transactions, they must rely on a trusted entity to make the transaction
-on their behalf).
+These systems are effectively fully centralized, digital systems of exchange, in which only the central authority or authorities control the means of production of the currency or are able to create transactions (an individual cannot create transactions, they must rely on a trusted entity to make the transaction on their behalf).
 
 
-While fully centralized systems have a simple design and implementation
-some key disadvantages for the users are apparent:
-the trusted entities have a legal responsibility to handle
-``charge-backs'' or reverse transactions, the cost for this escrow
-service is placed on the customer as a transfer fee or to the merchant as
-a fine. The second major disadvantage of these systems is that they are
-liable to be closed down due to legal pressure~\cite{lr-shutdown}, or individual
-users' accounts can be frozen~\cite{mtgox-dwolla,vlad:mtgox-dwolla}.
+While fully centralized systems have a simple design and implementation some key disadvantages for the users are apparent: the trusted entities have a legal responsibility to handle ``charge-backs'' or reverse transactions, the cost for this escrow service is placed on the customer as a transfer fee or to the merchant as a fine. The second major disadvantage of these systems is that they are liable to be closed down due to legal pressure~\cite{lr-shutdown}, or individual users' accounts can be frozen~\cite{mtgox-dwolla,vlad:mtgox-dwolla}.
 
 
-\subsection{Unique Token} \textcite{netcash} discuss one solution,
-NetCash, this protocol uses a
-unique token held by both the central authority and the owner of the coin. To
-create currency the user and central authority agree on a unique token in
-exchange for some currency or resource. When that user wishes to transact value
-to another, they simply send the token to the other user.  To verify that the
-transaction is legitimate, other receiving users send the token to the exchange,
-to be swapped for a new spendable token meaning the original token can no longer
-be spent. One issue with this protocol is the central authority cannot be
-independently verified, as such the authority could choose to deny knowledge of
+\subsection{Unique Token} \textcite{netcash} discuss one solution, NetCash, this protocol uses a unique token held by both the central authority and the owner of the coin. To create currency the user and central authority agree on a unique token in exchange for some currency or resource. When that user wishes to transact value to another, they simply send the token to the other user.  To verify that the transaction is legitimate, other receiving users send the token to the exchange, to be swapped for a new spendable token meaning the original token can no longer be spent. One issue with this protocol is the central authority cannot be independently verified, as such the authority could choose to deny knowledge of
 a token, or allow multiple users to claim the same token.
 
 
@@ -131,10 +84,9 @@ Proposed by \textcite{chaum}, the Chaum Token protocol, uses blind signatures: m
 
 
 \subsection{B-Money digital signature chain}\label{digital-sig}
-An alternative solution, B-Money proposed by ~\textcite{b-money}. Uses a chain of digital signatures where transaction messages are created using public key cryptography and the chain of digital signatures can be traced back to the original creation of the unit of value.
+An alternative solution, B-Money proposed by~\textcite{b-money}. Uses a chain of digital signatures where transaction messages are created using public key cryptography and the chain of digital signatures can be traced back to the original creation of the unit of value.
 
 ``If Alice (owner of pseudonym $K_A$) wishes to transfer X units of money to Bob (owner of pseudonym $K_B$), she broadcasts the message ``I give X units of money to $K_B$'' signed by $K_A$'' for example see Figure~\ref{fig:chain-spend}.
-
 
 This system presents the same problems as before regarding value distribution and potential double spending i.e. how does Bob know that Alice has the value to start with and how does Bob know that this value hasn't already been spent, see Figure~\ref{fig:chain-double-spend} for an example double spend. \textcite{b-money} proposes two solutions to this problem: using a theoretical ``synchronous and unjammable anonymous broadcast channel''
 
@@ -158,21 +110,10 @@ In b-money~\cite{b-money} the solution is to involve multiple trusted authoritie
 \end{figure}
 
 
-Bob can verify that Alice was given some value from a chain of transactions
-leading back to the central authority where the value is assumed to be created
-and can subtract the total value of Alice's spent transactions to determine if
-the transaction sent to Bob is valid.  While this system prevents any central
-authority from forcing a user to spend money, unlike token based digital
-currencies or central banking, the central authorities still requires some degree of trust from the user that the
-authority is both benign and secure. For example the central authority could
-cooperate with, or more simply act as, a user attempting to achieve a double
-payment attack by showing different views to different users.
+Bob can verify that Alice was given some value from a chain of transactions leading back to the central authority where the value is assumed to be created and can subtract the total value of Alice's spent transactions to determine if the transaction sent to Bob is valid.  While this system prevents any central authority from forcing a user to spend money, unlike token based digital currencies or central banking, the central authorities still requires some degree of trust from the user that the authority is both benign and secure. For example the central authority could cooperate with, or more simply act as, a user attempting to achieve a double payment attack by showing different views to different users.
 
 
-In systems where some trusted central authority exists, while it may be reasonable to
-trust some agent for the purpose of authenticating the ownership of value, that
-authority may act in a way outside of the agents' control.  The server hosting
-the system could be compromised either through technical means or through the
+In systems where some trusted central authority exists, while it may be reasonable to trust some agent for the purpose of authenticating the ownership of value, that authority may act in a way outside of the agents' control.  The server hosting the system could be compromised either through technical means or through the
 use of force, as in the case of E-Gold.
 
 \begin{itemize} \item Show different views to different users, resulting in a
@@ -182,42 +123,13 @@ use of force, as in the case of E-Gold.
         \item The double spending problem \item HashCash \end{itemize}
 
 \section{The Bitcoin Protocol}
-In Bitcoin \textcite{satoshi} makes very few changes to the original b-money\cite{b-money} specification.  The vast majority of the Bitcoin protocol is identical to b-money except for one novel proposal: to create a transaction ordering consensus by augmenting the group of central authorities with a
-distributed, decentralized time stamp server that is used to agree on the
-order that transactions occurred in.  Any user can, on receipt of a transaction,
-query the time stamp server and determine if that transaction has been
-invalidated by a prior transaction. This key difference is likely the reason that Bitcoin took crypto-currencies from mathematical curiosity to a usable system for store and transfer of value.
+In Bitcoin \textcite{satoshi} makes very few changes to the original b-money\cite{b-money} specification.  The vast majority of the Bitcoin protocol is identical to b-money except for one novel proposal: to create a transaction ordering consensus by augmenting the group of central authorities with a distributed, decentralized time stamp server that is used to agree on the order that transactions occurred in.  Any user can, on receipt of a transaction, query the time stamp server and determine if that transaction has been invalidated by a prior transaction. This key difference is likely the reason that Bitcoin took crypto-currencies from mathematical curiosity to a usable system for store and transfer of value.
 
 \subsection{Distributed Transaction Validation}
-The time stamp server creates a chain of blocks of transactions, each referring
-to the previous by hash value.  The transactions to be included in the chain are
-discovered when peers broadcast them into a peer discovery network that operates
-in a similar manner to a BitTorrent swarm.  Any user can contribute to this
-chain of blocks, but before another peer will relay it to others, it must meet a
-``proof-of-work'' requirement: the SHA256 hash value of each block must not
-exceed a value determined by the current `difficulty'.  Because the SHA2 hashing
-function has been designed such that the value of an amount of data is
-unpredictable and evenly distributed in the range of the function, the only way
-for a participant to create data with a hash value below the difficulty limit is
-to repeatedly try different input data
-values\footnote{\url{http://blog.ezyang.com/2011/06/the-cryptography-of-bitcoin/}}: ``The average work required is exponential in the number
-of zero bits required and can be verified by executing a single hash''~\cite{satoshi}.
-Transaction block data can be altered without changing the transaction semantics
-because the block format includes a `nonce' field for this purpose.
+The time stamp server creates a chain of blocks of transactions, each referring to the previous by hash value.  The transactions to be included in the chain are discovered when peers broadcast them into a peer discovery network that operates in a similar manner to a BitTorrent swarm.  Any user can contribute to this chain of blocks, but before another peer will relay it to others, it must meet a ``proof-of-work'' requirement: the SHA256 hash value of each block must not exceed a value determined by the current `difficulty'.  Because the SHA2 hashing function has been designed such that the value of an amount of data is unpredictable and evenly distributed in the range of the function, the only way for a participant to create data with a hash value below the difficulty limit is to repeatedly try different input data values\footnote{\url{http://blog.ezyang.com/2011/06/the-cryptography-of-bitcoin/}}: ``The average work required is exponential in the number of zero bits required and can be verified by executing a single hash''~\cite{satoshi}. Transaction block data can be altered without changing the transaction semantics because the block format includes a `nonce' field for this purpose.
 
 
-Because each block refers to the previous block, ``To modify a past block, an
-attacker would have to redo the proof-of-work of the block and all blocks after
-it''.  As more blocks are created the more expensive it is for any group to
-alter the consensus reached by the peer network.  Because the proof of work
-system is computationally expensive an incentive, other than the increased
-certainty of any transaction a user has previously received will remain valid,
-is included.  While all the transactions included in a block must have at least
-the input value as output value, one transaction can be included with no input
-and an output dependent on the total number of blocks due to halve every 4
-years. Currently this reward is 25 bitcoins. This reward is paid for by the
-consensual deflation of every participants held bitcoin. This process also
-serves to solve the distribution problem of digital currencies.
+Because each block refers to the previous block, ``To modify a past block, an attacker would have to redo the proof-of-work of the block and all blocks after it''.  As more blocks are created the more expensive it is for any group to alter the consensus reached by the peer network.  Because the proof of work system is computationally expensive an incentive, other than the increased certainty of any transaction a user has previously received will remain valid, is included.  While all the transactions included in a block must have at least the input value as output value, one transaction can be included with no input and an output dependent on the total number of blocks due to halve every 4 years. Currently this reward is 25 bitcoins. This reward is paid for by the consensual deflation of every participants held bitcoin. This process also serves to solve the distribution problem of digital currencies.
 
 \begin{itemize} \item Public keys and addresses.  \item How bitcoin aims to
         solve the double spending problem without a central authority \item
@@ -238,51 +150,22 @@ always a new address \item TestNet bitcoin \end{itemize}
 TODO: Related work, not covered in this report: Mentions of legal and economics papers eg. red-balloons \cite{red-balloons}.
 
 
-\section{Anonymity} As part of the Bitcoin protocol, all transactions must be
-broadcast publicly however, \textcite{satoshi} maintains that ``privacy can still be
-maintained by breaking the flow of information [...] by keeping public keys
-anonymous''.  Each Bitcoin address can be considered one pseudonym of many of
-the owner of the associated private key, because each person can own multiple
-Bitcoin addresses in a wallet. \textcite{satoshi} asserts that because of this disconnect
-between user and address it is difficult to associate a particular transaction
-with a particular user.
+\section{Anonymity} As part of the Bitcoin protocol, all transactions must be broadcast publicly however, \textcite{satoshi} maintains that ``privacy can still be maintained by breaking the flow of information [...] by keeping public keys anonymous''.  Each Bitcoin address can be considered one pseudonym of many of the owner of the associated private key, because each person can own multiple Bitcoin addresses in a wallet. \textcite{satoshi} asserts that because of this disconnect between user and address it is difficult to associate a particular transaction with a particular user.
 
 
-\subsection{Taint Analysis} \textcite{reid-anon}, considers the feasibility of
-maintaining this pseudonymity in practise, by investigating the multiple input
-semantics of the Bitcoin transaction format. 
+\subsection{Taint Analysis} \textcite{reid-anon}, considers the feasibility of maintaining this pseudo-anonymity in practise, by investigating the multiple input semantics of the Bitcoin transaction format. 
 
 
-\textcite{reid-anon} argue that any key taking part in this process was in a single
-wallet, and thus owned by a single user. Therefore by combining the knowledge of
-how keys are grouped into wallets with knowledge from outside the protocol other
-inferences can be made, with the aim to determine the identity of the user
-behind the wallet, and thus any transactions made.
+\textcite{reid-anon} argue that any key taking part in this process was in a single wallet, and thus owned by a single user. Therefore by combining the knowledge of how keys are grouped into wallets with knowledge from outside the protocol other inferences can be made, with the aim to determine the identity of the user behind the wallet, and thus any transactions made.
 
 
-\textcite{reid-anon} aim to de-anonymize a user using two phases.  First to
-contract the publicly available, as published in the blockchain, ``transaction
-network'' to a ``user network'' by determining groups of addresses that appear to
-behave as part of a single wallet.  The second phase is to  link that group
-using publicly available ``Off-Network Information'' linking addresses to keys,
-eg by crawling the web for forum posts with including both user-names and
-addresses.
+\textcite{reid-anon} aim to de-anonymize a user using two phases.  First to contract the publicly available, as published in the blockchain, ``transaction network'' to a ``user network'' by determining groups of addresses that appear to behave as part of a single wallet.  The second phase is to  link that group using publicly available ``Off-Network Information'' linking addresses to keys, eg by crawling the web for forum posts with including both user-names and addresses.
 
 
-Multi-input transactions are used to distinguish the behavior of a group of keys
-from any other in the transaction network.  \textcite{eval-priv} add to this a further
-heuristic of ``Shadow Addresses'' to associate newly created addresses with
-users.
+Multi-input transactions are used to distinguish the behavior of a group of keys from any other in the transaction network.  \textcite{eval-priv} add to this a further heuristic of ``Shadow Addresses'' to associate newly created addresses with users.
 
 \subsubsection{Multi-input Transactions}
-In the Bitcoin transaction format, if a user cannot fulfill the value of a
-transaction by spending a single previous output, the client will combine
-multiple inputs, or previous outputs, where the user has the ability to fulfill
-their spend conditions.  When combined the Bitcoin client must fulfill the spend
-conditions of all of the outputs, usually the conditions result in the requirement to sign
-the transaction with all of the participating private keys.  ``It is therefore
-straightforward to conclude that if these BTCs are (spendable) by different addresses,
-then the input addresses belong to the same user''\cite{eval-priv}.
+In the Bitcoin transaction format, if a user cannot fulfil the value of a transaction by spending a single previous output, the client will combine multiple inputs, or previous outputs, where the user has the ability to fulfil their spend conditions.  When combined the Bitcoin client must fulfil the spend conditions of all of the outputs, usually the conditions result in the requirement to sign the transaction with all of the participating private keys.  ``It is therefore straightforward to conclude that if these BTCs are (spendable) by different addresses, then the input addresses belong to the same user''\cite{eval-priv}.
 
 [diagram of multi input transactions grouping wallets]
 
@@ -302,51 +185,24 @@ assumed to be owned by the originating wallet until otherwise linked.  \item
 
 \subsection{Taint Analysis Disruption}
 TODO: expand below sections:
-\textcite{reid-anon} suggest repeatedly sending coins to new addresses.
-While this would gain anonymity under the reasoning of the paper, a new
-heuristic for addresses that have not yet been spent to inherit the status
-of the addresses that sent to it.
+\textcite{reid-anon} suggest repeatedly sending coins to new addresses. While this would gain anonymity under the reasoning of the paper, a new heuristic for addresses that have not yet been spent to inherit the status of the addresses that sent to it.
 
 
 \subsubsection{Fully Trusted Mixing}
-\textcite{eval-priv} note that it is possible to use a mixing service
-to fully disrupt their analysis.
+\textcite{eval-priv} note that it is possible to use a mixing service to fully disrupt their analysis.
 
 
-\subsubsection{ZeroCoin} Miers et al.
-propose a solution to the de-anonymization proposed in taint analysis, by
-defining new transaction types that take advantage of zero knowledge
-proofs\cite{zerocoin}.  \subsubsection{Multi-Input Transaction}
+\subsubsection{ZeroCoin} \textcite{zerocoin} propose a solution to the de-anonymization proposed in taint analysis, by defining new transaction types that take advantage of zero knowledge proofs.
 
-
+\subsubsection{Multi-Input Transaction}
 \subsubsection{In-Protocol Mixing}
-In his forum post, ``I taint rich!'', Bitcoin developer Gregory (gmaxwell)
-Maxwell describes a process to disrupt ``brain-dead automated (taint)
-analysis''.  Because the conditions of a set of previous outputs can be
-fulfilled partially, multiple users can cooperate to create a single transaction
-that causes their public keys to appear linked in a single wallet to taint
-analysis, without revealing their private keys to the group.  As such the claim made by \textcite{satoshi}
-claim, and key assumption made by \textcite{reid-anon}, that ``Some linking is
-still unavoidable with multi-input transactions, which necessarily reveal that
-their inputs were owned by the same user'' is wrong.
+In his forum post, ``I taint rich!'', Bitcoin developer Gregory (gmaxwell) Maxwell describes a process to disrupt ``brain-dead automated (taint) analysis''.  Because the conditions of a set of previous outputs can be fulfilled partially, multiple users can cooperate to create a single transaction that causes their public keys to appear linked in a single wallet to taint analysis, without revealing their private keys to the group.  As such the claim made by \textcite{satoshi}, and key assumption made by \textcite{reid-anon}, that ``Some linking is still unavoidable with multi-input transactions, which necessarily reveal that their inputs were owned by the same user'' is wrong.
 
 
-While in the example described it is clear how the addresses are really linked,
-due to the cooperation being performed on a public forum, the same address used
-on the input and output and the fact that that address is the vanity address,
-``1gmaxw''. The complexity of this process means it is not well used.
+While in the example described it is clear how the addresses are truly linked in the user graph, due to the cooperation being performed on a public forum, the same address used on the input and output and the fact that that address is the vanity address, ``1gmaxw''. The complexity of this process means it is not well used.
 
 
-For a serious attempt to disrupt taint analysis the taint disrupting transaction
-must have the following properties:  Each output must be to an address that has
-not been used previously. There must be an equal number of bitcoin sent to each
-output. The transaction must not be traceable to a network address.  The
-communication during cooperation must not be intercepted. The communication must
-not be shown to have taken place.  At this point, from a view of the blockchain,
-the two wallets appear linked, under the multi-transaction heuristic and change
-address heuristic. From the view of the cooperating peers, however, it is clear
-the true owner of the output keys as such this process must take place
-repeatedly between many different peers.
+For a serious attempt to disrupt taint analysis the taint disrupting transaction must have the following properties:  Each output must be to an address that has not been used previously. There must be an equal number of bitcoin sent to each output. The transaction must not be traceable to a network address.  The communication during cooperation must not be intercepted. The communication must not be shown to have taken place.  At this point, from a view of the block chain, the two wallets appear linked, under the multi-transaction heuristic and change address heuristic. From the view of the cooperating peers, however, it is clear the true owner of the output keys as such this process must take place repeatedly between many different peers.
 
 \begin{itemize} \item Using the Tor hidden service \item Some sort of central or
         distributed registration system for peers \item A peer may connect to
