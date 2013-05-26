@@ -340,8 +340,10 @@ the ownership of the two new addresses is now 50/50.  \item Diagram \item Repeat
 the process \end{itemize}
 
 \section{Conclusion}
-TODO: various conclusions re: anonymity
+While it is clear that the de-anonymization techniques will be no-longer be applicable once the anonymization techniques discussed in this report become widely used by users of the Bitcoin system, it is not obvious that they will be applicable even to existing network data. Any adversary well versed in the protocol would have been able to avoid de-anonymization even before the Bitcoin client\cite{bitcoin-qt} added support for multi-input and output transactions and the dangers of address re-use were widely publicized because these techniques were already available when interacting with the network directly with command line tools.
 
+\section{Future Work}
+This report discusses only a proposal for a novel anonymization system, an obvious avenue for further work would be to design, create and test a concrete implementation. Other avenues for further work would to be to investigate design changes and improvements to the existing Bitcoin system: would using multi-cast for transaction distribution enhance the protocol; create tools to allow easy data-mining of block-chain data using ideas from the Linked Open Data or Semantic Web communities.
 
 \section{Alternative Post-Bitcoin Digital Currencies}
 
@@ -355,8 +357,7 @@ TODO: Bitcoin foundation, not strictly devoid of authority.
 TODO: Litecoin, Feathercoin. Why not Ripple?
 
 \begin{itemize} \item What is a forking change?  \item What improvements are
-possible \item Not strictly fully decentralized, concept of consensus,
-checkpointing.  \item The hash power voting system \end{itemize}
+possible \item The hash power voting system \end{itemize}
 
 
 % An example of a floating figure using the graphicx package.  Note that \label
