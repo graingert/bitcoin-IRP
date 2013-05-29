@@ -48,6 +48,8 @@ Bitcoin is distinct from other bidirectional digital currency schemes such as ce
 \section{Background}
 The core of any currency is to allow users to participate in transactions that result in the transfer of value between the participants.  Such a system requires an element of trust or protocols that remove the need for trust between the participants.  If a user, Alice wishes to send some value to Bob, Bob will need to know that Alice has the funds to send that transaction and has not sent that money to anyone else (a double spend). This problem is easily solvable using a physical transferable good where the expense to duplicate or create more of a resource can be ensured to be more than the value of the item: for example creating counterfeit paper currency or creating a commodity like gold.  Although the issue of trust is somewhat negated with physical goods, they also encounter a separate issue - moving that value over distance.  This can be an expensive exercise as it requires both the expense of physically moving the good - particularly an issue with heavy gold bars - as well as the cost of securing it during transportation. While paper currencies solve these problems somewhat, with a trade-off of making duplication easier, a digital currency aims to recreate the difficulty in duplication, while taking advantage of the ease of transfer that digital information brings.
 
+In systems where some trusted central authority exists, while it may be reasonable to trust  some agent for the purpose of authenticating the ownership of value, that authority may act in a way outside of the agents' control.  The  server hosting the system could be compromised either through technical or legal means.
+
 Up until relatively recently, discussions in scientific literature surrounding currency systems have assumed the necessity of some type of trusted central authority or authorities as part of the operation of the protocol.  These authorities usually maintain a record of transactions performed as well as minting and controlling currency.  However, the success of Bitcoin has shown that this assumption is not necessarily the case and has increased discussion into decentralised currency - moving it from a topic of intellectual curiosity to one with more practical implications.
 
 \subsection{Central Banking Authorities}
@@ -55,13 +57,14 @@ Services such as the UK ``Faster Payments Service''~\cite{guardian-fps}, or the 
 
 While there is a legal distinction between financial institutions and payment processors there is technically no  significant difference.  These systems are effectively fully centralized, digital systems of exchange, in which only the central authority or authorities control the minting of the currency or are able to create transactions - an individual cannot create transactions, they must rely on a central authority to make the transaction on their behalf.
 
-These fully centralized systems have a simple design and implementation, however, during the operation of these systems some key disadvantages for the users have become apparent: the trusted entities have a legal responsibility to handle ``charge-backs'' or reverse transactions, the cost for this escrow service is placed on the customer as a transfer fee or to the merchant as a fine. The second major disadvantage of these systems is that they are liable to be closed down due to legal pressure~\cite{lr-shutdown}, or individual users' accounts can be frozen~\cite{mtgox-dwolla,vlad:mtgox-dwolla}.
+These fully centralized systems have a simple design and implementation, however, during the operation of these systems some key disadvantages for the users have become apparent: the trusted entities have a legal responsibility to handle ``charge-backs'' or reverse transactions, the cost for this escrow service is placed on the customer as a transfer fee or to the merchant as a fine. The second major disadvantage of these systems is that they are liable to be closed down due to legal pressure~\cite{lr-shutdown,lr-idictment}, or individual users' accounts can be frozen~\cite{mtgox-dwolla,vlad:mtgox-dwolla}.
 
+%uh oh this is duplicated...?
 These fully centralized systems have a simple design and implementation however, there are some key issues that affect the users of the system - both merchants and customers - two of which are discussed here.  
 
 The first issue is that the trusted entity has a legal responsibility to handle ``charge-backs'' or reverse transactions, the cost for this escrow service - in which the central authority acts as an arbiter in disputes - is placed on the customer as a transfer fee or to the merchant as a fine, or worse\footnote{\url{http://www.guardian.co.uk/world/2012/jan/04/paypal-buyer-destroys-violin}}.
 
-The second major disadvantage of a centralized system is that it allows for  a single point of failure resulting in a lack of reliability from the  perspective of the user.  The central authority has complete control over the status of the users' account - that authority can freeze the funds of that account at their discretion according to their own terms of service, this can include pressure from legal authorities~\cite{mtgox-dwolla,vlad:mtgox-dwolla,wikileaks-paypal}.  Additionally, the central authority exists as an easier target for legal action, should that authority fail to freeze or track `problematic' accounts and this may result in a total shut down of that service~\cite{lr-shutdown,egold-shutdown}. This report assumes that being resistant to attack from a third party, regardless of the good intentions of that party, is an advantageous feature of a currency.  It is not in the scope of this report to discuss the legal or ethical repercussions of such a currency.
+The second major disadvantage of a centralized system is that it allows for  a single point of failure resulting in a lack of reliability from the  perspective of the user.  The central authority has complete control over the status of the users' account - that authority can freeze the funds of that account at their discretion according to their own terms of service, this can include pressure from legal authorities~\cite{mtgox-dwolla,vlad:mtgox-dwolla,wikileaks-paypal}.  Additionally, the central authority exists as an easier target for legal action, should that authority fail to freeze or track `problematic' accounts and this may result in a total shut down of that service~\cite{lr-shutdown,egold-shutdown,lr-idictment}. This report assumes that being resistant to attack from a third party, regardless of the good intentions of that party, is an advantageous feature of a currency.  It is not in the scope of this report to discuss the legal or ethical repercussions of such a currency.
 
 \subsection{Unique Token}\textcite{netcash} discuss one solution, NetCash, this protocol uses a unique token held by both the central authority and the owner of the coin. To create currency the user and central authority agree on a unique token in exchange for some currency or resource. When that user wishes to transact value to another, they simply send the token to the other user.  A receiver can opt to trust the sender, thus remaining anonymous, or can trade-off anonymity for an assurance of validity from the central server.To verify that the transaction is legitimate, receiving users send the token to the exchange, to be swapped for a new spendable token meaning the original token can no longer be spent. One issue with this protocol is the central authority cannot be independently verified, as such the authority could choose to deny knowledge of
 a token, or allow multiple users to claim the same token.
@@ -76,11 +79,9 @@ An alternative solution, B-Money proposed by~\textcite{b-money}. Uses a chain of
 
 ``If Alice (owner of pseudonym $K_A$) wishes to transfer X units of money to Bob (owner of pseudonym $K_B$), she broadcasts the message ``I give X units of money to $K_B$'' signed by $K_A$'' for example see Figure~\ref{fig:chain-spend}.
 
-This system presents the same problems as before regarding value distribution and potential double spending i.e. how does Bob know that Alice has the value to start with and how does Bob know that this value hasn't already been spent, see Figure~\ref{fig:chain-double-spend} for an example double spend. \textcite{b-money} proposes two solutions to this problem: using a theoretical ``synchronous and unjammable anonymous broadcast channel''
+This system presents the same problems as before regarding value distribution and potential double spending i.e. how does Bob know that Alice has the value to start with and how does Bob know that this value hasn't already been spent, see Figure~\ref{fig:chain-double-spend} for an example double spend. \textcite{b-money} proposes two solutions to this problem: using a theoretical ``synchronous and unjammable anonymous broadcast channel'', the second solution is to involve multiple trusted authorities that host a public copy of every transaction sent if these peers attempt to show a differing view of history then fines can be levied from another peer.
 
-
-In b-money~\cite{b-money} the solution is to involve multiple trusted authorities that host a public copy of every transaction sent.
-
+Bob can download a copy of the transaction chain from one of these superpeers and verify that Alice was given some value from a chain of transactions leading back to the central authority where the value is assumed to be created and can subtract the total value of  Alice's spent transactions to determine if the transaction sent to Bob is valid. 
 \begin{figure}[t!]
     \centering
     \includegraphics[width=\columnwidth]{img/Bitcoin_Transaction_Visual}
@@ -97,12 +98,7 @@ In b-money~\cite{b-money} the solution is to involve multiple trusted authoritie
     \label{fig:chain-double-spend}
 \end{figure}
 
-
-Bob can verify that Alice was given some value from a chain of transactions leading back to the central authority where the value is assumed to be created and can subtract the total value of Alice's spent transactions to determine if the transaction sent to Bob is valid.  While this system prevents any central authority from forcing a user to spend money, unlike token based digital currencies or central banking, the central authorities still requires some degree of trust from the user that the authority is both benign and secure. For example the central authority could cooperate with, or more simply act as, a user attempting to achieve a double payment attack by showing different views to different users.
-
-
-In systems where some trusted central authority exists, while it may be reasonable to trust some agent for the purpose of authenticating the ownership of value, that authority may act in a way outside of the agents' control.  The server hosting the system could be compromised either through technical means or through the
-use of force, as in the case of E-Gold.
+While this system prevents any central authority from forcing a user to spend money, unlike token based digital currencies or central banking, the central authorities still require some degree of trust from the user that the authority is both benign and secure. For example the central authorites could cooperate with, or more simply act as, a user attempting to achieve a double payment attack by showing different views to different users. Another reason that this currency was not adopted, was that a concrete implimentation was never created and super peers were never elected.
 
 \begin{itemize} \item Show different views to different users, resulting in a
         double spend \item Allocate money unfairly or unexpectedly, with
@@ -111,7 +107,7 @@ use of force, as in the case of E-Gold.
         \item The double spending problem \item HashCash \end{itemize}
 
 \section{The Bitcoin Protocol}
-In Bitcoin \textcite{satoshi} makes very few changes to the original b-money\cite{b-money} specification.  The vast majority of the Bitcoin protocol is identical to b-money except for one novel proposal: to create a transaction ordering consensus by augmenting the group of central authorities with a distributed, decentralized time stamp server that is used to agree on the order that transactions occurred in.  Any user can, on receipt of a transaction, query the time stamp server and determine if that transaction has been invalidated by a prior transaction. This key difference is likely the reason that Bitcoin took crypto-currencies from mathematical curiosity to a usable system for store and transfer of value.
+In Bitcoin \textcite{satoshi} makes very few changes to the original b-money\cite{b-money} proposal. Other than giving a concrete specification for the syntax of the digital signatures  used: such as dynamic payment scripts as outputs, each output must be spent in it's entireity etc, the vast majority of the Bitcoin protocol is identical to b-money except for one novel proposal: to create a transaction ordering consensus by augmenting the group of central authorities with a distributed, decentralized time stamp server that is used to agree on the order that transactions occurred in.  Any user can, on receipt of a transaction, query the time stamp server and determine if that transaction has been invalidated by a prior transaction. This key difference is likely the reason that Bitcoin took crypto-currencies from mathematical curiosity to a usable system for store and transfer of value.
 
 \subsection{Distributed Transaction Validation}
 The time stamp server creates a chain of blocks of transactions, each referring to the previous by hash value.  The transactions to be included in the chain are discovered when peers broadcast them into a peer discovery network that operates in a similar manner to a BitTorrent swarm.  Any user can contribute to this chain of blocks, but before another peer will relay it to others, it must meet a ``proof-of-work'' requirement: the SHA256 hash value of each block must not exceed a value determined by the current `difficulty'.  Because the SHA2 hashing function has been designed such that the value of an amount of data is unpredictable and evenly distributed in the range of the function, the only way for a participant to create data with a hash value below the difficulty limit is to repeatedly try different input data values\footnote{\url{http://blog.ezyang.com/2011/06/the-cryptography-of-bitcoin/}}: ``The average work required is exponential in the number of zero bits required and can be verified by executing a single hash''~\cite{satoshi}. Transaction block data can be altered without changing the transaction semantics because the block format includes a `nonce' field for this purpose.
@@ -128,14 +124,6 @@ Because each block refers to the previous block, ``To modify a past block, an at
 
 As more blocks are created the more expensive it is for any group to alter the consensus reached by the peer network.  Because the proof of work system is computationally expensive an incentive, other than the increased certainty of any transaction a user has previously received will remain valid, is included.  While all the transactions included in a block must have at least the input value as output value, one transaction can be included with no input and an output dependent on the total number of blocks due to halve every 4 years. Currently this reward is 25 bitcoins. This reward is paid for by the consensual deflation of every participants held bitcoin. This process also serves to solve the distribution problem of digital currencies.
 
-\begin{itemize}
-    \item Bitcoin clients present public keys to the user as ``addresses'', these are the result of the hash of a public key and a checksum. Similar in purpose as the Luhn check on credit cards, this process is used to reduce the likelihood of losing bitcoin to a public key with no paired private key by preventing mistakes when entered into clients by hand.
-    \item Transaction types
-    \item Change address.  The change address is always a new address
-    \item TestNet bitcoin
-\end{itemize}
-
-
 \subsection{The Bitcoin block-chain is not strictly a consensus protocol}
 \textcite{bitcoin-impossible} notes that, strictly, the Bitcoin proof of work block-chain is not a consensus scheme. In distributed consensus protocols, consensus is arrived at when some sufficient number of members of the group agree. This is impossible to achieve in a distributed system where this group is not known: agents are constantly joining and leaving the group in a way that prevents Sybil attacks. By declaring the Bitcoin group consensus definition as ``all the computing power in existence'' consensus is only achieved once more than half of the compute power in existence is used in the proof of work system. Therefore the Bitcoin system is only Sybil \emph{resistant}. The Bitcoin systems is also not fully decentralized, a set of core developers, now the Bitcoin Foundation, have some control of the protocol: two major disruptions to the network have been solved using manual intervention from this group: on 15 August 2010 an integer overflow was discovered in the Bitcoin protocol this vulnerability ``allows remote attackers to bypass intended economic restrictions and create many bitcoins via a crafted Bitcoin transaction.''~\cite{CVE-2010-5139}. The second, where the network segmented into clients with two differing consensus results~\cite{CVE-2013-3220,glitch-report,major-glitch}. Users of the network are still free to ignore the advice of this group.
 
@@ -149,9 +137,7 @@ As part of the Bitcoin protocol, all transactions must be broadcast publicly how
 
 \subsection{Taint Analysis} \textcite{reid-anon}, considers the feasibility of maintaining this pseudo-anonymity in practise, by investigating the multiple input semantics of the Bitcoin transaction format. 
 
-
 \textcite{reid-anon} argue that any key taking part in this process was in a single wallet, and thus owned by a single user. Therefore by combining the knowledge of how keys are grouped into wallets with knowledge from outside the protocol other inferences can be made, with the aim to determine the identity of the user behind the wallet, and thus any transactions made.
-
 
 \textcite{reid-anon} aim to de-anonymize a user using two phases.  First to contract the publicly available, as published in the blockchain, ``transaction network'' to a ``user network'' by determining groups of addresses that appear to behave as part of a single wallet.  The second phase is to  link that group using publicly available ``Off-Network Information'' linking addresses to keys, eg by crawling the web for forum posts with including both user-names and addresses.
 
@@ -162,8 +148,8 @@ In the Bitcoin transaction format, if a user cannot fulfil the value of a transa
 
 [diagram of multi input transactions grouping wallets]
 
-\subsubsection{``Shadow'' Addresses}
-
+\subsubsection{``Shadow'' or Change addresses}
+Because each previous oput must be redeemed in it's entirety, to support transactions of values smaller than the smallest output available to a wallet, the Bitcoin client automatically creates a new ``change address'' to send the remaining value to.  \cite{eval-priv} refers to this as a ``Shadow'' address.  The heuristic proposed, is that if money is sent to two or more addresses and only one has not been used before, that address is controlled by the user that created the transaction. A bug in the Bitcoin client was that it never randomized the outputs of the addresses and so this change address always appeared in a known location in the serialized transaction\cite{cve-ordered-trans}.
 
 \begin{itemize} \item Briefly mentions mixers and ``repeatedly sending fractions
         of their Bitcoins to themselves using multiple (newly generated)
@@ -175,10 +161,8 @@ assumed to be owned by the originating wallet until otherwise linked.  \item
     the transaction.  However it is recommended to newly generate a Bitcoin
     address for each receiving transaction.  \end{itemize}
 
-
 \subsection{Taint Analysis Disruption}
-\textcite{reid-anon} suggest repeatedly sending coins to new addresses. While this would gain anonymity under the reasoning of the paper, a new heuristic for addresses that have not yet been spent to inherit the status of the addresses that sent to it.
-
+\textcite{reid-anon} suggest repeatedly sending coins to new addresses. While this would gain anonymity under the reasoning of the paper, a new heuristic could be added to define that for addresses that have not yet been spent, and therefore linked with other addresses controlled by wallets known to be distinct, those addresses should inherit the status of the addresses that sent to it.
 
 \subsubsection{Fully Trusted Mixing}
 \textcite{eval-priv} note that it is possible to use a mixing service to fully disrupt their analysis.  A mixing service\footnote{\url{http://www.bitcoinlaundry.com/}} accepts Bitcoin transactions and automatically sends a new transaction otherwise unrelated with an equivalent ouput to a newly generated Bitcoin address.  These services often charge fees and require a significant amount of trust (bitcoin are totally in the control of the service before being returned).  The mixing service may also not have sufficient transaction traffic to be able to adequately hide the owner of bitcoin. Slight refinements on mixing services can be made by randomly adjusting the time that a transaction takes before being released or releasing multiple separate transactions into different newly generated addresses.
