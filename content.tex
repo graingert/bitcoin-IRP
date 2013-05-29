@@ -63,11 +63,11 @@ The first issue is that the trusted entity has a legal responsibility to handle 
 
 The second major disadvantage of a centralized system is that it allows for  a single point of failure resulting in a lack of reliability from the  perspective of the user.  The central authority has complete control over the status of the users' account - that authority can freeze the funds of that account at their discretion according to their own terms of service, this can include pressure from legal authorities~\cite{mtgox-dwolla,vlad:mtgox-dwolla,wikileaks-paypal}.  Additionally, the central authority exists as an easier target for legal action, should that authority fail to freeze or track `problematic' accounts and this may result in a total shut down of that service~\cite{lr-shutdown,egold-shutdown}. This report assumes that being resistant to attack from a third party, regardless of the good intentions of that party, is an advantageous feature of a currency.  It is not in the scope of this report to discuss the legal or ethical repercussions of such a currency.
 
-\subsection{Unique Token}\textcite{netcash} discuss one solution, NetCash, this protocol uses a unique token held by both the central authority and the owner of the coin. To create currency the user and central authority agree on a unique token in exchange for some currency or resource. When that user wishes to transact value to another, they simply send the token to the other user.  To verify that the transaction is legitimate, other receiving users send the token to the exchange, to be swapped for a new spendable token meaning the original token can no longer be spent. One issue with this protocol is the central authority cannot be independently verified, as such the authority could choose to deny knowledge of
+\subsection{Unique Token}\textcite{netcash} discuss one solution, NetCash, this protocol uses a unique token held by both the central authority and the owner of the coin. To create currency the user and central authority agree on a unique token in exchange for some currency or resource. When that user wishes to transact value to another, they simply send the token to the other user.  A receiver can opt to trust the sender, thus remaining anonymous, or can trade-off anonymity for an assurance of validity from the central server.To verify that the transaction is legitimate, receiving users send the token to the exchange, to be swapped for a new spendable token meaning the original token can no longer be spent. One issue with this protocol is the central authority cannot be independently verified, as such the authority could choose to deny knowledge of
 a token, or allow multiple users to claim the same token.
 
 
-\subsection{Blind-signed Chaum Tokens}
+\subsection{Blind-signed Chaumian e-Cash}
 Proposed by \textcite{chaum}, the Chaum Token protocol, uses blind signatures: messages signed by a central authority in exchange for a fee of some currency or other resource. This messages can be converted into a token unrelated to the message except for the fact that the signing server can verify that the token has indeed been signed previously, this has the advantage that the central authority cannot discover the original owner of a signed message when cashed by a payee.  This protocol, however, maintains the very same issues as NetCash: the central authority can deny knowledge of a token, or arbitrarily mint new tokens without a fee.
 
 
@@ -149,7 +149,6 @@ As part of the Bitcoin protocol, all transactions must be broadcast publicly how
 
 \textcite{reid-anon} aim to de-anonymize a user using two phases.  First to contract the publicly available, as published in the blockchain, ``transaction network'' to a ``user network'' by determining groups of addresses that appear to behave as part of a single wallet.  The second phase is to  link that group using publicly available ``Off-Network Information'' linking addresses to keys, eg by crawling the web for forum posts with including both user-names and addresses.
 
-
 Multi-input transactions are used to distinguish the behavior of a group of keys from any other in the transaction network.  \textcite{eval-priv} add to this a further heuristic of ``Shadow Addresses'' to associate newly created addresses with users.
 
 \subsubsection{Multi-input Transactions}
@@ -177,12 +176,46 @@ TODO: expand below sections:
 
 
 \subsubsection{Fully Trusted Mixing}
-\textcite{eval-priv} note that it is possible to use a mixing service to fully disrupt their analysis.  A mixing service\footnote{\url{http://www.bitcoinlaundry.com/}} accepts Bitcoin transactions and automatically sends new transaction from the same wallet.  These services often charge fees and require a significant amount of trust (bitcoin are in control of the service before being sent).  The mixing service may also not have sufficient transaction traffic to be able to adequately hide the owner of bitcoin. Slight refinements on mixing services can be made by randomly adjusting the time that a transaction takes before being released or releasing multiple separate transactions into different newly generated addresses.
+\textcite{eval-priv} note that it is possible to use a mixing service to fully disrupt their analysis.  A mixing service\footnote{\url{http://www.bitcoinlaundry.com/}} accepts Bitcoin transactions and automatically sends a new transaction otherwise unrelated with an equivalent ouput to a newly generated Bitcoin address.  These services often charge fees and require a significant amount of trust (bitcoin are totally in the control of the service before being returned).  The mixing service may also not have sufficient transaction traffic to be able to adequately hide the owner of bitcoin. Slight refinements on mixing services can be made by randomly adjusting the time that a transaction takes before being released or releasing multiple separate transactions into different newly generated addresses.
 
 \subsubsection{ZeroCoin}
-\textcite{zerocoin} propose a solution to the de-anonymization proposed in taint analysis, by defining new transaction types that take advantage of zero knowledge proofs.
+\textcite{zerocoin} propose a solution to the de-anonymization proposed in taint analysis, by defining new transaction types that take advantage of a zero knowledge proof (ZKP) that only proves knowledge of:
 
-\subsubsection{Multi-Input Transaction}
+\begin{enumerate}
+\item a Zerocoin in the block chain.
+\item the actual serial number used to generate it.
+\end{enumerate}
+
+Formally, given all Zerocoins in the block chain ${C_1, C_2,\dots,C_N}$, prove knowledge of $C_i$ such that:
+
+\begin{equation}
+    (C_i = C_1) \vee (C_i=C_2) \vee \dots \vee (C_i=C_N)
+\end{equation}
+
+A ZKP for this statement is not efficient, as such Zerocoin uses a one-way public accumulator, with an efficient ZKP, that accumulates ${C_1, C_2,\dots,C_N}$ to produce some $A$, such that it's possible to prove knowledge of a witness s.t. $C \in inputs(A)$~\cite{one-way-accumulators}.
+
+The function used, equation~\ref{eqn:zkp}, that provides this mathematical property under the strong RSA assumption was proposed by \textcite{strong-rsa}.
+
+A Zerocoin $C_{i}$ is created using serial number $S$ in the group $Z(N)$ using a Peterson commitment, equation~\ref{eqn:zq-create}, repeated until $C_i$ is a prime.
+
+\begin{equation}\label{eqn:zq-create}
+C_{i}=g^Sh^r, C_i \in \mathbb(P)
+\end{equation}
+
+An accumulator $A$ can be created from the asserted Zerocoins.  Adding to the accumulator is trivial, $A' = A*u^{C_i}$.
+
+\begin{subequations}
+    \begin{align}\label{eqn:zkp}
+        N &= p \cdot q, u \in QR_{N}(u\neq1)\\
+        A &= u^{C_1, C_2,\dots,C_N}\\
+        w_i &=  u^{C_1, C_2,\cdots C_{i-1}, C_{i+1}, \dots ,C_N}
+    \end{align}
+\end{subequations}
+
+Where N is the product of two permanently private prime numbers (These primes are generated once, multiplied then are permanently destroyed).
+
+The Zero-knowledge proof, proves that $u^{C_i} \cdot w_i = A$. $w_i$ is now defined as the new accumulator. Unfortunately, this proof requires a 40KiB Double Discrete Logarithm proof, and the modification of all Bitcoin clients on the network which strictly is a new currency and no longer Bitcoin, but another incompatibly block chain currency.
+
 \subsubsection{In-Protocol Mixing}
 In his forum post, ``I taint rich!'', Bitcoin developer Gregory (gmaxwell) Maxwell describes a process to disrupt ``brain-dead automated (taint) analysis''.  Because the conditions of a set of previous outputs can be fulfilled partially, multiple users can cooperate to create a single transaction that causes their public keys to appear linked in a single wallet to taint analysis, without revealing their private keys to the group.  As such the claim made by \textcite{satoshi}, and key assumption made by \textcite{reid-anon}, that ``Some linking is still unavoidable with multi-input transactions, which necessarily reveal that their inputs were owned by the same user'' is wrong.
 
