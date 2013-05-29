@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="102"
+   height="271"
+   id="svg2"
+   version="1.1"
+   inkscape:version="0.48.3.1 r9886"
+   sodipodi:docname="Blockchain.svg">
+  <metadata
+     id="metadata36">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <defs
+     id="defs34">
+    <marker
+       inkscape:stockid="Arrow1Mend"
+       orient="auto"
+       refY="0.0"
+       refX="0.0"
+       id="Arrow1Mend"
+       style="overflow:visible;">
+      <path
+         id="path3794"
+         d="M 0.0,0.0 L 5.0,-5.0 L -12.5,0.0 L 5.0,5.0 L 0.0,0.0 z "
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1.0pt;"
+         transform="scale(0.4) rotate(180) translate(10,0)" />
+    </marker>
+  </defs>
+  <sodipodi:namedview
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1"
+     objecttolerance="10"
+     gridtolerance="10"
+     guidetolerance="10"
+     inkscape:pageopacity="0"
+     inkscape:pageshadow="2"
+     inkscape:window-width="1680"
+     inkscape:window-height="1026"
+     id="namedview32"
+     showgrid="false"
+     inkscape:zoom="1.7416974"
+     inkscape:cx="51.808571"
+     inkscape:cy="128.52976"
+     inkscape:window-x="0"
+     inkscape:window-y="24"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg2" />
+  <rect
+     width="20"
+     height="20"
+     x="26"
+     y="6"
+     id="r" />
+  <use
+     y="30"
+     xlink:href="#r"
+     id="use5" />
+  <use
+     y="60"
+     xlink:href="#r"
+     id="use7" />
+  <use
+     x="20"
+     y="90"
+     xlink:href="#r"
+     id="use9" />
+  <use
+     x="20"
+     y="120"
+     xlink:href="#r"
+     id="use11" />
+  <use
+     x="20"
+     y="150"
+     xlink:href="#r"
+     id="use13" />
+  <use
+     x="20"
+     y="180"
+     xlink:href="#r"
+     id="use15" />
+  <use
+     y="210"
+     xlink:href="#r"
+     id="use17" />
+  <rect
+     width="19"
+     height="19"
+     x="66.5"
+     y="66.5"
+     id="t"
+     stroke="#000"
+     fill="#847a91" />
+  <use
+     y="-30"
+     xlink:href="#t"
+     id="use20" />
+  <use
+     x="10"
+     y="30"
+     xlink:href="#t"
+     id="use22" />
+  <use
+     x="10"
+     y="60"
+     xlink:href="#t"
+     id="use24" />
+  <use
+     x="-60"
+     y="120"
+     xlink:href="#t"
+     id="use26" />
+  <rect
+     width="19"
+     height="19"
+     x="26.5"
+     y="246.5"
+     id="rect28"
+     stroke="#000"
+     fill="#448e73" />
+  <path
+     d="m 76.75,136 -10,0"
+     id="path4851"
+     style="stroke:#000000;stroke-opacity:1;marker-end:url(#Arrow1Mend)"
+     inkscape:connector-curvature="0" />
+  <path
+     d="m 36,236 0,10"
+     id="path4849"
+     style="stroke:#000000;stroke-opacity:1;marker-end:url(#Arrow1Mend)" />
+  <path
+     d="m 56,176 0,10"
+     id="path4847"
+     style="stroke:#000000;stroke-opacity:1;marker-end:url(#Arrow1Mend)" />
+  <path
+     d="m 56,146 0,10"
+     id="path4845"
+     style="stroke:#000000;stroke-opacity:1;marker-end:url(#Arrow1Mend)" />
+  <path
+     d="m 86,116 0,10"
+     id="path4843"
+     style="stroke:#000000;stroke-opacity:1;marker-end:url(#Arrow1Mend)" />
+  <path
+     d="m 56,116 0,10"
+     id="path4841"
+     style="stroke:#000000;stroke-opacity:1;marker-end:url(#Arrow1Mend)" />
+  <path
+     d="m 76,56 0,10"
+     id="path4839"
+     style="stroke:#000000;stroke-opacity:1;marker-end:url(#Arrow1Mend)" />
+  <path
+     d="m 36,56 0,10"
+     id="path4837"
+     style="stroke:#000000;stroke-opacity:1;marker-end:url(#Arrow1Mend)" />
+  <path
+     d="m 36,26 0,10"
+     id="path4835"
+     style="stroke:#000000;stroke-opacity:1;marker-end:url(#Arrow1Mend)" />
+  <path
+     d="m 14.813189,205.34165 22.650839,12.57354"
+     id="path4833"
+     style="stroke:#000000;stroke-opacity:1;marker-end:url(#Arrow1Mend)" />
+  <path
+     d="M 57.070035,205.22195 36.077544,217.0773"
+     id="path4831"
+     style="stroke:#000000;stroke-opacity:1;marker-end:url(#Arrow1Mend)" />
+  <path
+     d="M 34.788331,85.490793 57.43917,98.064333"
+     id="path4829"
+     style="stroke:#000000;stroke-opacity:1;marker-end:url(#Arrow1Mend)" />
+  <path
+     d="M 77.045177,85.371093 56.052686,97.226443"
+     id="path30"
+     style="stroke:#000000;stroke-opacity:1;marker-end:url(#Arrow1Mend)" />
+</svg>

@@ -81,7 +81,7 @@ This system presents the same problems as before regarding value distribution an
 
 In b-money~\cite{b-money} the solution is to involve multiple trusted authorities that host a public copy of every transaction sent.
 
-\begin{figure}[htb]
+\begin{figure}[t!]
     \centering
     \includegraphics[width=\columnwidth]{img/Bitcoin_Transaction_Visual}
     \caption{A chain of digital signatures representing value transfer.
@@ -89,7 +89,7 @@ In b-money~\cite{b-money} the solution is to involve multiple trusted authoritie
     \label{fig:chain-spend}
 \end{figure}
 
-\begin{figure}[htb]
+\begin{figure}[t!]
     \centering
     \includegraphics[width=\columnwidth]{img/Bitcoin_DoubleSpend_Visual}
     \caption{A chain of digital signatures representing value transfer with a double spend: Without some consensus system ``User 2'' is not prevented from sending the same value to both ``Owner 3'' and ``Owner 4''.
@@ -117,17 +117,23 @@ In Bitcoin \textcite{satoshi} makes very few changes to the original b-money\cit
 The time stamp server creates a chain of blocks of transactions, each referring to the previous by hash value.  The transactions to be included in the chain are discovered when peers broadcast them into a peer discovery network that operates in a similar manner to a BitTorrent swarm.  Any user can contribute to this chain of blocks, but before another peer will relay it to others, it must meet a ``proof-of-work'' requirement: the SHA256 hash value of each block must not exceed a value determined by the current `difficulty'.  Because the SHA2 hashing function has been designed such that the value of an amount of data is unpredictable and evenly distributed in the range of the function, the only way for a participant to create data with a hash value below the difficulty limit is to repeatedly try different input data values\footnote{\url{http://blog.ezyang.com/2011/06/the-cryptography-of-bitcoin/}}: ``The average work required is exponential in the number of zero bits required and can be verified by executing a single hash''~\cite{satoshi}. Transaction block data can be altered without changing the transaction semantics because the block format includes a `nonce' field for this purpose.
 
 
-Because each block refers to the previous block, ``To modify a past block, an attacker would have to redo the proof-of-work of the block and all blocks after it''.  As more blocks are created the more expensive it is for any group to alter the consensus reached by the peer network.  Because the proof of work system is computationally expensive an incentive, other than the increased certainty of any transaction a user has previously received will remain valid, is included.  While all the transactions included in a block must have at least the input value as output value, one transaction can be included with no input and an output dependent on the total number of blocks due to halve every 4 years. Currently this reward is 25 bitcoins. This reward is paid for by the consensual deflation of every participants held bitcoin. This process also serves to solve the distribution problem of digital currencies.
+Because each block refers to the previous block, ``To modify a past block, an attacker would have to redo the proof-of-work of the block and all blocks after it''.  A peer in the Bitcoin network will accept a block if it has the highest total difficulty of any other block at that block height, shown in figure~\ref{ref:blockchain}, this allows the block chain to temporarily fork in the case that two blocks are created at the same time.
 
-\begin{itemize} \item Public keys and addresses.  \item How bitcoin aims to
-        solve the double spending problem without a central authority \item
-            Bitcoin clients present public keys to the user as ``addresses'',
-            these are the result of the hash of a public key and a checksum.
-            Similar in purpose as the Luhn check on credit cards, this process
-        is used to reduce the likelihood of losing bitcoin to a public key with
-    no paired private key by preventing mistakes when entered into clients by
-hand.  \item Transaction types \item Change address.  The change address is
-always a new address \item TestNet bitcoin \end{itemize}
+\begin{figure}[t!]
+    \centering
+    \includegraphics[height=\columnwidth]{img/Blockchain}
+    \caption{A diagram showing invalid blocks (grey) being invalidated by a block chain with greater totaly difficulty (black). (based on work from theymos\protect\footnote{\url{http://theymos.com/}})}
+    \label{fig:blockchain}
+\end{figure}
+
+As more blocks are created the more expensive it is for any group to alter the consensus reached by the peer network.  Because the proof of work system is computationally expensive an incentive, other than the increased certainty of any transaction a user has previously received will remain valid, is included.  While all the transactions included in a block must have at least the input value as output value, one transaction can be included with no input and an output dependent on the total number of blocks due to halve every 4 years. Currently this reward is 25 bitcoins. This reward is paid for by the consensual deflation of every participants held bitcoin. This process also serves to solve the distribution problem of digital currencies.
+
+\begin{itemize}
+    \item Bitcoin clients present public keys to the user as ``addresses'', these are the result of the hash of a public key and a checksum. Similar in purpose as the Luhn check on credit cards, this process is used to reduce the likelihood of losing bitcoin to a public key with no paired private key by preventing mistakes when entered into clients by hand.
+    \item Transaction types
+    \item Change address.  The change address is always a new address
+    \item TestNet bitcoin
+\end{itemize}
 
 
 \subsection{The Bitcoin block-chain is not strictly a consensus protocol}
@@ -171,7 +177,6 @@ assumed to be owned by the originating wallet until otherwise linked.  \item
 
 
 \subsection{Taint Analysis Disruption}
-TODO: expand below sections:
 \textcite{reid-anon} suggest repeatedly sending coins to new addresses. While this would gain anonymity under the reasoning of the paper, a new heuristic for addresses that have not yet been spent to inherit the status of the addresses that sent to it.
 
 
@@ -214,16 +219,18 @@ An accumulator $A$ can be created from the asserted Zerocoins.  Adding to the ac
 
 Where N is the product of two permanently private prime numbers (These primes are generated once, multiplied then are permanently destroyed).
 
-The Zero-knowledge proof, proves that $u^{C_i} \cdot w_i = A$. $w_i$ is now defined as the new accumulator. Unfortunately, this proof requires a 40KiB Double Discrete Logarithm proof, and the modification of all Bitcoin clients on the network which strictly is a new currency and no longer Bitcoin, but another incompatibly block chain currency.
+The Zero-knowledge proof, proves that $u^{C_i} \cdot w_i = A$. $w_i$ is now defined as the new accumulator. Unfortunately, this proof requires a 40KiB Double Discrete Logarithm proof, and the modification of all Bitcoin clients on the network which strictly is a new currency and no longer Bitcoin, but another incompatible block chain currency.
 
 \subsubsection{In-Protocol Mixing}
 In his forum post, ``I taint rich!'', Bitcoin developer Gregory (gmaxwell) Maxwell describes a process to disrupt ``brain-dead automated (taint) analysis''.  Because the conditions of a set of previous outputs can be fulfilled partially, multiple users can cooperate to create a single transaction that causes their public keys to appear linked in a single wallet to taint analysis, without revealing their private keys to the group.  As such the claim made by \textcite{satoshi}, and key assumption made by \textcite{reid-anon}, that ``Some linking is still unavoidable with multi-input transactions, which necessarily reveal that their inputs were owned by the same user'' is wrong.
 
-
 While in the example described it is clear how the addresses are truly linked in the user graph, due to the cooperation being performed on a public forum, the same address used on the input and output and the fact that that address is the vanity address, ``1gmaxw''. The complexity of this process means it is not well used.
 
+[diagram showing this specific transaction]
 
 For a serious attempt to disrupt taint analysis the taint disrupting transaction must have the following properties:  Each output must be to an address that has not been used previously. There must be an equal number of bitcoin sent to each output. The transaction must not be traceable to a network address.  The communication during cooperation must not be intercepted. The communication must not be shown to have taken place.  At this point, from a view of the block chain, the two wallets appear linked, under the multi-transaction heuristic and change address heuristic. From the view of the cooperating peers, however, it is clear the true owner of the output keys as such this process must take place repeatedly between many different peers.
+
+[diagram showing generic mixing transaction]
 
 \begin{itemize} \item Using the Tor hidden service \item Some sort of central or
         distributed registration system for peers \item A peer may connect to
@@ -232,8 +239,10 @@ For a serious attempt to disrupt taint analysis the taint disrupting transaction
             transaction from both users, split equally into the new addresses.
 \item Assuming that the ownership of originating addresses was known publicly
 the ownership of the two new addresses is now 50/50.  \item Diagram \item Repeat
-the process \end{itemize}
+the process
+\end{itemize}
 
+TODO: describe and compare with everyone mix, vs pairwise mixing. Esp. re: DoS.
 
 \section{Conclusion}
 While it is clear that the de-anonymization techniques will be no-longer be applicable once the anonymization techniques discussed in this report become widely used by users of the Bitcoin system, it is not obvious that they will be applicable even to existing network data. Any adversary well versed in the protocol would have been able to avoid de-anonymization even before the Bitcoin client\cite{bitcoin-qt} added support for multi-input and output transactions and the dangers of address re-use were widely publicized because these techniques were already available when interacting with the network directly with command line tools.
