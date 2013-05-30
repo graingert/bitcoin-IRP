@@ -1,0 +1,11 @@
+digraph g{
+  k_a1 -> T_1;
+  k_a2 -> T_1;
+  T_1 -> k_a4 [label=1];
+  T_1 -> k_sr [label=0.01456];
+  k_a1[label=<k<SUB>1</SUB>>];
+  k_a2[label=<k<SUB>2</SUB>>];
+  k_a4[label=<k<SUB>1AywL2iC7...</SUB>>];
+  k_sr[label=<k<SUB>1GMaxweLLbo8...</SUB>>];
+  T_1[label=<T<SUB>1</SUB>>];
+}

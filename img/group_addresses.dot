@@ -8,4 +8,14 @@ digraph g{
   k_b2 -> T_2 [label=1];
   T_2 -> k_b3 [label=0.5];
   T_2 -> k_sr [label=1.5];
+  k_a1[label=<k<SUB>a1</SUB>>];
+  k_a2[label=<k<SUB>a2</SUB>>];
+  k_a3[label=<k<SUB>a3</SUB>>];
+  k_a4[label=<k<SUB>a4</SUB>>];
+  T_1[label=<T<SUB>1</SUB>>];
+  T_2[label=<T<SUB>2</SUB>>];
+  k_b1[label=<k<SUB>b1</SUB>>];
+  k_b2[label=<k<SUB>b2</SUB>>];
+  k_b3[label=<k<SUB>b3</SUB>>];
+  k_sr[label=<k<SUB>SR</SUB>>];
 }
