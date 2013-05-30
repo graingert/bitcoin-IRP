@@ -139,43 +139,31 @@ While it is required that transactions included in a block have a total input va
 This is impossible to achieve in a distributed system where this group is not known (agents are constantly joining and leaving the group) in a way that prevents Sybil attacks\cite{sybil} where an individual represents themselves as many agents, with the aim of overriding the group consensus.  By declaring the Bitcoin group consensus definition as ``all the computing power in existence'' consensus is only achieved once more than half of the compute power in existence is used in the proof of work system. Therefore the Bitcoin system is only Sybil \emph{resistant}. The Bitcoin systems is also not fully decentralized, a set of core developers, now the Bitcoin Foundation, have some control over the protocol; two major disruptions to the network have been solved using manual intervention from this group.  The first occurred on 15 August 2010 when an integer overflow was discovered in the Bitcoin protocol, this vulnerability ``allows remote attackers to bypass intended economic restrictions and create many bitcoins via a crafted Bitcoin transaction.''~\cite{CVE-2010-5139}. The second was when the network segmented two groups of clients with two differing consensus conclusions~\cite{CVE-2013-3220,glitch-report,major-glitch}.  Users of the network are still free to ignore the advice of this group by opting not to update or alter their clients in doing so permanently segregating themselves from the rest of the network.
 
 \section{Anonymity}
-As part of the Bitcoin protocol, all transactions must be broadcast publicly however, \textcite{satoshi} maintains that ``privacy can still be maintained by breaking the flow of information [...] by keeping public keys anonymous''.  Each Bitcoin address can be considered one pseudonym of many of the owner of the associated private key, because each person can own multiple Bitcoin addresses in a wallet. \textcite{satoshi} asserts that because of this disconnect between user and address it is difficult to associate a particular transaction with a particular user.
+As part of the Bitcoin protocol, all transactions must be broadcast publicly.  However, \textcite{satoshi} maintains that ``privacy can still be maintained by breaking the flow of information [...] by keeping public keys anonymous''.
+
+Each Bitcoin address can be considered a pseudonym of the owner of it's associated private key, and because each person can own multiple Bitcoin addresses in a wallet there is a disconnect between users and addresses. \textcite{satoshi} asserts that because of this disconnect between users and addresses it is difficult to associate a particular transaction with a particular user.
 
 \subsection{Taint Analysis}
-\textcite{reid-anon}, considers the feasibility of maintaining this pseudo-anonymity in practise, by investigating the multiple input semantics of the Bitcoin transaction format. 
-
-\textcite{reid-anon} argue that any key taking part in this process was in a single wallet, and thus owned by a single user. Therefore by combining the knowledge of how keys are grouped into wallets with knowledge from outside the protocol other inferences can be made, with the aim to determine the identity of the user behind the wallet, and thus any transactions made.
-
-\textcite{reid-anon} aim to de-anonymize a user using two phases.  First to contract the publicly available, as published in the blockchain, ``transaction network'' to a ``user network'' by determining groups of addresses that appear to behave as part of a single wallet.  The second phase is to  link that group using publicly available ``Off-Network Information'' linking addresses to keys, eg by crawling the web for forum posts with including both user-names and addresses.
-
-Multi-input transactions are used to distinguish the behavior of a group of keys from any other in the transaction network.  \textcite{eval-priv} add to this a further heuristic of ``Shadow Addresses'' to associate newly created addresses with users.
+\textcite{reid-anon}, consider the feasibility of maintaining this pseudo-anonymity in practise, by investigating the multiple input semantics of the Bitcoin transaction format. They argue that any key taking part in this process was in a single wallet, and thus owned by a single user. Therefore by combining the knowledge of how keys are grouped into wallets with knowledge from outside the protocol other inferences can be made, with the aim to determine the identity of the user behind the wallet, and thus any transactions made.  The proposed method for de-anonymizing a user occurs in two phases.  First, the publicly available ``transaction network'', as published in the block chain, is contracted to a ``user network'' by determining groups of addresses that appear to behave as part of a single wallet.  The second phase is to link that group with an identity using publicly available ``Off-Network Information'' linking users to any address in that group, e.g. by crawling the web for forum posts including both user-names and addresses.  \textcite{eval-priv} add to this a further heuristic of ``Shadow Addresses'' to associate newly created addresses with users.
 
 \subsubsection{Multi-input Transactions}
-In the Bitcoin transaction format, if a user cannot fulfil the value of a transaction by spending a single previous output, the client will combine multiple inputs, or previous outputs, where the user has the ability to fulfil their spend conditions.  When combined the Bitcoin client must fulfil the spend conditions of all of the outputs, usually the conditions result in the requirement to sign the transaction with all of the participating private keys.  ``It is therefore straightforward to conclude that if these BTCs are (spendable) by different addresses, then the input addresses belong to the same user''\cite{eval-priv}.
+In the Bitcoin transaction format, if a user cannot fulfil the value of a transaction by spending a single previous output, the client will combine multiple inputs, where the user has the ability to fulfil their spend conditions.  When combined, the Bitcoin client must fulfil the spend conditions of all of the inputs, usually the conditions result in the requirement to sign the transaction with all of the participating address's private keys.  ``It is therefore straightforward to conclude that if these (inputs) are (spendable) by different addresses, then the input addresses belong to the same user''\cite{eval-priv}.
 
 [diagram of multi input transactions grouping wallets]
 
 \subsubsection{``Shadow'' or Change addresses}
-Because each previous oput must be redeemed in it's entirety, to support transactions of values smaller than the smallest output available to a wallet, the Bitcoin client automatically creates a new ``change address'' to send the remaining value to.  \cite{eval-priv} refers to this as a ``Shadow'' address.  The heuristic proposed, is that if money is sent to two or more addresses and only one has not been used before, that address is controlled by the user that created the transaction. A bug in the Bitcoin client was that it never randomized the outputs of the addresses and so this change address always appeared in a known location in the serialized transaction\cite{cve-ordered-trans}.
-
-\begin{itemize} \item Briefly mentions mixers and ``repeatedly sending fractions
-        of their Bitcoins to themselves using multiple (newly generated)
-    public-keys'' Although that does not defeat taint analysis as these can be
-assumed to be owned by the originating wallet until otherwise linked.  \item
-    Change addresses, bug that lead to them being in the same position each
-    time.  Androulaki et al, note that change addresses are clearly
-    distinguishable by being the only newly generated address in the output of
-    the transaction.  However it is recommended to newly generate a Bitcoin
-    address for each receiving transaction.  \end{itemize}
+Because each previous output must be redeemed in it's entirety, to support transactions of values smaller than the smallest output available to a wallet, the Bitcoin client automatically creates a new ``change address'' to send the remaining value to.  \cite{eval-priv} refers to this as a ``Shadow'' address.  The heuristic proposed, is that if money is sent to two or more addresses and only one has not been used before, that address is controlled by the user that created the transaction. A vulnerability in the Bitcoin client was that it never randomized the outputs of the addresses and so this change address always appeared in a known location in the serialized transaction\cite{cve-ordered-trans}. To avoid this heuristic, a user must always ensure that they only send money to newly generated Bitcoin addresses.
 
 \subsection{Taint Analysis Disruption}
-\textcite{reid-anon} suggest repeatedly sending coins to new addresses. While this would gain anonymity under the reasoning of the paper, a new heuristic could be added to define that for addresses that have not yet been spent, and therefore linked with other addresses controlled by wallets known to be distinct, those addresses should inherit the status of the addresses that sent to it.
+\textcite{reid-anon} suggest repeatedly sending coins to new addresses. While this would gain anonymity under the reasoning of the paper, a new heuristic could be added to define that: for addresses that have not yet been spent, and therefore not linked with other addresses, those addresses should inherit the status of the addresses that sent to it.
+
+[This really needs a diagram]
 
 \subsubsection{Fully Trusted Mixing}
-\textcite{eval-priv} note that it is possible to use a mixing service to fully disrupt their analysis.  A mixing service\footnote{\url{http://www.bitcoinlaundry.com/}} accepts Bitcoin transactions and automatically sends a new transaction otherwise unrelated with an equivalent ouput to a newly generated Bitcoin address.  These services often charge fees and require a significant amount of trust (bitcoin are totally in the control of the service before being returned).  The mixing service may also not have sufficient transaction traffic to be able to adequately hide the owner of bitcoin. Slight refinements on mixing services can be made by randomly adjusting the time that a transaction takes before being released or releasing multiple separate transactions into different newly generated addresses.
+\textcite{eval-priv} note that it is possible to use a mixing service to fully disrupt taint analysis.  A mixing service\footnote{\url{http://www.bitcoinlaundry.com/}} accepts Bitcoin transactions and automatically sends a new transaction otherwise unrelated with an equivalent output to a newly generated Bitcoin address.  These services often charge fees and require a significant amount of trust (bitcoin are totally in the control of the service before being returned).  The mixing service may also not have sufficient transaction traffic to be able to adequately hide the owner of bitcoin. Slight refinements on mixing services can be made by randomly adjusting the time that a transaction takes before being released or releasing multiple separate transactions into different newly generated addresses.
 
 \subsubsection{ZeroCoin}
-\textcite{zerocoin} propose a solution to the de-anonymization proposed in taint analysis, by defining new transaction types that take advantage of a zero knowledge proof (ZKP) that only proves knowledge of:
+\textcite{zerocoin} propose a method of avoiding de-anonymization without a central trusted party, by defining new transaction types that take advantage of a zero knowledge proof (ZKP) that only proves knowledge of:
 
 \begin{enumerate}
 \item a Zerocoin in the block chain.
@@ -188,9 +176,10 @@ Formally, given all Zerocoins in the block chain ${C_1, C_2,\dots,C_N}$, prove k
     (C_i = C_1) \vee (C_i=C_2) \vee \dots \vee (C_i=C_N)
 \end{equation}
 
-A ZKP for this statement is not efficient, as such Zerocoin uses a one-way public accumulator, with an efficient ZKP, that accumulates ${C_1, C_2,\dots,C_N}$ to produce some $A$, such that it's possible to prove knowledge of a witness s.t. $C \in inputs(A)$~\cite{one-way-accumulators}.
+A ZKP for this statement is not efficient, as such, Zerocoin uses a one-way public accumulator with an efficient ZKP that accumulates ${C_1, C_2,\dots,C_N}$ to produce some $A$, such that it's possible to prove knowledge of a witness s.t. $C_i \in inputs(A)$~\cite{one-way-accumulators}.
 
 The function used, equation~\ref{eqn:zkp}, that provides this mathematical property under the strong RSA assumption was proposed by \textcite{strong-rsa}.
+%TODO: expand
 
 A Zerocoin $C_{i}$ is created using serial number $S$ in the group $Z(N)$ using a Peterson commitment, equation~\ref{eqn:zq-create}, repeated until $C_i$ is a prime.
 
@@ -208,9 +197,9 @@ An accumulator $A$ can be created from the asserted Zerocoins.  Adding to the ac
     \end{align}
 \end{subequations}
 
-Where N is the product of two permanently private prime numbers (These primes are generated once, multiplied then are permanently destroyed).
+Where $N$ is the product of two permanently private prime numbers - these primes are generated once, multiplied to derive $N$ then are permanently destroyed.
 
-The Zero-knowledge proof, proves that $u^{C_i} \cdot w_i = A$. $w_i$ is now defined as the new accumulator. Unfortunately, this proof requires a 40KiB Double Discrete Logarithm proof, and the modification of all Bitcoin clients on the network which strictly is a new currency and no longer Bitcoin, but another incompatible block chain currency.
+The zero knowledge proof, proves that $u^{C_i} \cdot w_i = A$. $w_i$ is now defined as the new accumulator. Unfortunately, this proof requires a 40KiB Double Discrete Logarithm proof, and the modification of all Bitcoin clients on the network which strictly is a new currency and no longer Bitcoin, but another incompatible block chain currency.
 
 \subsubsection{In-Protocol Mixing}
 In his forum post, ``I taint rich!'', Bitcoin developer Gregory (gmaxwell) Maxwell describes a process to disrupt ``brain-dead automated (taint) analysis''.  Because the conditions of a set of previous outputs can be fulfilled partially, multiple users can cooperate to create a single transaction that causes their public keys to appear linked in a single wallet to taint analysis, without revealing their private keys to the group.  As such the claim made by \textcite{satoshi}, and key assumption made by \textcite{reid-anon}, that ``Some linking is still unavoidable with multi-input transactions, which necessarily reveal that their inputs were owned by the same user'' is wrong.
@@ -238,9 +227,8 @@ TODO: describe and compare with everyone mix, vs pairwise mixing. Esp. re: DoS.
 \section{Conclusion}
 While it is clear that the de-anonymization techniques will be no-longer be applicable once the anonymization techniques discussed in this report become widely used by users of the Bitcoin system, it is not obvious that they will be applicable even to existing network data. Any adversary well versed in the protocol would have been able to avoid de-anonymization even before the Bitcoin client\cite{bitcoin-qt} added support for multi-input and output transactions and the dangers of address re-use were widely publicized because these techniques were already available when interacting with the network directly with command line tools.
 
-
 \section{Future Work}
-This report discusses only a proposal for a novel anonymization system, an obvious avenue for further work would be to design, create and test a concrete implementation. Other avenues for further work would to be to investigate design changes and improvements to the existing Bitcoin system: would using multi-cast for transaction distribution enhance the protocol; create tools to allow easy data-mining of block-chain data using ideas from the Linked Open Data or Semantic Web communities.
+This report discusses only a proposal for a novel anonymization system, an obvious avenue for further work would be to design, create and test a concrete implementation. Other avenues for further work would to be to investigate design changes and improvements to the existing Bitcoin system e.g. would using internet-wide multicast for transaction distribution enhance the protocol or creating tools to allow easy data-mining of block chain data using ideas from the Linked Open Data or Semantic Web communities.
 
 %\section{Alternative Post-Bitcoin Digital Currencies}
 
