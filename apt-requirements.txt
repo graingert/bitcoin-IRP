@@ -1,1 +1,1 @@
-latex-xcolor texlive-latex-extra texlive-fonts-recommended texlive-fonts-extra biblatex texlive-bibtex-extra inkscape texlive-font-utils libgraphviz4 graphviz
+latex-xcolor texlive-latex-extra texlive-fonts-recommended texlive-fonts-extra biblatex texlive-bibtex-extra inkscape texlive-font-utils libgraphviz4 graphviz pgf
