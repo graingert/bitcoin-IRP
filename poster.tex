@@ -77,7 +77,7 @@
   % Option is left on true though the eyecatcher is not used. The reason is
   % that we have a bit nicer looking title and author formatting in the headercol
   % this way
-  %eyecatcher=false, 
+  eyecatcher=true, 
   borderColor=bordercol,
   headerColorOne=headercol1,
   headerColorTwo=headercol2,
@@ -89,12 +89,14 @@
   textborder=rectangle,
   background=user,
   headerborder=open,
-  boxshade=plain,
-  eyecatcher=true
+  boxshade=plain
 }
 %%% Eye Cacther %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 {
-  Eye Catcher, empty if option eyecatcher=false - unused
+% The logos are compressed a bit into a simple box to make them smaller on the result
+% (Wasn't able to find any bigger of them.)
+  Electronics and\\
+  Computer Science 
 }
 %%% Title %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 {\sf\bf
@@ -109,10 +111,10 @@
 {
 % The logos are compressed a bit into a simple box to make them smaller on the result
 % (Wasn't able to find any bigger of them.)
-  \includegraphics[height=4em]{img/University_of_Southampton}
+  \includegraphics[height=3em]{img/University_of_Southampton}
 }
 
-\headerbox{Introduction}{name=introduction,column=0,row=0}{
+\headerbox{Introduction}{name=introduction,column=0,row=0, span=3}{
 While cryptographic digital currencies have previously been discussed as mathematical curiosities, Bitcoin\cite{satoshi}, a peer-to-peer electronic currency system has become the focus of significant interest and research effort.
 This paper critically assess Bitcoin in the context of other digital currencies and investigates recent developments and discussions within the Bitcoin development community and scientific literature, with a particular focus on anonymity.
 This paper also investigates methods used for de-anonymizing or revealing the identity of users of the Bitcoin network and how these methods can be contravened as well as proposing a novel automated solution to the issue of de-anonymizing techniques.
@@ -146,7 +148,7 @@ support and supervision throughout this project, the mysterious Satoshi Nakamoto
 
 
 
-\headerbox{The Bitcoin Protocol}{name=bitcoin,span=2,column=1,row=0}{
+\headerbox{The Bitcoin Protocol}{name=bitcoin,span=2,column=1,row=0, below=introduction}{
 The Bitcoin protocol and client software provides a concrete implementation of an altered version of the original b-money proposal, with defined transaction syntax such as dynamic payment scripts and the concept of outputs that must be spent in their entirety.  The only significant novel deviation is that \textcite{satoshi} has substituted the ``synchronous and unjammable anonymous broadcast channel''~\cite{b-money} with a decentralized time stamp server that is used to ratify the order in which transactions occurred.  This allows for a dynamically changing set of transaction authorizing servers to achieve a consensus of valid transactions. Any user can, on receipt of a transaction, query the time stamp server and determine whether a transaction has been invalidated by a prior transaction. This key difference is likely the reason that Bitcoin took crypto-currencies from mathematical curiosity to a usable system for storage and transfer of value.
 \vspace{-0.2em}
 \begin{center}
