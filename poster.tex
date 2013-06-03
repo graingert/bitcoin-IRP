@@ -18,7 +18,8 @@
 
 \usepackage{graphicx}
 
-\newcommand\irptitle{Foo}
+
+\newcommand{\irptitle}{Remaining Anonymous when using the Bitcoin Protocol}
 
 %\newcommand\MYhyperrefoptions{bookmarks=true,bookmarksnumbered=true,
 %pdfpagemode={UseOutlines},plainpages=false,pdfpagelabels=true,
@@ -60,7 +61,6 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{document}
-\typeout{Poster rendering started}
 
 %%% Setting Background Image %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \background{
@@ -89,7 +89,8 @@
   textborder=rectangle,
   background=user,
   headerborder=open,
-  boxshade=plain
+  boxshade=plain,
+  eyecatcher=true
 }
 %%% Eye Cacther %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 {
@@ -97,52 +98,38 @@
 }
 %%% Title %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 {\sf\bf
-  Properties of Elementary Random and Preferential Dynamic Networks
+  \irptitle
 }
 %%% Authors %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 {
-  \vspace{1em} Richard O. Legendi, Laszlo Gulyas, George Kampis\\
-  {\smaller legendi@inf.elte.hu, lgulyas@colbud.hu, gkampis@colbud.hu}
+  \vspace{1em} Thomas Grainger\\
+  {\smaller Email: t.grainger@ecs.soton.ac.uk}
 }
 %%% Logo %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 {
 % The logos are compressed a bit into a simple box to make them smaller on the result
 % (Wasn't able to find any bigger of them.)
-\setlength\fboxsep{0pt}
-\setlength\fboxrule{0.5pt}
-  \fbox{
-    \begin{minipage}{14em}
-      \includegraphics[width=10em,height=4em]{pix/colbud_logo}
-      \includegraphics[width=4em,height=4em]{pix/elte_logo} \\
-      \includegraphics[width=10em,height=4em]{pix/dynanets_logo}
-      \includegraphics[width=4em,height=4em]{pix/aitia_logo}
-    \end{minipage}
-  }
+  \includegraphics[height=4em]{img/University_of_Southampton}
 }
 
-\headerbox{Problem}{name=problem,column=0,row=0}{
-Sampling networks always involves the act of aggregation (e.g., when collecting longitudinal samples of networks). We sutdy how the cumulation window length effects the properties of the aggregated network~\textcite{satoshi}.
+\headerbox{Introduction}{name=introduction,column=0,row=0}{
+While cryptographic digital currencies have previously been discussed as mathematical curiosities, Bitcoin\cite{satoshi}, a peer-to-peer electronic currency system has become the focus of significant interest and research effort.
+This paper critically assess Bitcoin in the context of other digital currencies and investigates recent developments and discussions within the Bitcoin development community and scientific literature, with a particular focus on anonymity.
+This paper also investigates methods used for de-anonymizing or revealing the identity of users of the Bitcoin network and how these methods can be contravened as well as proposing a novel automated solution to the issue of de-anonymizing techniques.
 
-\includegraphics[width=\linewidth]{pix/time_windows}
 }
 
-\headerbox{Basic Concepts}{name=definitions,column=0,below=problem}{
-In our work the dynamic network is a series of graphs, that is, $DN = G_t(V_t,E_t)$, where $E_t \subseteq V_t \times V_t$ ($\forall t \geq 0$). The initial network, $G_0$, is considered as a parameter of the process. The \textbf{node set fixed} and we worked with an about \textbf{constant number of edges}. We assume that the evolution of the network can be described as the result of an edge creation and an edge deletion process. We define $G_t$ as the \textbf{snapshot network} and 
-  {\smaller
-  $$G_T = ( \bigcup^{T}_{t=0}V_t, \bigcup^{T}_{t=0}E_t) ~ \textnormal{for} ~ T \geq 0.$$
-  }
-as the \textbf{cumulative network}.
+\headerbox{Existing Systems}{name=existing,column=0,below=introduction}{
+\begin{itemize}
+  \item Central Banking
+  \item NetCash
+  \item Chaumian e-Cash
+  \item B-Money
+\end{itemize}
+
 }
 
-\headerbox{Models}{name=models,column=0,below=definitions}{
-\textbf{ER1} $G_0$ is a random graph. Add each non-existing edge with $p_A$, delete each existing edge with $p_D$ probability. \\
-\textbf{ER2} $G_0$ is a random graph. Add $k_A$ uniformly selected random new edges and delete $k_D$ existing edges. \\
-\textbf{ER3} $G_0$ is a random graph. Rewire $k_{RW}$ edges. \\
-\textbf{SPA} (\emph{Snapshot preferential}) $G_0$ is a scale free network. Add $k_A$ edges from a random node with preferential attachment based on the snapshot network. Delete $k_D$ existing edges. \\
-\textbf{CPA} (\emph{Cumulative preferential}) $G_0$ is a scale free network. Add $k_A$ edges from a random node with preferential attachment based on the cumulative network. Delete $k_D$ existing edges.
-}
-
-\headerbox{References}{name=references,column=0,below=models}{
+\headerbox{References}{name=references,column=0,below=existing}{
 \smaller                          % Make the whole text smaller
 \vspace{-0.4em}                     % Save some space at the beginning
 \renewcommand{\section}[2]{\vskip 0.05em}   % Omit "References" title
@@ -152,30 +139,38 @@ as the \textbf{cumulative network}.
 \headerbox{Acknowledgements}{name=acknowledgements,column=0,below=references, above=bottom}{
 \smaller            % Make the whole text smaller
 \vspace{-0.4em}     % Save some space at the beginning
-This research was partially supported by the Hungarian Government (KMOP-1.1.2-08/1-2008-0002 ) and the European Union's Seventh Framework Programme: DynaNets, FET-Open project no. FET-233847 (\url{http://www.dynanets.org}). The supports are gratefully acknowledged.
+The author would like to thank Dr~Tim~Chown for his
+support and supervision throughout this project, the mysterious Satoshi Nakamoto for the creation of the Bitcoin distributed currency system, and Gregory (gmaxwell) Maxwell and the other users of the freenode
+\#bitcoin-dev Internet Relay Chat (IRC) channel.
 } 
 
-\headerbox{Dynamic Networks are Sensitive to Aggregation}{name=density,span=2,column=1,row=0}{
-Network characteristics are extremely sensitive to minor changes in aggregation length. In our previous work \cite{prevWork1} \cite{prevWork2}, we studied the cumulative properties of Elementary Dynamic Network models over the complete time period (i.e., until they reach the stable point of a full network). Here we focus on the more realistc domain of sparse (cumulative) networks. We find that even when snapshot networks are stationary, \textbf{important network characteristics}  (average path lenght, clustering, betwenness centrality) \textbf{are extremely sensitive to aggregation} (window length). 
 
-\includegraphics[angle=-90,width=0.98\linewidth]{pix/PA_and_ER_Models_statisticalMeasures}
+
+\headerbox{The Bitcoin Protocol}{name=bitcoin,span=2,column=1,row=0}{
+The Bitcoin protocol and client software provides a concrete implementation of an altered version of the original b-money proposal, with defined transaction syntax such as dynamic payment scripts and the concept of outputs that must be spent in their entirety.  The only significant novel deviation is that \textcite{satoshi} has substituted the ``synchronous and unjammable anonymous broadcast channel''~\cite{b-money} with a decentralized time stamp server that is used to ratify the order in which transactions occurred.  This allows for a dynamically changing set of transaction authorizing servers to achieve a consensus of valid transactions. Any user can, on receipt of a transaction, query the time stamp server and determine whether a transaction has been invalidated by a prior transaction. This key difference is likely the reason that Bitcoin took crypto-currencies from mathematical curiosity to a usable system for storage and transfer of value.
+\vspace{-0.2em}
+\begin{center}
+  \includegraphics[width=0.49\linewidth]{img/dyn/price}
+  \includegraphics[width=0.49\linewidth]{img/dyn/speed-small-lin-ever}
+\end{center}
 }
 
-\headerbox{Degree Distribution Radically Changes}
-{name=degreeDistribution,span=2,column=1,below=density,above=bottom}{
-Degree distributions are exceptionally sensitive to the length of the aggregation window. \textbf{The same dynamic network may produce a normal, lognormal or even power law distribution for different aggregation lenghts.} The digree distribution of the snapshot and cumulative network is inherently different. The following surfaces show the CPA model until it approaches the complete network.
-\vspace{-0.2em}
-\begin{center}
-  \includegraphics[angle=-90,width=0.49\linewidth]{pix/CPA_3d_snapshot}
-  \includegraphics[angle=-90,width=0.49\linewidth]{pix/CPA_3d_cumulative}
-\end{center}
-\vspace{-0.2em}
-Taking slices of the cumulative 3D charts shows us how the degree distribution changes. The log-log charts below show the progression of these changes as the aggregation window gets larger.
-\vspace{-0.2em}
-\begin{center}
-  \includegraphics[angle=-90,width=0.49\linewidth]{pix/ER1_cumulativeDegrees}
-  \includegraphics[angle=-90,width=0.49\linewidth]{pix/CPA_cumulativeDegrees}
-\end{center}
+\headerbox{Anonymization Techniques}
+{name=anon,span=2,column=1,below=bitcoin}{
+
+\begin{itemize}
+  \item Multi-Input Transactions
+  \item Change Addresses
+\end{itemize}
+}
+
+\headerbox{De-Anonymization Techniques}
+{name=deanon,span=2,column=1,below=anon,above=bottom}{
+  \begin{itemize}
+    \item Centralized Mixing
+    \item ZeroCoin
+    \item Automated In-Protocol Mixing
+  \end{itemize}
 }
 
 \end{poster}
