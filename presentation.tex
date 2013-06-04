@@ -1,5 +1,5 @@
 \documentclass{beamer}
-
+\setbeameroption{show notes}
 \input{config}
 \renewcommand{\biblabelsep}{2em}
 \renewcommand{\bibitemsep}{0.2ex}
@@ -121,10 +121,12 @@ But it uses a block chain.
 
 \begin{frame}
 \frametitle{De-Anonymization Techniques}
+Heuristics can be used to contract the ``transaction network'' into a ``user network''.
 \begin{description}
-
 \item[Multi-Input Transactions] If a user cannot fulfill the value of a transaction by spending a  single previous output, the client will combine multiple inputs\cite{reid-anon}.
 \item[Change Addresses] Because each output must be redeemed in it's entirety transactions of values smaller than the smallest output available to a wallet, the Bitcoin client uses ``change addresses'' so as to retain the remaining value.
+
+Once contracted any address in a group, can be used to identify that whole group.
 
 \end{description}
 \end{frame}
@@ -139,6 +141,54 @@ But it uses a block chain.
 \end{figure}
 \end{frame}
 
+
+\begin{frame}
+\frametitle{Anonymization Techniques}
+\begin{description}
+\item[Fully Trusted Mixing]
+A mixing service accepts Bitcoin transactions and automatically sends a new transaction to a newly generated Bitcoin address.
+\item[ZeroCoin]
+Uses a zero knowledge proof (ZKP) that only proves knowledge of: a Zerocoin in the block chain. The actual serial number used to generate it\cite{zerocoin}.
+
+\item[In-Protocol Mixing]
+Groups of users cooperate to create transactions that appear to link their wallets.
+\end{description}
+\end{frame}
+
+\begin{frame}
+\frametitle{Anonymization Techniques}
+\framesubtitle{ZeroCoin 1}
+To spend a ZeroCoin (ZC), given all ZCs in the block chain ${C_1, C_2,\dots,C_N}$, prove knowledge of $C_i$ such that:
+
+\begin{equation}
+    (C_i = C_1) \vee (C_i=C_2) \vee \dots \vee (C_i=C_N)
+\end{equation}
+
+ZC uses a one-way public accumulator with an efficient ZKP that accumulates ${C_1, C_2,\dots,C_N}$ to produce some $A$, such that it's possible to prove knowledge of a witness s.t. $C_i \in inputs(A)$~\cite{one-way-accumulators}.
+
+A Zerocoin $C_{i}$ is created using serial number $S$ in the group $Z(N)$ using a Peterson commitment, equation~\ref{eqn:zq-create}, repeated until $C_i$ is prime.
+
+\begin{equation}\label{eqn:zq-create}
+C_{i}=g^Sh^r, C_i \in \mathbb(P)
+\end{equation}
+\end{frame}
+
+\begin{frame}
+\frametitle{Anonymization Techniques}
+\framesubtitle{ZeroCoin 2}
+An accumulator $A$ can be created from the asserted ZCs.  Adding to the accumulator is trivial, $A' = A*u^{C_i}$.
+
+\begin{subequations}
+    \begin{align}\label{eqn:zkp}
+        N &= p \cdot q, u \in QR_{N}(u\neq1)\\
+        A &= u^{C_1, C_2,\dots,C_N}\\
+        w_i &=  u^{C_1, C_2,\cdots C_{i-1}, C_{i+1}, \dots ,C_N}
+    \end{align}
+\end{subequations}
+
+Where $N$ is the product of two permanently private prime numbers - these primes are generated once, multiplied to derive $N$ then are permanently destroyed.
+
+\end{frame}
 
 
 \begin{frame}
