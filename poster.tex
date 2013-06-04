@@ -118,7 +118,7 @@
     \includegraphics[height=3em]{img/University_of_Southampton}
 }
 
-\headerbox{Introduction}{name=introduction,column=0,row=0, span=3}{
+\headerbox{Introduction}{name=introduction,column=0,row=0}{
 While cryptographic digital currencies have previously been discussed as mathematical curiosities, Bitcoin\cite{satoshi}, a peer-to-peer electronic currency system has become the focus of significant interest and research effort. Investigated are methods used for de-anonymizing or revealing the identity of users of the Bitcoin network and how these methods can be contravened as well as proposing a novel automated solution to the issue of de-anonymizing techniques.
 }
 
@@ -126,9 +126,9 @@ While cryptographic digital currencies have previously been discussed as mathema
 
 \begin{description}
     \item[Central Banking Authorities] These fully central systems, such as PayPal, or SEPA handle transactions by debiting one user account and crediting another~\cite{paypal}.
-    \item[Unique Token] NetCash~\cite{netcash}, uses a unique token held by both the central authority and the owner of the coin. To create NetCash currency, the user and central authority agree on a unique token in exchange for some currency or resource. To transfer value a user sends a token to another user. Receiving users send the token to the exchange, to be swapped for a new spendable token invalidating the original token.
-    \item[Blind-signed Chaumian e-Cash] Proposed by \textcite{chaum}, the Chaum Token protocol, uses blind signatures. A user, Alice, creates a token $x$ and blinds it using function $c$.  A central authority will sign this blinded message using signing function $s$ in exchange for a fee, creating $s(c(x))$.  The authority then returns the blind signed message to Alice. Alice then removes the blind, leaving the signature $s(x)$ using $c^{-1}(s(c(x)))$.
-    \item[B-Money digital signature chain]B-Money proposed by~\textcite{b-money}, uses a chain of digital signatures. Transaction messages are created using public key cryptography and the chain of digital signatures can be traced back to the original creation of value. Money is not sent per-se but re-assigned. To prevent double spending all users maintain a live copy of all transactions using a theoretical ``synchronous and unjammable anonymous broadcast channel''.
+    \item[Unique Token (NetCash)] To create NetCash~\cite{netcash} currency, the user and central authority agree on a unique token in exchange for some currency or resource. To transfer value a user sends a token to another user. Receiving users send the token to the exchange, to be swapped for a new spendable token invalidating the original token.
+    \item[Blind-signed Chaumian e-Cash] Uses blind signatures. A user, Alice, creates a token $x$ and blinds it using function $c$.  A central authority will sign this blinded message using signing function $s$ in exchange for a fee, creating $s(c(x))$.  The authority then returns the blind signed message to Alice. Alice then removes the blind, leaving the signature $s(x)$ using $c^{-1}(s(c(x)))$\cite{chaum}.
+    \item[B-Money digital signature chain]B-Money proposed by~\textcite{b-money}. Transaction messages are created using public key cryptography and the chain of digital signatures can be traced back to the original creation of value. Money is not sent per-se but re-assigned. To prevent double spending all users maintain a live copy of all transactions using a theoretical ``synchronous and unjammable anonymous broadcast channel''.
 \end{description}
     \includegraphics[width=\textwidth]{img/Bitcoin_Transaction_Visual}
 
@@ -149,28 +149,33 @@ support and supervision throughout this project, the mysterious Satoshi Nakamoto
 
 
 
-\headerbox{The Bitcoin Protocol}{name=bitcoin,span=2,column=1,row=0, below=introduction}{
+\headerbox{The Bitcoin Protocol}{name=bitcoin,span=2,column=1,row=0}{
 \begin{multicols}{2}
-The Bitcoin protocol and client software provides a concrete implementation of an altered version of the original B-Money proposal..  The only significant novel deviation is that \textcite{satoshi} has substituted the ``synchronous and unjammable anonymous broadcast channel''~\cite{b-money} with a decentralized time stamp server.
+The Bitcoin protocol and client software provides a concrete implementation of an altered version of the original B-Money proposal.  The only significant novel deviation is that \textcite{satoshi} has substituted the ``synchronous and unjammable anonymous broadcast channel''~\cite{b-money} with a decentralized time stamp server.
 
-During the operation of the distributed time stamp server, the Bitcoin peer network, creates a chain of blocks of transactions, each referring to the previous by hash value. This is known as the Bitcoin block chain.
-
-ny user can contribute to this chain of blocks, but before another peer will relay it to others, it must meet a ``proof-of-work'' requirement: the double SHA-256 hash value of each block must not exceed a value determined by the current `difficulty'.
+The Bitcoin peer network, create a Bitcoin block chain: a chain of blocks of transactions, each referring to the previous by hash value. Each block has a ``proof-of-work'' requirement: the double SHA-256 hash value of each block must not exceed a value determined by the current `difficulty'. This means to replace a block in the chain all later blocks must also be recreated.
 \end{multicols}
-\vspace{-0.2em}
+\vspace{-1.5em}
 \begin{center}
-    \includegraphics[width=0.49\linewidth]{img/dyn/price}
-    \includegraphics[width=0.49\linewidth]{img/dyn/speed-lin-ever}
+    \includegraphics[width=0.40\linewidth]{img/dyn/price}
+    \includegraphics[width=0.40\linewidth]{img/dyn/speed-lin-ever}
 \end{center}
 }
 
-\headerbox{Anonymization Techniques}
-{name=anon,span=2,column=1,below=bitcoin}{
+\headerbox{De-Anonymization Techniques}
+{name=deanon,span=2,column=1,below=bitcoin}{
+\begin{multicols}{2}
+In Bitcoin all transactions must be broadcast publicly, however, \textcite{satoshi} maintains that ``privacy can still be maintained by breaking the flow of information [...] by keeping public keys anonymous''.
 
-\begin{itemize}
-    \item Multi-Input Transactions
-    \item Change Addresses
-\end{itemize}
+\begin{description}
+\item[Multi-input Transactions]
+If a user cannot fulfill the value of a transaction by spending a single previous output, the client will combine multiple inputs, where the user has the ability to fulfill their spend conditions.  ``It is therefore straightforward to conclude that if these (inputs) are (spendable) by different addresses, then the input addresses belong to the same user''\cite{eval-priv}.
+
+\item[Change addresses]
+Because each output must be redeemed in it's entirety transactions of values smaller than the smallest output available to a wallet, the Bitcoin client uses ``change addresses'' to send the remaining value to.\textcite{eval-priv} propose a heuristic: if money is sent to two or more addresses and only one has not been used before, that address is the change addresses controlled by the user.
+\end{description}
+By combining the knowledge of how keys are grouped into wallets with knowledge from outside the protocol the identity of the user behind the wallet can be discovered\cite{reid-anon}.
+\end{multicols}
 }
 
 \headerbox{References}{name=references,span=3,column=0,below=acknowledgements, above=bottom}{
@@ -181,13 +186,21 @@ ny user can contribute to this chain of blocks, but before another peer will rel
 \end{spacing}
 }
 
-\headerbox{De-Anonymization Techniques}
-{name=deanon,span=2,column=1,below=anon, above=references}{
-    \begin{itemize}
-        \item Centralized Mixing
-        \item ZeroCoin
-        \item Automated In-Protocol Mixing
-    \end{itemize}
+\headerbox{Anonymization Techniques}
+{name=anon,span=2,column=1,below=deanon, above=references}{
+\begin{multicols}{2}
+Various methods exist to avoid de-anonymization:
+\begin{description}
+\item[Fully Trusted Mixing]
+A mixing service accepts Bitcoin transactions and automatically sends a new transaction to a newly generated Bitcoin address.  These services often charge fees and require a significant amount of trust.
+\item[ZeroCoin]
+\textcite{zerocoin} propose a method of avoiding de-anonymization without a central trusted party, by defining new transaction types that take advantage of a zero knowledge proof (ZKP) that only proves knowledge of: a Zerocoin in the block chain. The actual serial number used to generate it. This is used to spend money without revealing which serial number was added to the block chain.
+
+\item[In-Protocol Mixing]
+In his forum post, ``I taint rich!'', Bitcoin developer Gregory (gmaxwell) Maxwell~\cite{taint-rich} describes a process to disrupt automated taint analysis.  Because the conditions of a set of previous outputs can be fulfilled partially, multiple users can cooperate to create a single transaction that causes their public keys to appear linked in a single wallet to taint analysis, without revealing their private keys to the group.  As such, the claim made by \textcite{satoshi}, and key assumption made by \textcite{reid-anon}, that some linking in multi-input transactions is unavoidable which necessarily reveals that inputs were owned by the same user, is false.
+
+\end{description}
+\end{multicols}
 }
 
 
