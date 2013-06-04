@@ -1,4 +1,17 @@
 digraph g{
+  
+  subgraph cluster_userA {
+    color=blue;
+    k_a1;
+    k_a2;
+    k_a3;
+  }
+  subgraph cluster_userB {
+    color=red;
+    k_b1;
+    k_b2;
+  }
+
   k_a1 -> T_1 [label=4];
   k_a2 -> T_1 [label=5];
   k_a3 -> T_1 [label=1];
@@ -12,8 +25,8 @@ digraph g{
   k_a2[label=<k<SUB>a2</SUB>>];
   k_a3[label=<k<SUB>a3</SUB>>];
   k_a4[label=<k<SUB>a4</SUB>>];
-  T_1[label=<T<SUB>1</SUB>>];
-  T_2[label=<T<SUB>2</SUB>>];
+  T_1[shape=box,label=<T<SUB>1</SUB>>];
+  T_2[shape=box,label=<T<SUB>2</SUB>>];
   k_b1[label=<k<SUB>b1</SUB>>];
   k_b2[label=<k<SUB>b2</SUB>>];
   k_b3[label=<k<SUB>b3</SUB>>];

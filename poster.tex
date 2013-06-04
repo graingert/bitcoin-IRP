@@ -16,6 +16,9 @@
 \addbibresource{report.bib}
 \addbibresource{rfc.bib}
 
+\renewcommand{\biblabelsep}{2em}
+\renewcommand{\bibitemsep}{0.2ex}
+
 \usepackage{graphicx}
 \usepackage{multicol}
 \setlength{\columnsep}{1.5em}
@@ -134,18 +137,13 @@ While cryptographic digital currencies have previously been discussed as mathema
 
 }
 
-\headerbox{Acknowledgements}{name=acknowledgements,column=0,below=existing}{
+\headerbox{Acknowledgements}{name=acknowledgements,column=0,below=existing, above=bottom}{
 
-
-\smaller[2]{            % Make the whole text smaller
-\begin{spacing}{1}
 \vspace{-0.4em}     % Save some space at the beginning
 The author would like to thank Dr~Tim~Chown for his
 support and supervision throughout this project, the mysterious Satoshi Nakamoto for the creation of the Bitcoin distributed currency system, and Gregory (gmaxwell) Maxwell and the other users of the freenode
 \#bitcoin-dev Internet Relay Chat (IRC) channel.
-\end{spacing}
 }
-} 
 
 
 
@@ -175,19 +173,12 @@ If a user cannot fulfill the value of a transaction by spending a single previou
 Because each output must be redeemed in it's entirety transactions of values smaller than the smallest output available to a wallet, the Bitcoin client uses ``change addresses'' to send the remaining value to.\textcite{eval-priv} propose a heuristic: if money is sent to two or more addresses and only one has not been used before, that address is the change addresses controlled by the user.
 \end{description}
 By combining the knowledge of how keys are grouped into wallets with knowledge from outside the protocol the identity of the user behind the wallet can be discovered\cite{reid-anon}.
+\includegraphics[width=\columnwidth]{img/group_addresses}
 \end{multicols}
 }
 
-\headerbox{References}{name=references,span=3,column=0,below=acknowledgements, above=bottom}{
-\vspace{-0.4em}                     % Save some space at the beginning
-\renewcommand{\section}[2]{\vskip 0.05em}   % Omit "References" title
-\begin{spacing}{0.8}
-\printbibliography
-\end{spacing}
-}
-
 \headerbox{Anonymization Techniques}
-{name=anon,span=2,column=1,below=deanon, above=references}{
+{name=anon,span=2,column=1,below=deanon}{
 \begin{multicols}{2}
 Various methods exist to avoid de-anonymization:
 \begin{description}
@@ -197,13 +188,17 @@ A mixing service accepts Bitcoin transactions and automatically sends a new tran
 \textcite{zerocoin} propose a method of avoiding de-anonymization without a central trusted party, by defining new transaction types that take advantage of a zero knowledge proof (ZKP) that only proves knowledge of: a Zerocoin in the block chain. The actual serial number used to generate it. This is used to spend money without revealing which serial number was added to the block chain.
 
 \item[In-Protocol Mixing]
-In his forum post, ``I taint rich!'', Bitcoin developer Gregory (gmaxwell) Maxwell~\cite{taint-rich} describes a process to disrupt automated taint analysis.  Because the conditions of a set of previous outputs can be fulfilled partially, multiple users can cooperate to create a single transaction that causes their public keys to appear linked in a single wallet to taint analysis, without revealing their private keys to the group.  As such, the claim made by \textcite{satoshi}, and key assumption made by \textcite{reid-anon}, that some linking in multi-input transactions is unavoidable which necessarily reveals that inputs were owned by the same user, is false.
+Because the conditions of a set of previous outputs can be fulfilled partially, multiple users can cooperate to create a single transaction that causes their public keys to appear linked in a single wallet to taint analysis, without revealing their private keys to the group.  As such, the claim made by \textcite{satoshi}, and key assumption made by \textcite{reid-anon}, that some linking in multi-input transactions is unavoidable which necessarily reveals that inputs were owned by the same user, is false.
 
 \end{description}
 \end{multicols}
 }
 
-
+\headerbox{References}{name=references,span=2,column=1,below=anon, above=bottom}{
+\vspace{-0.4em}                     % Save some space at the beginning
+\renewcommand{\section}[2]{\vskip 0.05em}   % Omit "References" title
+\printbibliography
+}
 
 \end{poster}
 \end{document}
