@@ -119,19 +119,16 @@
 }
 
 \headerbox{Introduction}{name=introduction,column=0,row=0, span=3}{
-While cryptographic digital currencies have previously been discussed as mathematical curiosities, Bitcoin\cite{satoshi}, a peer-to-peer electronic currency system has become the focus of significant interest and research effort.
-This paper critically assess Bitcoin in the context of other digital currencies and investigates recent developments and discussions within the Bitcoin development community and scientific literature, with a particular focus on anonymity.
-This paper also investigates methods used for de-anonymizing or revealing the identity of users of the Bitcoin network and how these methods can be contravened as well as proposing a novel automated solution to the issue of de-anonymizing techniques.
-
+While cryptographic digital currencies have previously been discussed as mathematical curiosities, Bitcoin\cite{satoshi}, a peer-to-peer electronic currency system has become the focus of significant interest and research effort. Investigated are methods used for de-anonymizing or revealing the identity of users of the Bitcoin network and how these methods can be contravened as well as proposing a novel automated solution to the issue of de-anonymizing techniques.
 }
 
 \headerbox{Existing Systems}{name=existing,column=0,below=introduction}{
 
 \begin{description}
     \item[Central Banking Authorities] These fully central systems, such as PayPal, or SEPA handle transactions by debiting one user account and crediting another~\cite{paypal}.
-    \item[Unique Token] This protocol, NetCash~\cite{netcash}, uses a unique token held by both the central authority and the owner of the coin. To create NetCash currency, the user and central authority agree on a unique token in exchange for some currency or resource. When that user wishes to transact value to another, they simply send the token to the other user.
+    \item[Unique Token] NetCash~\cite{netcash}, uses a unique token held by both the central authority and the owner of the coin. To create NetCash currency, the user and central authority agree on a unique token in exchange for some currency or resource. To transfer value a user sends a token to another user. Receiving users send the token to the exchange, to be swapped for a new spendable token invalidating the original token.
     \item[Blind-signed Chaumian e-Cash] Proposed by \textcite{chaum}, the Chaum Token protocol, uses blind signatures. A user, Alice, creates a token $x$ and blinds it using function $c$.  A central authority will sign this blinded message using signing function $s$ in exchange for a fee, creating $s(c(x))$.  The authority then returns the blind signed message to Alice. Alice then removes the blind, leaving the signature $s(x)$ using $c^{-1}(s(c(x)))$.
-    \item[B-Money digital signature chain] An alternative solution, B-Money proposed by~\textcite{b-money}, uses a chain of digital signatures where transaction messages are created using public key cryptography and the chain of digital signatures can be traced back to the original creation of the unit of value. In this system money is not sent per-se (only the transaction messages themselves are sent) but re-assigned.
+    \item[B-Money digital signature chain]B-Money proposed by~\textcite{b-money}, uses a chain of digital signatures. Transaction messages are created using public key cryptography and the chain of digital signatures can be traced back to the original creation of value. Money is not sent per-se but re-assigned. To prevent double spending all users maintain a live copy of all transactions using a theoretical ``synchronous and unjammable anonymous broadcast channel''.
 \end{description}
     \includegraphics[width=\textwidth]{img/Bitcoin_Transaction_Visual}
 
@@ -154,7 +151,11 @@ support and supervision throughout this project, the mysterious Satoshi Nakamoto
 
 \headerbox{The Bitcoin Protocol}{name=bitcoin,span=2,column=1,row=0, below=introduction}{
 \begin{multicols}{2}
-The Bitcoin protocol and client software provides a concrete implementation of an altered version of the original b-money proposal, with defined transaction syntax such as dynamic payment scripts and the concept of outputs that must be spent in their entirety.  The only significant novel deviation is that \textcite{satoshi} has substituted the ``synchronous and unjammable anonymous broadcast channel''~\cite{b-money} with a decentralized time stamp server that is used to ratify the order in which transactions occurred.  This allows for a dynamically changing set of transaction authorizing servers to achieve a consensus of valid transactions. Any user can, on receipt of a transaction, query the time stamp server and determine whether a transaction has been invalidated by a prior transaction. This key difference is likely the reason that Bitcoin took crypto-currencies from mathematical curiosity to a usable system for storage and transfer of value.
+The Bitcoin protocol and client software provides a concrete implementation of an altered version of the original B-Money proposal..  The only significant novel deviation is that \textcite{satoshi} has substituted the ``synchronous and unjammable anonymous broadcast channel''~\cite{b-money} with a decentralized time stamp server.
+
+During the operation of the distributed time stamp server, the Bitcoin peer network, creates a chain of blocks of transactions, each referring to the previous by hash value. This is known as the Bitcoin block chain.
+
+ny user can contribute to this chain of blocks, but before another peer will relay it to others, it must meet a ``proof-of-work'' requirement: the double SHA-256 hash value of each block must not exceed a value determined by the current `difficulty'.
 \end{multicols}
 \vspace{-0.2em}
 \begin{center}
