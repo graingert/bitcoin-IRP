@@ -79,8 +79,8 @@
 % should be used if it is desired that the figures are to be displayed in
 % draft mode.
 %
-\newcommand{\irptitle}{Remaining Anonymous when using the Bitcoin Protocol}
 \documentclass[10pt,conference]{IEEEtran}
+\input{config}
 % The Computer Society requires 12pt.
 % If IEEEtran.cls has not been installed into the LaTeX system files,
 % manually specify the path to it like:
@@ -162,10 +162,6 @@
 % IEEEtran.cls V1.7 and later.
 
 
-\usepackage[style=ieee]{biblatex}
-\addbibresource{i-d.bib}
-\addbibresource{report.bib}
-\addbibresource{rfc.bib}
 
 
 % *** GRAPHICS RELATED PACKAGES ***
@@ -477,13 +473,6 @@
 %       papers and their use requires extra complexity and work.
 % *** IF USING HYPERREF BE SURE AND CHANGE THE EXAMPLE PDF ***
 % *** TITLE/SUBJECT/AUTHOR/KEYWORDS INFO BELOW!!           ***
-\newcommand\MYhyperrefoptions{bookmarks=true,bookmarksnumbered=true,
-pdfpagemode={UseOutlines},plainpages=false,pdfpagelabels=true,
-hidelinks,
-pdftitle={\irptitle},%<!CHANGE!
-pdfsubject={Bitcoin},%<!CHANGE!
-pdfauthor={Thomas A. Grainger},%<!CHANGE!
-pdfkeywords={Bitcoin, Anonymity, Cryptography, crypto-currencies, Peer to Peer}}%<^!CHANGE!
 \ifCLASSINFOpdf
 \usepackage[\MYhyperrefoptions,pdftex]{hyperref}
 \else
