@@ -99,8 +99,8 @@
 {
 % The logos are compressed a bit into a simple box to make them smaller on the result
 % (Wasn't able to find any bigger of them.)
-    Electronics and\\
-    Computer Science 
+    \includegraphics[height=3em]{img/ecs_descriptor}
+
 }
 %%% Title %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 {\sf\bf
@@ -130,7 +130,7 @@ This paper also investigates methods used for de-anonymizing or revealing the id
 \begin{description}
     \item[Central Banking Authorities] These fully central systems, such as PayPal, or SEPA handle transactions by debiting one user account and crediting another~\cite{paypal}.
     \item[Unique Token] This protocol, NetCash~\cite{netcash}, uses a unique token held by both the central authority and the owner of the coin. To create NetCash currency, the user and central authority agree on a unique token in exchange for some currency or resource. When that user wishes to transact value to another, they simply send the token to the other user.
-    \item[Blind-signed Chaumian e-Cash] Proposed by \textcite{chaum}, the Chaum Token protocol, uses blind signatures. A user, Alice, creates a token $x$ and blinds it using function $c$.  A central authority will sign this blinded message using signing function $s$ in exchange for a fee, creating $s(c(x)$.  The authority then returns the blind signed message to Alice. Alice then removes the blind, leaving the signature $s(x)$ using $c^{-1}(s(c(x)))$.
+    \item[Blind-signed Chaumian e-Cash] Proposed by \textcite{chaum}, the Chaum Token protocol, uses blind signatures. A user, Alice, creates a token $x$ and blinds it using function $c$.  A central authority will sign this blinded message using signing function $s$ in exchange for a fee, creating $s(c(x))$.  The authority then returns the blind signed message to Alice. Alice then removes the blind, leaving the signature $s(x)$ using $c^{-1}(s(c(x)))$.
     \item[B-Money digital signature chain] An alternative solution, B-Money proposed by~\textcite{b-money}, uses a chain of digital signatures where transaction messages are created using public key cryptography and the chain of digital signatures can be traced back to the original creation of the unit of value. In this system money is not sent per-se (only the transaction messages themselves are sent) but re-assigned.
 \end{description}
     \includegraphics[width=\textwidth]{img/Bitcoin_Transaction_Visual}
