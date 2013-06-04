@@ -15,6 +15,8 @@
 
 \renewcommand{\biblabelsep}{2em}
 \renewcommand{\bibitemsep}{0.2ex}
+\renewcommand*{\bibfont}{\tiny}
+
 
 \usepackage{graphicx}
 \usepackage{multicol}
@@ -38,7 +40,6 @@
 \usepackage{amssymb}
 \usepackage{amsmath}
 %%% Global Settings %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\renewcommand*{\bibfont}{\tiny}
 
 %%% Color Definitions %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -129,7 +130,6 @@ While cryptographic digital currencies have previously been discussed as mathema
     \item[B-Money digital signature chain]B-Money proposed by~\textcite{b-money}. Transaction messages are created using public key cryptography and the chain of digital signatures can be traced back to the original creation of value. Money is not sent per-se but re-assigned. To prevent double spending all users maintain a live copy of all transactions using a theoretical ``synchronous and unjammable anonymous broadcast channel''.
 \end{description}
     \includegraphics[width=\textwidth]{img/Bitcoin_Transaction_Visual}
-
 }
 
 \headerbox{Acknowledgements}{name=acknowledgements,column=0,below=existing, above=bottom}{
@@ -162,10 +162,10 @@ In Bitcoin all transactions must be broadcast publicly, however, \textcite{satos
 
 \begin{description}
 \item[Multi-input Transactions]
-If a user cannot fulfill the value of a transaction by spending a single previous output, the client will combine multiple inputs, where the user has the ability to fulfill their spend conditions.  ``It is therefore straightforward to conclude that if these (inputs) are (spendable) by different addresses, then the input addresses belong to the same user''\cite{eval-priv}.
+If a user cannot fulfill the value of a transaction by spending a single previous output, the client will combine multiple inputs, where the user has the ability to fulfill their spend conditions.  ``It is therefore straightforward to conclude that if these (inputs) are (spendable) by different addresses, then the input addresses belong to the same user''\cite{reid-anon}.
 
 \item[Change addresses]
-Because each output must be redeemed in it's entirety transactions of values smaller than the smallest output available to a wallet, the Bitcoin client uses ``change addresses'' to send the remaining value to.\textcite{eval-priv} propose a heuristic: if money is sent to two or more addresses and only one has not been used before, that address is the change addresses controlled by the user.
+Because each output must be redeemed in it's entirety transactions of values smaller than the smallest output available to a wallet, the Bitcoin client uses ``change addresses'' so as to retain the remaining value.\textcite{eval-priv} propose a heuristic: if money is sent to two or more addresses and only one has not been used before, that address is the change addresses controlled by the user.
 \end{description}
 By combining the knowledge of how keys are grouped into wallets with knowledge from outside the protocol the identity of the user behind the wallet can be discovered\cite{reid-anon}.
 \includegraphics[width=\columnwidth]{img/group_addresses}
