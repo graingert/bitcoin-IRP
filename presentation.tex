@@ -43,6 +43,7 @@ University of Southampton \\
 %
 \begin{frame}
 \titlepage
+\note{Hi, My name is Thomas Grainger, and I'll be talking to you about  Bitcoin: the decentralized digital currency.}
 \end{frame}
 %
 \begin{frame}
@@ -53,19 +54,21 @@ University of Southampton \\
     \caption{A chart showing the price of Bitcoin over time in USD (source \href{http://bitcoincharts.com/}{bitcoin charts})}
     \label{fig:blockchain}
 \end{figure}
+\note{As you can see from the latest price charts bitcoins do have, although extremely volatile, a `real world' value.}
 \end{frame}
 %TODO: TABLE OF CONTENTS?
 \begin{frame}
 \frametitle{Existing Systems}
 \begin{description}
+    \note{So, first of all - I'm going to talk to you about the existing systems that helped lead to Bitcoin}
     \item[Central Banking Authorities]\hfill \\
-        SEPA and PayPal~\cite{paypal}.
+        SEPA and PayPal~\cite{paypal}.\note{These fully central systems, such as PayPal, or SEPA handle transactions by debiting one user account and crediting another}
     \item[Unique Token]\hfill \\
-        NetCash~\cite{netcash}.
+        NetCash~\cite{netcash}.\note{In NetCash the user and central authority agree on a unique token. To transfer value a user sends a token to another user. Receiving users send the token to the exchange, to be swapped for a new spendable token invalidating the original token}
     \item[Blind-signing]\hfill \\
-        Chaumian e-Cash\cite{chaum}.
+        Chaumian e-Cash\cite{chaum}.\note{Chaumian e-Cash uses blind signatures created by a central service. These signatures can be verified by the central server without knowing who originally requested them.}
     \item[Digital Signature Chain]\hfill \\
-        B-Money\cite{b-money}.
+        B-Money\cite{b-money}. \note{In B-Money transaction messages are created using public key cryptography\ldots}
 \end{description}
 \end{frame}
 %
@@ -73,7 +76,7 @@ University of Southampton \\
 \begin{frame}
 \frametitle{Existing Systems}
 \framesubtitle{B-Money}
-
+\note{\ldots and the chain of digital signatures can be traced back to the original creation of value.}
 \begin{figure}[h!]
     \centering
     \includegraphics[width=0.8\columnwidth]{img/Bitcoin_Transaction_Visual}
@@ -81,18 +84,19 @@ University of Southampton \\
     (source \protect\cite{satoshi})}
     \label{fig:chain-spend}
 \end{figure}
+\note{However, without a ``synchronous and unjammable anonymous broadcast channel'' it is impossible to tell if one user has signed away more than his or her share of money, a double spend}
 \end{frame}
 
 \begin{frame}
 \frametitle{The Bitcoin Protocol}
-The Bitcoin block chain is a concrete implementation of B-Money\\
-But it uses a block chain.
+The Bitcoin block chain is a concrete implementation of B-Money\\\note{The Bitcoin protocol and client software provides a concrete implementation of an altered version of the original B-Money proposal.}
+But it uses a block chain.\note{In that it uses a block chain instead of a ``synchronous and unjammable anonymous broadcast channel''}
 \begin{block}
 {Blocks\ldots}
 \begin{itemize}
 \item contain the latest transactions
 \item refer to the previous block in the chain by hash value
-\item must meet a ``proof-of-work'' requirement
+\item must meet a ``proof-of-work'' requirement\note{This proof of work is calculated by repeatedly hashing blocks until a low enough SHA256 value is discovered}
 \end{itemize}
 \end{block}
 \end{frame}
@@ -106,6 +110,7 @@ But it uses a block chain.
     \caption{A diagram showing invalid blocks (grey) being invalidated by a block chain with greater totally difficulty (black). (based on work from \href{http://theymos.com/}{theymos})}
     \label{fig:blockchain}
 \end{figure}
+\note{This means to replace a block in the chain all later blocks must also be recreated, and thus all of their proof of work's need to be recreated. A bit like a `git rebase' except trillions of hashes must be calculated for each block}
 \end{frame}
 
 \begin{frame}
@@ -117,17 +122,19 @@ But it uses a block chain.
     \caption{A chart showing the total hash power of the Bitcoin network (source \href{http://bitcoin.sipa.be/speed-lin-ever.png}{SIPA})}
     \label{fig:blockchain}
 \end{figure}
+\note{*Point out the various peaks: The first bubble, The second bubble and ASICs}
 \end{frame}
 
 \begin{frame}
 \frametitle{De-Anonymization Techniques}
+\note{Because all transactions must be broadcast publicly, the Bitcoin client software uses hundreds of different keys as pseudonyms in a wallet.}
 Heuristics can be used to contract the ``transaction network'' into a ``user network''.
 \begin{description}
 \item[Multi-Input Transactions] If a user cannot fulfill the value of a transaction by spending a  single previous output, the client will combine multiple inputs\cite{reid-anon}.
 \item[Change Addresses] Because each output must be redeemed in it's entirety transactions of values smaller than the smallest output available to a wallet, the Bitcoin client uses ``change addresses'' so as to retain the remaining value.
 
 Once contracted any address in a group, can be used to identify that whole group.
-
+\note{Unfortunately, by downloading a copy of the transaction data and using some heuristics, it is possible to group keys back into a single wallet}
 \end{description}
 \end{frame}
 
@@ -138,6 +145,7 @@ Once contracted any address in a group, can be used to identify that whole group
     \includegraphics[width=0.8\columnwidth]{img/group_addresses}
     \caption{Two users send money to $k_{SR}$. Under the Multi-Input  heuristic $k_{a1}, k_{a2} and k_{a3}$ and $k_{b1}, k_{b2}$ are contracted into  some user $a$ and some user $b$. Under the change address heuristic  $k_{a4}$ and $k_{b3}$ are also contracted into user $a$ and user $b$  respectively. }
     \label{fig:blockchain}
+    \note{As you can see it is clear that , under these heuristics, the keys in the red square and blue square can be grouped}
 \end{figure}
 \end{frame}
 
@@ -145,18 +153,21 @@ Once contracted any address in a group, can be used to identify that whole group
 \begin{frame}
 \frametitle{Anonymization Techniques}
 \begin{description}
+\note{Fortunately a few possibilities exist to remain hidden.}
 \item[Fully Trusted Mixing]
 A mixing service accepts Bitcoin transactions and automatically sends a new transaction to a newly generated Bitcoin address.
 \item[ZeroCoin]
 Uses a zero knowledge proof (ZKP) that only proves knowledge of: a Zerocoin in the block chain. The actual serial number used to generate it\cite{zerocoin}.
-
 \item[In-Protocol Mixing]
 Groups of users cooperate to create transactions that appear to link their wallets.
+
+\note{Describe the bullets}
 \end{description}
 \end{frame}
 
 \begin{frame}
 \frametitle{Anonymization Techniques}
+\note{I'm now going to show you how ZeroCoin works, I'm not going to explain the content on these slides \ldots}
 \framesubtitle{ZeroCoin 1}
 To spend a ZeroCoin (ZC), given all ZCs in the block chain ${C_1, C_2,\dots,C_N}$, prove knowledge of $C_i$ such that:
 
@@ -187,7 +198,7 @@ An accumulator $A$ can be created from the asserted ZCs.  Adding to the accumula
 \end{subequations}
 
 Where $N$ is the product of two permanently private prime numbers - these primes are generated once, multiplied to derive $N$ then are permanently destroyed.
-
+\note{\ldots because it involves some funky use of cryptography, such as Zero Knowledge Proofs, and you'd need to understand group theory and how RSA works.}
 \end{frame}
 
 
