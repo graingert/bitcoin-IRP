@@ -1,5 +1,10 @@
 \documentclass{beamer}
+
 \input{config}
+\renewcommand{\biblabelsep}{2em}
+\renewcommand{\bibitemsep}{0.2ex}
+\renewcommand*{\bibfont}{\tiny}
+
 \usetheme{Madrid} % My favorite!
 %\usetheme{Boadilla} % Pretty neat, soft color.
 %\usetheme{default}
@@ -42,41 +47,100 @@ University of Southampton \\
 %
 \begin{frame}
 \frametitle{Introduction}
-\begin{block}
-{Bitcoin}
-Bitcoin Is AMAZING\cite{satoshi}
-\end{block}
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.8\columnwidth]{img/dyn/price}
+    \caption{A chart showing the price of Bitcoin over time in USD (source \href{http://bitcoincharts.com/}{bitcoin charts})}
+    \label{fig:blockchain}
+\end{figure}
+\end{frame}
+%TODO: TABLE OF CONTENTS?
+\begin{frame}
+\frametitle{Existing Systems}
+\begin{description}
+    \item[Central Banking Authorities]\hfill \\
+        SEPA and PayPal~\cite{paypal}.
+    \item[Unique Token]\hfill \\
+        NetCash~\cite{netcash}.
+    \item[Blind-signing]\hfill \\
+        Chaumian e-Cash\cite{chaum}.
+    \item[Digital Signature Chain]\hfill \\
+        B-Money\cite{b-money}.
+\end{description}
 \end{frame}
 %
+
 \begin{frame}
-\frametitle{Example of a Theorem}
-\begin{theorem}
-The quick brown fox jumps over the lazy dog.
-\end{theorem}
+\frametitle{Existing Systems}
+\framesubtitle{B-Money}
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.8\columnwidth]{img/Bitcoin_Transaction_Visual}
+    \caption{A chain of digital signatures representing value transfer.
+    (source \protect\cite{satoshi})}
+    \label{fig:chain-spend}
+\end{figure}
 \end{frame}
-%
-\begin{frame}[fragile] % Notice the [fragile] option %
-\frametitle{Verbatim}
-\begin{example}[Putting Verbatim]
-\begin{verbatim}
+
 \begin{frame}
-\frametitle{Outline}
+\frametitle{The Bitcoin Protocol}
+The Bitcoin block chain is a concrete implementation of B-Money\\
+But it uses a block chain.
 \begin{block}
-{Why Beamer?}
-Does anybody need an introduction to Beamer?
-I don't think so.
+{Blocks\ldots}
+\begin{itemize}
+\item contain the latest transactions
+\item refer to the previous block in the chain by hash value
+\item must meet a ``proof-of-work'' requirement
+\end{itemize}
 \end{block}
-% Extra carriage return causes problem with verbatim %
-\end{frame}\end{verbatim} 
-\end{example}
 \end{frame}
- 
-\begin{frame}[fragile]  % notice the fragile option, since the body
-            % contains a verbatim command
-Example of the \verb|\cite| command to give a reference is below:
-Example of citation using \cite{key1} follows on.
+
+\begin{frame}
+\frametitle{The Bitcoin Protocol}
+\framesubtitle{The block chain}
+\begin{figure}[h!]
+    \centering
+    \includegraphics[angle=-90,width=0.8\columnwidth]{img/Blockchain}
+    \caption{A diagram showing invalid blocks (grey) being invalidated by a block chain with greater totally difficulty (black). (based on work from \href{http://theymos.com/}{theymos})}
+    \label{fig:blockchain}
+\end{figure}
 \end{frame}
- 
+
+\begin{frame}
+\frametitle{The Bitcoin Protocol}
+\framesubtitle{Hash Power}
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.8\columnwidth]{img/dyn/speed-lin-ever.png}
+    \caption{A chart showing the total hash power of the Bitcoin network (source \href{http://bitcoin.sipa.be/speed-lin-ever.png}{SIPA})}
+    \label{fig:blockchain}
+\end{figure}
+\end{frame}
+
+\begin{frame}
+\frametitle{De-Anonymization Techniques}
+\begin{description}
+
+\item[Multi-Input Transactions] If a user cannot fulfill the value of a transaction by spending a  single previous output, the client will combine multiple inputs\cite{reid-anon}.
+\item[Change Addresses] Because each output must be redeemed in it's entirety transactions of values smaller than the smallest output available to a wallet, the Bitcoin client uses ``change addresses'' so as to retain the remaining value.
+
+\end{description}
+\end{frame}
+
+\begin{frame}
+\frametitle{De-Anonymization Techniques}
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.8\columnwidth]{img/group_addresses}
+    \caption{Two users send money to $k_{SR}$. Under the Multi-Input  heuristic $k_{a1}, k_{a2} and k_{a3}$ and $k_{b1}, k_{b2}$ are contracted into  some user $a$ and some user $b$. Under the change address heuristic  $k_{a4}$ and $k_{b3}$ are also contracted into user $a$ and user $b$  respectively. }
+    \label{fig:blockchain}
+\end{figure}
+\end{frame}
+
+
+
 \begin{frame}
 \frametitle{References}
 \footnotesize{
