@@ -10,17 +10,21 @@
 % $Id:: poster.tex 128 2011-09-11 08:57:12Z rlegendi                        $ %
 % --------------------------------------------------------------------------- %
 \documentclass[a0paper,portrait]{baposter}
-
+\usepackage{setspace}
 \usepackage[style=ieee]{biblatex}
 \addbibresource{i-d.bib}
 \addbibresource{report.bib}
 \addbibresource{rfc.bib}
 
 \usepackage{graphicx}
-
+\usepackage{multicol}
+\setlength{\columnsep}{1.5em}
+\setlength{\columnseprule}{0mm}
 
 \newcommand{\irptitle}{Remaining Anonymous when using the Bitcoin Protocol}
 
+\usepackage{enumitem}
+\setdescription{leftmargin=*}
 %\newcommand\MYhyperrefoptions{bookmarks=true,bookmarksnumbered=true,
 %pdfpagemode={UseOutlines},plainpages=false,pdfpagelabels=true,
 %hidelinks,
@@ -36,7 +40,7 @@
 \usepackage{amssymb}
 \usepackage{amsmath}
 %%% Global Settings %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
+\renewcommand*{\bibfont}{\tiny}
 
 %%% Color Definitions %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -51,9 +55,9 @@
 
 %%% Save space in lists. Use this after the opening of the list %%%%%%%%%%%%%%%%
 \newcommand{\compresslist}{
-  \setlength{\itemsep}{1pt}
-  \setlength{\parskip}{0pt}
-  \setlength{\parsep}{0pt}
+    \setlength{\itemsep}{1pt}
+    \setlength{\parskip}{0pt}
+    \setlength{\parsep}{0pt}
 }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -64,54 +68,54 @@
 
 %%% Setting Background Image %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \background{
-  \begin{tikzpicture}[remember picture,overlay]%
-  \draw (current page.north west)+(-2em,2em) node[anchor=north west]
-  {\includegraphics[height=1.1\textheight]{pix/background}};
-  \end{tikzpicture}
+    \begin{tikzpicture}[remember picture,overlay]%
+    \draw (current page.north west)+(-2em,2em) node[anchor=north west]
+    {\includegraphics[height=1.1\textheight]{pix/background}};
+    \end{tikzpicture}
 }
 
 %%% General Poster Settings %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%% Eye Catcher, Title, Authors and University Images %%%%%%%%%%%%%%%%%%%%%%
 \begin{poster}{
-  grid=false,
-  % Option is left on true though the eyecatcher is not used. The reason is
-  % that we have a bit nicer looking title and author formatting in the headercol
-  % this way
-  eyecatcher=true, 
-  borderColor=bordercol,
-  headerColorOne=headercol1,
-  headerColorTwo=headercol2,
-  headerFontColor=headerfontcol,
-  % Only simple background color used, no shading, so boxColorTwo isn't necessary
-  boxColorOne=boxcolor,
-  headershape=roundedright,
-  headerfont=\Large\sf\bf,
-  textborder=rectangle,
-  background=user,
-  headerborder=open,
-  boxshade=plain
+    grid=false,
+    % Option is left on true though the eyecatcher is not used. The reason is
+    % that we have a bit nicer looking title and author formatting in the headercol
+    % this way
+    eyecatcher=true, 
+    borderColor=bordercol,
+    headerColorOne=headercol1,
+    headerColorTwo=headercol2,
+    headerFontColor=headerfontcol,
+    % Only simple background color used, no shading, so boxColorTwo isn't necessary
+    boxColorOne=boxcolor,
+    headershape=roundedright,
+    headerfont=\Large\sf\bf,
+    textborder=rectangle,
+    background=user,
+    headerborder=open,
+    boxshade=plain
 }
 %%% Eye Cacther %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 {
 % The logos are compressed a bit into a simple box to make them smaller on the result
 % (Wasn't able to find any bigger of them.)
-  Electronics and\\
-  Computer Science 
+    Electronics and\\
+    Computer Science 
 }
 %%% Title %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 {\sf\bf
-  \irptitle
+    \irptitle
 }
 %%% Authors %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 {
-  \vspace{1em} Thomas Grainger\\
-  {\smaller Email: t.grainger@ecs.soton.ac.uk}
+    \vspace{1em} Thomas Grainger\\
+    {\smaller Email: t.grainger@ecs.soton.ac.uk}
 }
 %%% Logo %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 {
 % The logos are compressed a bit into a simple box to make them smaller on the result
 % (Wasn't able to find any bigger of them.)
-  \includegraphics[height=3em]{img/University_of_Southampton}
+    \includegraphics[height=3em]{img/University_of_Southampton}
 }
 
 \headerbox{Introduction}{name=introduction,column=0,row=0, span=3}{
@@ -122,38 +126,40 @@ This paper also investigates methods used for de-anonymizing or revealing the id
 }
 
 \headerbox{Existing Systems}{name=existing,column=0,below=introduction}{
-\begin{itemize}
-  \item Central Banking
-  \item NetCash
-  \item Chaumian e-Cash
-  \item B-Money
-\end{itemize}
+
+\begin{description}
+    \item[Central Banking Authorities] These fully central systems, such as PayPal, or SEPA handle transactions by debiting one user account and crediting another~\cite{paypal}.
+    \item[Unique Token] This protocol, NetCash~\cite{netcash}, uses a unique token held by both the central authority and the owner of the coin. To create NetCash currency, the user and central authority agree on a unique token in exchange for some currency or resource. When that user wishes to transact value to another, they simply send the token to the other user.
+    \item[Blind-signed Chaumian e-Cash] Proposed by \textcite{chaum}, the Chaum Token protocol, uses blind signatures. A user, Alice, creates a token $x$ and blinds it using function $c$.  A central authority will sign this blinded message using signing function $s$ in exchange for a fee, creating $s(c(x)$.  The authority then returns the blind signed message to Alice. Alice then removes the blind, leaving the signature $s(x)$ using $c^{-1}(s(c(x)))$.
+    \item[B-Money digital signature chain] An alternative solution, B-Money proposed by~\textcite{b-money}, uses a chain of digital signatures where transaction messages are created using public key cryptography and the chain of digital signatures can be traced back to the original creation of the unit of value. In this system money is not sent per-se (only the transaction messages themselves are sent) but re-assigned.
+\end{description}
+    \includegraphics[width=\textwidth]{img/Bitcoin_Transaction_Visual}
 
 }
 
-\headerbox{References}{name=references,column=0,below=existing}{
-\smaller                          % Make the whole text smaller
-\vspace{-0.4em}                     % Save some space at the beginning
-\renewcommand{\section}[2]{\vskip 0.05em}   % Omit "References" title
-\printbibliography
-}
+\headerbox{Acknowledgements}{name=acknowledgements,column=0,below=existing}{
 
-\headerbox{Acknowledgements}{name=acknowledgements,column=0,below=references, above=bottom}{
-\smaller            % Make the whole text smaller
+
+\smaller[2]{            % Make the whole text smaller
+\begin{spacing}{1}
 \vspace{-0.4em}     % Save some space at the beginning
 The author would like to thank Dr~Tim~Chown for his
 support and supervision throughout this project, the mysterious Satoshi Nakamoto for the creation of the Bitcoin distributed currency system, and Gregory (gmaxwell) Maxwell and the other users of the freenode
 \#bitcoin-dev Internet Relay Chat (IRC) channel.
+\end{spacing}
+}
 } 
 
 
 
 \headerbox{The Bitcoin Protocol}{name=bitcoin,span=2,column=1,row=0, below=introduction}{
+\begin{multicols}{2}
 The Bitcoin protocol and client software provides a concrete implementation of an altered version of the original b-money proposal, with defined transaction syntax such as dynamic payment scripts and the concept of outputs that must be spent in their entirety.  The only significant novel deviation is that \textcite{satoshi} has substituted the ``synchronous and unjammable anonymous broadcast channel''~\cite{b-money} with a decentralized time stamp server that is used to ratify the order in which transactions occurred.  This allows for a dynamically changing set of transaction authorizing servers to achieve a consensus of valid transactions. Any user can, on receipt of a transaction, query the time stamp server and determine whether a transaction has been invalidated by a prior transaction. This key difference is likely the reason that Bitcoin took crypto-currencies from mathematical curiosity to a usable system for storage and transfer of value.
+\end{multicols}
 \vspace{-0.2em}
 \begin{center}
-  \includegraphics[width=0.49\linewidth]{img/dyn/price}
-  \includegraphics[width=0.49\linewidth]{img/dyn/speed-lin-ever}
+    \includegraphics[width=0.49\linewidth]{img/dyn/price}
+    \includegraphics[width=0.49\linewidth]{img/dyn/speed-lin-ever}
 \end{center}
 }
 
@@ -161,19 +167,29 @@ The Bitcoin protocol and client software provides a concrete implementation of a
 {name=anon,span=2,column=1,below=bitcoin}{
 
 \begin{itemize}
-  \item Multi-Input Transactions
-  \item Change Addresses
+    \item Multi-Input Transactions
+    \item Change Addresses
 \end{itemize}
 }
 
-\headerbox{De-Anonymization Techniques}
-{name=deanon,span=2,column=1,below=anon,above=bottom}{
-  \begin{itemize}
-    \item Centralized Mixing
-    \item ZeroCoin
-    \item Automated In-Protocol Mixing
-  \end{itemize}
+\headerbox{References}{name=references,span=3,column=0,below=acknowledgements, above=bottom}{
+\vspace{-0.4em}                     % Save some space at the beginning
+\renewcommand{\section}[2]{\vskip 0.05em}   % Omit "References" title
+\begin{spacing}{0.8}
+\printbibliography
+\end{spacing}
 }
+
+\headerbox{De-Anonymization Techniques}
+{name=deanon,span=2,column=1,below=anon, above=references}{
+    \begin{itemize}
+        \item Centralized Mixing
+        \item ZeroCoin
+        \item Automated In-Protocol Mixing
+    \end{itemize}
+}
+
+
 
 \end{poster}
 \end{document}
