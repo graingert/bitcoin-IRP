@@ -181,7 +181,6 @@ Various methods exist to avoid de-anonymization:
 A mixing service accepts Bitcoin transactions and automatically sends a new transaction to a newly generated Bitcoin address.  These services often charge fees and require a significant amount of trust.
 \item[ZeroCoin]
 \textcite{zerocoin} propose a method of avoiding de-anonymization without a central trusted party, by defining new transaction types that take advantage of a zero knowledge proof (ZKP) that only proves knowledge of: a Zerocoin in the block chain. The actual serial number used to generate it. This is used to spend money without revealing which serial number was added to the block chain.
-
 \item[In-Protocol Mixing]
 Because the conditions of a set of previous outputs can be fulfilled partially, multiple users can cooperate to create a single transaction that causes their public keys to appear linked in a single wallet to taint analysis, without revealing their private keys to the group.  As such, the claim made by \textcite{satoshi}, and key assumption made by \textcite{reid-anon}, that some linking in multi-input transactions is unavoidable which necessarily reveals that inputs were owned by the same user, is false.
 
