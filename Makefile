@@ -2673,7 +2673,7 @@ endef
 # that case.
 # $(call convert-dot,<dot file>,<eps file>,<log file>,[gray])
 define convert-dot
-$(DOT) -Tps '$1' 2>'$3' $(if $4,| $(call kill-ps-color)) > $2; \
+$(DOT) -Tsvg '$1' 2>'$3' $(if $4,| $(call kill-ps-color)) > $2; \
 $(call colorize-dot-errors,$3)
 endef
 
@@ -3073,7 +3073,7 @@ endif
 	$(QUIET)$(call echo-graphic,$^,$@)
 	$(QUIET)$(call convert-fig,$<,$@,$(GRAY))
 
-%.eps: %.dot $(if $(GRAY),$(gray_eps_file))
+%.svg: %.dot $(if $(GRAY),$(gray_eps_file))
 	$(QUIET)$(call echo-graphic,$^,$@)
 	$(QUIET)$(call convert-dot,$<,$@,$<.log,$(GRAY))
 
