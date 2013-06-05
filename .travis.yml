@@ -10,7 +10,7 @@ install:
   -O dropbox_uploader.sh
 - pip install -U requests six
 script:
-- make
+- make -j
 after_success:
 - if [ "$DROPBOX_UPLOADER" ]; then bash dropbox_uploader.sh upload report.pdf; fi
 - if [ "$DROPBOX_UPLOADER" ]; then bash dropbox_uploader.sh share report.pdf; fi
