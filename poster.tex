@@ -130,7 +130,7 @@ While cryptographic digital currencies have previously been discussed as mathema
 \headerbox{Existing Systems}{name=existing,column=0,below=introduction}{
 
 \begin{description}
-    \item[Central Banking Authorities] These fully central systems, such as PayPal, or SEPA handle transactions by debiting one user account and crediting another~\cite{paypal}.
+    \item[Central Banking Authorities] These fully central systems, such as PayPal, or SEPA handle transactions by debiting one user account and crediting another.
     \item[Unique Token (NetCash)] To create NetCash~\cite{netcash} currency, the user and central authority agree on a unique token in exchange for some currency or resource. To transfer value a user sends a token to another user. Receiving users send the token to the exchange, to be swapped for a new spendable token \emph{invalidating the original token}.
     \item[Blind-signed Chaumian e-Cash] Uses blind signatures. A user, Alice, creates a token $x$ and blinds it using function $c$.  A central authority will sign this blinded message using signing function $s$ in exchange for a fee, creating $s(c(x))$.  The authority then returns the blind signed message to Alice. Alice then removes the blind, leaving the signature $s(x)$ using $c^{-1}(s(c(x)))$\cite{chaum}.
     \item[B-Money digital signature chain]B-Money proposed by~\textcite{b-money}. Transaction messages \emph{are created using public key cryptography} and the chain of digital signatures can be traced back to the original creation of value. Money is not sent per-se but re-assigned. To prevent double spending all users maintain a live copy of all transactions using a theoretical ``synchronous and unjammable anonymous broadcast channel''.
